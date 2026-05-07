@@ -17,4 +17,5 @@ namespace BlackJack_TheSpire
             InitializeComponent();
         }
     }
+    //gg
 }
