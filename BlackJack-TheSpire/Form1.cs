@@ -15,6 +15,7 @@ namespace BlackJack_TheSpire
         public Form1()
         {
             InitializeComponent();
+            Label l = new Label();
         }
     }
 }
