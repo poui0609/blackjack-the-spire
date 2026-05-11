@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.safe = new System.Windows.Forms.Label();
-            this.money = new System.Windows.Forms.Label();
-            this.bat = new System.Windows.Forms.Label();
+            this.num = new System.Windows.Forms.Label();
             this.odds = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.룰ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.저장및종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.재도전ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.게임종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.룰ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.goal = new System.Windows.Forms.Label();
+            this.score = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.get = new System.Windows.Forms.Label();
-            this.batting = new System.Windows.Forms.TextBox();
-            this.battingbutton = new System.Windows.Forms.Button();
             this.deck = new System.Windows.Forms.Button();
+            this.foldbutten = new System.Windows.Forms.Button();
+            this.turn = new System.Windows.Forms.Label();
+            this.draw = new System.Windows.Forms.Button();
+            this.stand = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,27 +60,19 @@
             this.safe.TabIndex = 0;
             this.safe.Text = "금고 금액 띄울곳";
             // 
-            // money
+            // num
             // 
-            this.money.Location = new System.Drawing.Point(33, 347);
-            this.money.Name = "money";
-            this.money.Size = new System.Drawing.Size(353, 74);
-            this.money.TabIndex = 1;
-            this.money.Text = "소지금";
-            // 
-            // bat
-            // 
-            this.bat.Location = new System.Drawing.Point(33, 421);
-            this.bat.Name = "bat";
-            this.bat.Size = new System.Drawing.Size(131, 75);
-            this.bat.TabIndex = 2;
-            this.bat.Text = "배팅금";
+            this.num.Location = new System.Drawing.Point(33, 421);
+            this.num.Name = "num";
+            this.num.Size = new System.Drawing.Size(139, 75);
+            this.num.TabIndex = 2;
+            this.num.Text = "숫자";
             // 
             // odds
             // 
-            this.odds.Location = new System.Drawing.Point(228, 421);
+            this.odds.Location = new System.Drawing.Point(264, 421);
             this.odds.Name = "odds";
-            this.odds.Size = new System.Drawing.Size(158, 75);
+            this.odds.Size = new System.Drawing.Size(122, 75);
             this.odds.TabIndex = 3;
             this.odds.Text = "배율";
             // 
@@ -107,13 +99,6 @@
             this.설정ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
             this.설정ToolStripMenuItem.Text = "설정";
             // 
-            // 룰ToolStripMenuItem
-            // 
-            this.룰ToolStripMenuItem.Name = "룰ToolStripMenuItem";
-            this.룰ToolStripMenuItem.Size = new System.Drawing.Size(46, 29);
-            this.룰ToolStripMenuItem.Text = "룰";
-            this.룰ToolStripMenuItem.Click += new System.EventHandler(this.룰ToolStripMenuItem_Click);
-            // 
             // 저장및종료ToolStripMenuItem
             // 
             this.저장및종료ToolStripMenuItem.Name = "저장및종료ToolStripMenuItem";
@@ -131,6 +116,13 @@
             this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
             this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.게임종료ToolStripMenuItem.Text = "게임종료";
+            // 
+            // 룰ToolStripMenuItem
+            // 
+            this.룰ToolStripMenuItem.Name = "룰ToolStripMenuItem";
+            this.룰ToolStripMenuItem.Size = new System.Drawing.Size(46, 29);
+            this.룰ToolStripMenuItem.Text = "룰";
+            this.룰ToolStripMenuItem.Click += new System.EventHandler(this.룰ToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -155,17 +147,17 @@
             this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label3.Location = new System.Drawing.Point(480, 373);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1082, 580);
+            this.label3.Size = new System.Drawing.Size(1082, 573);
             this.label3.TabIndex = 8;
             this.label3.Text = "자기 카드 보여줄곳";
             // 
-            // goal
+            // score
             // 
-            this.goal.Location = new System.Drawing.Point(33, 218);
-            this.goal.Name = "goal";
-            this.goal.Size = new System.Drawing.Size(353, 74);
-            this.goal.TabIndex = 9;
-            this.goal.Text = "라운드 패스 금액";
+            this.score.Location = new System.Drawing.Point(33, 205);
+            this.score.Name = "score";
+            this.score.Size = new System.Drawing.Size(353, 74);
+            this.score.TabIndex = 9;
+            this.score.Text = "라운드 패스 점수\r\n이번라운드에서 번 금액 / 목표 금액 이런식";
             // 
             // label4
             // 
@@ -176,42 +168,13 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "보스 효과";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(39, 712);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(185, 32);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "배팅할 금액";
-            // 
             // get
             // 
             this.get.Location = new System.Drawing.Point(33, 546);
             this.get.Name = "get";
             this.get.Size = new System.Drawing.Size(353, 60);
             this.get.TabIndex = 12;
-            this.get.Text = "받는 돈";
-            // 
-            // batting
-            // 
-            this.batting.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.batting.Location = new System.Drawing.Point(36, 747);
-            this.batting.Name = "batting";
-            this.batting.Size = new System.Drawing.Size(350, 44);
-            this.batting.TabIndex = 13;
-            // 
-            // battingbutton
-            // 
-            this.battingbutton.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.battingbutton.Location = new System.Drawing.Point(125, 823);
-            this.battingbutton.Name = "battingbutton";
-            this.battingbutton.Size = new System.Drawing.Size(175, 63);
-            this.battingbutton.TabIndex = 14;
-            this.battingbutton.Text = "배팅하기";
-            this.battingbutton.UseVisualStyleBackColor = true;
-            this.battingbutton.Click += new System.EventHandler(this.battingbutton_Click);
+            this.get.Text = "받는 점수 :";
             // 
             // deck
             // 
@@ -224,24 +187,65 @@
             this.deck.UseVisualStyleBackColor = true;
             this.deck.Click += new System.EventHandler(this.deck_Click);
             // 
+            // foldbutten
+            // 
+            this.foldbutten.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.foldbutten.Location = new System.Drawing.Point(36, 845);
+            this.foldbutten.Name = "foldbutten";
+            this.foldbutten.Size = new System.Drawing.Size(159, 63);
+            this.foldbutten.TabIndex = 15;
+            this.foldbutten.Text = "폴드";
+            this.foldbutten.UseVisualStyleBackColor = true;
+            this.foldbutten.Click += new System.EventHandler(this.foldbutten_Click);
+            // 
+            // turn
+            // 
+            this.turn.Location = new System.Drawing.Point(33, 608);
+            this.turn.Name = "turn";
+            this.turn.Size = new System.Drawing.Size(353, 75);
+            this.turn.TabIndex = 16;
+            this.turn.Text = "남은 턴";
+            // 
+            // draw
+            // 
+            this.draw.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.draw.Location = new System.Drawing.Point(36, 722);
+            this.draw.Name = "draw";
+            this.draw.Size = new System.Drawing.Size(350, 63);
+            this.draw.TabIndex = 17;
+            this.draw.Text = "드로우";
+            this.draw.UseVisualStyleBackColor = true;
+            this.draw.Click += new System.EventHandler(this.draw_Click);
+            // 
+            // stand
+            // 
+            this.stand.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.stand.Location = new System.Drawing.Point(227, 845);
+            this.stand.Name = "stand";
+            this.stand.Size = new System.Drawing.Size(159, 63);
+            this.stand.TabIndex = 18;
+            this.stand.Text = "스탠드";
+            this.stand.UseVisualStyleBackColor = true;
+            this.stand.Click += new System.EventHandler(this.stand_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
-            this.Controls.Add(this.battingbutton);
-            this.Controls.Add(this.batting);
+            this.Controls.Add(this.stand);
+            this.Controls.Add(this.draw);
+            this.Controls.Add(this.turn);
+            this.Controls.Add(this.foldbutten);
             this.Controls.Add(this.get);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.goal);
+            this.Controls.Add(this.score);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.deck);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.odds);
-            this.Controls.Add(this.bat);
-            this.Controls.Add(this.money);
+            this.Controls.Add(this.num);
             this.Controls.Add(this.safe);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -257,7 +261,6 @@
         #endregion
 
         private System.Windows.Forms.Label safe;
-        private System.Windows.Forms.Label money;
         private System.Windows.Forms.Label odds;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 설정ToolStripMenuItem;
@@ -269,13 +272,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button deck;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label bat;
-        private System.Windows.Forms.Label goal;
+        private System.Windows.Forms.Label num;
+        private System.Windows.Forms.Label score;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label get;
-        private System.Windows.Forms.TextBox batting;
-        private System.Windows.Forms.Button battingbutton;
+        private System.Windows.Forms.Button foldbutten;
+        private System.Windows.Forms.Label turn;
+        private System.Windows.Forms.Button draw;
+        private System.Windows.Forms.Button stand;
     }
 }
 
