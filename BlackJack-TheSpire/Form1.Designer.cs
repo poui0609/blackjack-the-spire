@@ -43,11 +43,12 @@
             this.score = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.get = new System.Windows.Forms.Label();
-            this.deck = new System.Windows.Forms.Button();
             this.foldbutten = new System.Windows.Forms.Button();
             this.turn = new System.Windows.Forms.Label();
             this.draw = new System.Windows.Forms.Button();
             this.stand = new System.Windows.Forms.Button();
+            this.deck_count = new System.Windows.Forms.Button();
+            this.deck = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,19 +103,19 @@
             // 저장및종료ToolStripMenuItem
             // 
             this.저장및종료ToolStripMenuItem.Name = "저장및종료ToolStripMenuItem";
-            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.저장및종료ToolStripMenuItem.Text = "재도전";
             // 
             // 재도전ToolStripMenuItem
             // 
             this.재도전ToolStripMenuItem.Name = "재도전ToolStripMenuItem";
-            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.재도전ToolStripMenuItem.Text = "나가기";
             // 
             // 게임종료ToolStripMenuItem
             // 
             this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
-            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.게임종료ToolStripMenuItem.Text = "게임종료";
             // 
             // 룰ToolStripMenuItem
@@ -127,7 +128,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(1615, 51);
+            this.label1.Location = new System.Drawing.Point(1610, 135);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(246, 456);
             this.label1.TabIndex = 5;
@@ -176,17 +177,6 @@
             this.get.TabIndex = 12;
             this.get.Text = "받는 점수 :";
             // 
-            // deck
-            // 
-            this.deck.Image = global::BlackJack_TheSpire.Properties.Resources.카드_뒷면;
-            this.deck.Location = new System.Drawing.Point(1629, 608);
-            this.deck.Name = "deck";
-            this.deck.Size = new System.Drawing.Size(209, 300);
-            this.deck.TabIndex = 7;
-            this.deck.Text = "button1";
-            this.deck.UseVisualStyleBackColor = true;
-            this.deck.Click += new System.EventHandler(this.deck_Click);
-            // 
             // foldbutten
             // 
             this.foldbutten.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -228,11 +218,32 @@
             this.stand.UseVisualStyleBackColor = true;
             this.stand.Click += new System.EventHandler(this.stand_Click);
             // 
+            // deck_count
+            // 
+            this.deck_count.Image = global::BlackJack_TheSpire.Properties.Resources.카드_뒷면;
+            this.deck_count.Location = new System.Drawing.Point(1629, 608);
+            this.deck_count.Name = "deck_count";
+            this.deck_count.Size = new System.Drawing.Size(209, 300);
+            this.deck_count.TabIndex = 7;
+            this.deck_count.Text = "button1";
+            this.deck_count.UseVisualStyleBackColor = true;
+            this.deck_count.Click += new System.EventHandler(this.deck_count_Click);
+            // 
+            // deck
+            // 
+            this.deck.Location = new System.Drawing.Point(1780, 51);
+            this.deck.Name = "deck";
+            this.deck.Size = new System.Drawing.Size(76, 61);
+            this.deck.TabIndex = 19;
+            this.deck.Text = "카드";
+            this.deck.Click += new System.EventHandler(this.deck_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.deck);
             this.Controls.Add(this.stand);
             this.Controls.Add(this.draw);
             this.Controls.Add(this.turn);
@@ -241,7 +252,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.score);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.deck);
+            this.Controls.Add(this.deck_count);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.odds);
@@ -270,7 +281,7 @@
         private System.Windows.Forms.ToolStripMenuItem 룰ToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button deck;
+        private System.Windows.Forms.Button deck_count;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label num;
         private System.Windows.Forms.Label score;
@@ -280,6 +291,7 @@
         private System.Windows.Forms.Label turn;
         private System.Windows.Forms.Button draw;
         private System.Windows.Forms.Button stand;
+        private System.Windows.Forms.Label deck;
     }
 }
 

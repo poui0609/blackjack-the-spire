@@ -21,7 +21,7 @@ namespace BlackJack_TheSpire
         private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rules rules = new rules();
-            rules.Show();
+            rules.ShowDialog();
         }
 
         int 금고;
@@ -61,6 +61,7 @@ namespace BlackJack_TheSpire
         {
             num.Text = 숫자.ToString();
             odds.Text = 배율.ToString();
+            showget();
         }
 
         private void foldbutten_Click(object sender, EventArgs e)//폴드 누르면 뽑은 패 초기화 하는거 추가좀
@@ -76,10 +77,7 @@ namespace BlackJack_TheSpire
             showscore();
         }
 
-        private void deck_Click(object sender, EventArgs e) // 남은 카드들 보여주기
-        {
-            // 보여주는 명령어를 나중에 추가할 예정
-        }
+        
 
         private void draw_Click(object sender, EventArgs e)
         {
@@ -98,6 +96,22 @@ namespace BlackJack_TheSpire
             shownumodds();
             showscore();
             showget();
+        }
+
+        private void 라운드끝() //라운드 구현할 때 사용해주셈
+        {
+            store store = new store();
+            store.Show();
+        }
+
+        private void deck_count_Click(object sender, EventArgs e)//남은덱
+        {
+            //남은 덱 보여주세요
+        }
+
+        private void deck_Click(object sender, EventArgs e) //전체 덱
+        {
+            //자기 덱 보여줄거 모달로다가
         }
     }
 }

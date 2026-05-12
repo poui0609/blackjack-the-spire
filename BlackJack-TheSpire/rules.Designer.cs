@@ -70,7 +70,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "rules";
-            this.Text = "rules";
+            this.Text = "룰";
             this.ResumeLayout(false);
             this.PerformLayout();
 
