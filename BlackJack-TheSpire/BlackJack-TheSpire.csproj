@@ -60,6 +60,12 @@
     <Compile Include="rules.Designer.cs">
       <DependentUpon>rules.cs</DependentUpon>
     </Compile>
+    <Compile Include="store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="store.Designer.cs">
+      <DependentUpon>store.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,6 +81,9 @@
     </Compile>
     <EmbeddedResource Include="rules.resx">
       <DependentUpon>rules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="store.resx">
+      <DependentUpon>store.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
