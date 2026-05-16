@@ -25,6 +25,7 @@ namespace BlackJack_TheSpire
         int item1, item2, item3, card1, card2, card3; //아이템과 카드 번호 저장하는 변수
         int safe;
 
+
         private void store_Load(object sender, EventArgs e) //랜덤 돌려서 아이템 채워넣기, 카드 채워넣기
         {
             randomCards = new List<Card>();
@@ -48,6 +49,8 @@ namespace BlackJack_TheSpire
             label2.Text = randomItems[1].Name + "\n" + randomItems[1].Description;
 
             label3.Text = randomItems[2].Name + "\n" + randomItems[2].Description;
+
+            label4.Text = "보유 코인: " + gameState.GetCoin().ToString();
         }
 
         private void selectbtn1_Click(object sender, EventArgs e)
@@ -107,6 +110,8 @@ namespace BlackJack_TheSpire
 
                 if (index == 2)
                     selectbtn3.Enabled = false;
+
+                label4.Text = "보유 코인: " +gameState.GetCoin().ToString();
             }
             else
                 MessageBox.Show("코인 부족!");
