@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlackJack_TheSpire;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +17,7 @@ namespace BlackJack_TheSpire
         private int roundScore;
         private int targetScore;
         private Deck deck;
-
-        private List<Item> inventory; //아이템 넣어 놓을 인벤토리 추가
+        private Inventory inventory;
 
         public GameState()
         {
@@ -29,8 +29,7 @@ namespace BlackJack_TheSpire
             roundScore = 0;
             targetScore = 0;
             deck = new Deck();
-
-            inventory = new List<Item>(); //생성자 추가
+            inventory = new Inventory();
         }
 
         public int GetSeed()
@@ -151,26 +150,9 @@ namespace BlackJack_TheSpire
             return 4 - currentHand + 1;
         }
 
-        public void RemoveItem(Item item)
-        {
-            inventory.Remove(item);
-        }
-
-        public List<Item> GetInventory()
+        public Inventory GetInventory()
         {
             return inventory;
-        }
-
-        public int GetInventoryCount()
-        {
-            return inventory.Count;
-        }
-
-        public bool AddItem(Item item)
-        {
-            if (inventory.Count >= 5) return false;
-            inventory.Add(item);
-            return true;
         }
     }
 }

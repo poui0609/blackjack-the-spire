@@ -42,13 +42,21 @@ namespace BlackJack_TheSpire
 
             for(int i = 0;i < 3; i++)
             {
-                randomItems.Add(ItemManager.GetRandomItem());
+                Item randomItem;
+                do
+                {
+                    randomItem = ItemManager.GetRandomItem();
+                }
+                while (randomItems.Contains(randomItem));
+
+                randomItems.Add(randomItem);
             }
-            label1.Text = randomItems[0].Name + "\n" + randomItems[0].Description;
 
-            label2.Text = randomItems[1].Name + "\n" + randomItems[1].Description;
+            buy1.Text = randomItems[0].Name + "\n" + randomItems[0].Description + "\n" + randomItems[0].Price;
 
-            label3.Text = randomItems[2].Name + "\n" + randomItems[2].Description;
+            buy2.Text = randomItems[1].Name + "\n" + randomItems[1].Description + "\n" + randomItems[1].Price;
+
+            buy3.Text = randomItems[2].Name + "\n" + randomItems[2].Description + "\n" + randomItems[2].Price;
 
             label4.Text = "보유 코인: " + gameState.GetCoin().ToString();
         }
@@ -99,8 +107,14 @@ namespace BlackJack_TheSpire
 
             if (gameState.GetCoin() >= selectedItem.Price)
             {
+                bool success = gameState.GetInventory().AddItem(selectedItem);
+                if (!success)
+                {
+                    MessageBox.Show("인벤토리가 가득 찼습니다!");
+                    return;
+                }
+
                 gameState.SubtractCoin(selectedItem.Price);
-                gameState.AddItem(selectedItem);
 
                 if (index == 0)
                     selectbtn1.Enabled = false;
