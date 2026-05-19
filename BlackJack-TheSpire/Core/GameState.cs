@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlackJack_TheSpire;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace BlackJack_TheSpire
         private int cycleScore;
         private int targetScore;
         private Deck deck;
-        private List<Item> inventory;
+        private Inventory inventory;
 
         public GameState()
         {
@@ -28,7 +29,7 @@ namespace BlackJack_TheSpire
             cycleScore = 0;
             targetScore = 0;
             deck = new Deck();
-            inventory = new List<Item>();
+            inventory = new Inventory();
         }
 
         public int GetSeed() { return seed; }
@@ -70,26 +71,16 @@ namespace BlackJack_TheSpire
 
         public Deck GetDeck() { return deck; }
 
+        public Inventory GetInventory() { return inventory; }
+
         public bool AddItem(Item item)
         {
-            if (inventory.Count >= 5) return false;
-            inventory.Add(item);
-            return true;
+            return inventory.AddItem(item);
         }
 
         public void RemoveItem(Item item)
         {
-            inventory.Remove(item);
-        }
-
-        public List<Item> GetInventory()
-        {
-            return inventory;
-        }
-
-        public int GetInventoryCount()
-        {
-            return inventory.Count;
+            inventory.RemoveItem(item);
         }
 
         public void ResetCycleScore()
