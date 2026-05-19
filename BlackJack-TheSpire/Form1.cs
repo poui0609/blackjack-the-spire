@@ -153,7 +153,7 @@ namespace BlackJack_TheSpire
             return Image.FromFile(path);
         }
 
-        private void RefreshInventory() //인벤토리 아이템 표시
+        public void RefreshInventory() //인벤토리 아이템 표시
         {
             for (int i = 0; i < itemSlots.Length; i++)
             {
@@ -162,36 +162,8 @@ namespace BlackJack_TheSpire
             List<Item> items = gameState.GetInventory().GetItems();
             for (int i = 0; i < items.Count && i < itemSlots.Length; i++)
             {
-                itemSlots[i].Text = items[i].Name;
+                itemSlots[i].Text = items[i].Name +"\n" + items[i].Description;
             }
-        }
-
-        private void slot_MouseDown(object sender, MouseEventArgs e)
-        {
-            if(e.Button == MouseButtons.Right)
-                selectedSlot = (Label)sender;
-        }
-
-        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (selectedSlot == null)
-                return;
-
-            int index =
-                Array.IndexOf(itemSlots, selectedSlot);
-
-            if (index < 0)
-                return;
-
-            List<Item> items =
-                gameState.GetInventory().GetItems();
-
-            if (index >= items.Count)
-                return;
-
-            items.RemoveAt(index);
-
-            RefreshInventory();
         }
     }
 }

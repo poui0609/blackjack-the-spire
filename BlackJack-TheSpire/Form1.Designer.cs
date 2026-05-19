@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.coin = new System.Windows.Forms.Label();
             this.num = new System.Windows.Forms.Label();
             this.odds = new System.Windows.Forms.Label();
@@ -56,10 +55,12 @@
             this.slot3 = new System.Windows.Forms.Label();
             this.slot4 = new System.Windows.Forms.Label();
             this.slot5 = new System.Windows.Forms.Label();
-            this.ItemMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.item1 = new System.Windows.Forms.Label();
+            this.item2 = new System.Windows.Forms.Label();
+            this.item3 = new System.Windows.Forms.Label();
+            this.item4 = new System.Windows.Forms.Label();
+            this.item5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            this.ItemMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // coin
@@ -190,7 +191,7 @@
             // 
             this.foldbutten.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.foldbutten.Location = new System.Drawing.Point(0, 475);
-            this.foldbutten.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.foldbutten.Margin = new System.Windows.Forms.Padding(2);
             this.foldbutten.Name = "foldbutten";
             this.foldbutten.Size = new System.Drawing.Size(111, 42);
             this.foldbutten.TabIndex = 15;
@@ -211,7 +212,7 @@
             // 
             this.draw.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.draw.Location = new System.Drawing.Point(0, 413);
-            this.draw.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.draw.Margin = new System.Windows.Forms.Padding(2);
             this.draw.Name = "draw";
             this.draw.Size = new System.Drawing.Size(237, 46);
             this.draw.TabIndex = 17;
@@ -223,7 +224,7 @@
             // 
             this.stand.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.stand.Location = new System.Drawing.Point(125, 475);
-            this.stand.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.stand.Margin = new System.Windows.Forms.Padding(2);
             this.stand.Name = "stand";
             this.stand.Size = new System.Drawing.Size(111, 42);
             this.stand.TabIndex = 18;
@@ -235,7 +236,7 @@
             // 
             this.deck_count.Image = global::BlackJack_TheSpire.Properties.Resources.카드_뒷면;
             this.deck_count.Location = new System.Drawing.Point(935, 290);
-            this.deck_count.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.deck_count.Margin = new System.Windows.Forms.Padding(2);
             this.deck_count.Name = "deck_count";
             this.deck_count.Size = new System.Drawing.Size(146, 200);
             this.deck_count.TabIndex = 7;
@@ -256,7 +257,7 @@
             // playerhandpanel
             // 
             this.playerhandpanel.Location = new System.Drawing.Point(253, 290);
-            this.playerhandpanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.playerhandpanel.Margin = new System.Windows.Forms.Padding(2);
             this.playerhandpanel.Name = "playerhandpanel";
             this.playerhandpanel.Size = new System.Drawing.Size(664, 207);
             this.playerhandpanel.TabIndex = 20;
@@ -273,78 +274,94 @@
             // 
             // slot1
             // 
-            this.slot1.ContextMenuStrip = this.ItemMenu;
-            this.slot1.Location = new System.Drawing.Point(259, 56);
+            this.slot1.Location = new System.Drawing.Point(0, 0);
             this.slot1.Name = "slot1";
-            this.slot1.Size = new System.Drawing.Size(90, 130);
-            this.slot1.TabIndex = 22;
-            this.slot1.Text = "슬롯1";
-            this.slot1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.slot1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            this.slot1.Size = new System.Drawing.Size(100, 23);
+            this.slot1.TabIndex = 4;
             // 
             // slot2
             // 
-            this.slot2.ContextMenuStrip = this.ItemMenu;
-            this.slot2.Location = new System.Drawing.Point(355, 56);
+            this.slot2.Location = new System.Drawing.Point(0, 0);
             this.slot2.Name = "slot2";
-            this.slot2.Size = new System.Drawing.Size(90, 130);
-            this.slot2.TabIndex = 23;
-            this.slot2.Text = "슬롯2";
-            this.slot2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.slot2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            this.slot2.Size = new System.Drawing.Size(100, 23);
+            this.slot2.TabIndex = 3;
             // 
             // slot3
             // 
-            this.slot3.ContextMenuStrip = this.ItemMenu;
-            this.slot3.Location = new System.Drawing.Point(451, 56);
+            this.slot3.Location = new System.Drawing.Point(0, 0);
             this.slot3.Name = "slot3";
-            this.slot3.Size = new System.Drawing.Size(90, 130);
-            this.slot3.TabIndex = 24;
-            this.slot3.Text = "슬롯3";
-            this.slot3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.slot3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            this.slot3.Size = new System.Drawing.Size(100, 23);
+            this.slot3.TabIndex = 2;
             // 
             // slot4
             // 
-            this.slot4.ContextMenuStrip = this.ItemMenu;
-            this.slot4.Location = new System.Drawing.Point(547, 56);
+            this.slot4.Location = new System.Drawing.Point(0, 0);
             this.slot4.Name = "slot4";
-            this.slot4.Size = new System.Drawing.Size(90, 130);
-            this.slot4.TabIndex = 25;
-            this.slot4.Text = "슬롯4";
-            this.slot4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.slot4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            this.slot4.Size = new System.Drawing.Size(100, 23);
+            this.slot4.TabIndex = 1;
             // 
             // slot5
             // 
-            this.slot5.ContextMenuStrip = this.ItemMenu;
-            this.slot5.Location = new System.Drawing.Point(643, 56);
+            this.slot5.Location = new System.Drawing.Point(0, 0);
             this.slot5.Name = "slot5";
-            this.slot5.Size = new System.Drawing.Size(90, 130);
-            this.slot5.TabIndex = 26;
-            this.slot5.Text = "슬롯5";
-            this.slot5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.slot5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            this.slot5.Size = new System.Drawing.Size(100, 23);
+            this.slot5.TabIndex = 0;
             // 
-            // ItemMenu
+            // item1
             // 
-            this.ItemMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.삭제ToolStripMenuItem});
-            this.ItemMenu.Name = "ItemMenu";
-            this.ItemMenu.Size = new System.Drawing.Size(181, 48);
+            this.item1.Location = new System.Drawing.Point(259, 60);
+            this.item1.Name = "item1";
+            this.item1.Size = new System.Drawing.Size(90, 130);
+            this.item1.TabIndex = 22;
+            this.item1.Text = "슬롯1";
+            this.item1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // 삭제ToolStripMenuItem
+            // item2
             // 
-            this.삭제ToolStripMenuItem.Name = "삭제ToolStripMenuItem";
-            this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.삭제ToolStripMenuItem.Text = "삭제";
-            this.삭제ToolStripMenuItem.Click += new System.EventHandler(this.삭제ToolStripMenuItem_Click);
+            this.item2.Location = new System.Drawing.Point(355, 60);
+            this.item2.Name = "item2";
+            this.item2.Size = new System.Drawing.Size(90, 130);
+            this.item2.TabIndex = 23;
+            this.item2.Text = "슬롯2";
+            this.item2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // item3
+            // 
+            this.item3.Location = new System.Drawing.Point(451, 60);
+            this.item3.Name = "item3";
+            this.item3.Size = new System.Drawing.Size(90, 130);
+            this.item3.TabIndex = 24;
+            this.item3.Text = "슬롯3";
+            this.item3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // item4
+            // 
+            this.item4.Location = new System.Drawing.Point(547, 60);
+            this.item4.Name = "item4";
+            this.item4.Size = new System.Drawing.Size(90, 130);
+            this.item4.TabIndex = 25;
+            this.item4.Text = "슬롯4";
+            this.item4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // item5
+            // 
+            this.item5.Location = new System.Drawing.Point(643, 60);
+            this.item5.Name = "item5";
+            this.item5.Size = new System.Drawing.Size(90, 130);
+            this.item5.TabIndex = 26;
+            this.item5.Text = "슬롯5";
+            this.item5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 563);
+            this.Controls.Add(this.item5);
+            this.Controls.Add(this.item4);
+            this.Controls.Add(this.item3);
+            this.Controls.Add(this.item2);
+            this.Controls.Add(this.item1);
             this.Controls.Add(this.slot5);
             this.Controls.Add(this.slot4);
             this.Controls.Add(this.slot3);
@@ -369,13 +386,12 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.ItemMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,8 +426,11 @@
         private System.Windows.Forms.Label slot3;
         private System.Windows.Forms.Label slot4;
         private System.Windows.Forms.Label slot5;
-        private System.Windows.Forms.ContextMenuStrip ItemMenu;
-        private System.Windows.Forms.ToolStripMenuItem 삭제ToolStripMenuItem;
+        private System.Windows.Forms.Label item1;
+        private System.Windows.Forms.Label item2;
+        private System.Windows.Forms.Label item3;
+        private System.Windows.Forms.Label item4;
+        private System.Windows.Forms.Label item5;
     }
 }
 
