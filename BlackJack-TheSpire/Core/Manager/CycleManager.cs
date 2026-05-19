@@ -38,19 +38,20 @@ namespace BlackJack_TheSpire
             return isGameOver;
         }
 
-        public void StartCycle()
+        public void StartCycle() //사이클 시작
         {
             gameState.ResetCycleScore();
             gameState.SetCurrentRound(1);
 
-            if (gameState.GetCurrentCycle() <= 2)
+            /*if (gameState.GetCurrentCycle() <= 2)
             {
-                gameState.SetTargetScore(60);
+                gameState.SetTargetScore(60); // 하드코딩 되어있길래 일단 주석처리함
+                                              // 일단 점수 설정은 현빈씨가 해야함
             }
             else
             {
                 gameState.SetTargetScore(80);
-            }
+            }*/
 
             isCycleOver = false;
             isCycleSuccess = false;
@@ -61,18 +62,18 @@ namespace BlackJack_TheSpire
             roundManager.StartRound();
         }
 
-        public void OnRoundEnd()
+        public void OnRoundEnd() //라운드 끝날 때마다 이거 호출해서 사이클 끝났는지 체크
         {
-            if (gameState.IsTargetReached())
+            if (gameState.IsTargetReached()) //목표점수 달성했는지 체크
             {
                 int reward = gameState.CalculateCycleReward();
-                gameState.AddCoin(reward);
+                gameState.AddCoin(reward); 
                 isCycleSuccess = true;
                 isCycleOver = true;
                 return;
             }
 
-            if (gameState.GetCurrentRound() >= 4)
+            if (gameState.GetCurrentRound() >= 4) //4라운드 끝났는데 목표점수 못달성했으면 사이클 실패
             {
                 isCycleSuccess = false;
                 isCycleOver = true;
@@ -84,7 +85,7 @@ namespace BlackJack_TheSpire
             roundManager.StartRound();
         }
 
-        public void GoToNextCycle()
+        public void GoToNextCycle() //다음 사이클 가는거
         {
             gameState.NextCycle();
 

@@ -11,7 +11,6 @@ namespace BlackJack_TheSpire
         public int Seed { get; set; }
         public int CurrentChapter { get; set; }
         public int CurrentCycle { get; set; }
-        public int CurrentRound { get; set; }
         public int Coin { get; set; }
         public int CycleScore { get; set; }
         public int TargetScore { get; set; }

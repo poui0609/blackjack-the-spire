@@ -23,7 +23,7 @@ namespace BlackJack_TheSpire
                 File.Delete(saveFilePath);
         }
 
-        public static void Save(GameState gameState)
+        public static void Save(GameState gameState) //xml 파일 저장. 게임 저장하고 비슷함.
         {
             GameSaveData data = ConvertToSaveData(gameState);
             XmlSerializer serializer = new XmlSerializer(typeof(GameSaveData));
@@ -34,7 +34,7 @@ namespace BlackJack_TheSpire
             }
         }
 
-        public static GameState Load()
+        public static GameState Load() //xml 파일 불러오기
         {
             if (!File.Exists(saveFilePath))
                 return null;
@@ -50,14 +50,13 @@ namespace BlackJack_TheSpire
             return ConvertToGameState(data);
         }
 
-        private static GameSaveData ConvertToSaveData(GameState gameState)
+        private static GameSaveData ConvertToSaveData(GameState gameState) //세이브 데이터로 변환하기.
         {
             GameSaveData data = new GameSaveData();
 
             data.Seed = gameState.GetSeed();
             data.CurrentChapter = gameState.GetCurrentChapter();
             data.CurrentCycle = gameState.GetCurrentCycle();
-            data.CurrentRound = gameState.GetCurrentRound();
             data.Coin = gameState.GetCoin();
             data.CycleScore = gameState.GetCycleScore();
             data.TargetScore = gameState.GetTargetScore();
@@ -82,14 +81,13 @@ namespace BlackJack_TheSpire
             return data;
         }
 
-        private static GameState ConvertToGameState(GameSaveData data)
+        private static GameState ConvertToGameState(GameSaveData data) //게임 상태로 변환하기.
         {
             GameState gameState = new GameState();
 
             gameState.SetSeed(data.Seed);
             gameState.SetCurrentChapter(data.CurrentChapter);
             gameState.SetCurrentCycle(data.CurrentCycle);
-            gameState.SetCurrentRound(data.CurrentRound);
             gameState.SetCoin(data.Coin);
             gameState.SetCycleScore(data.CycleScore);
             gameState.SetTargetScore(data.TargetScore);

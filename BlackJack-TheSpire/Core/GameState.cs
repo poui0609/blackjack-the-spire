@@ -19,7 +19,7 @@ namespace BlackJack_TheSpire
         private Deck deck;
         private Inventory inventory;
 
-        public GameState()
+        public GameState() //초기값
         {
             seed = 0;
             currentChapter = 1;
@@ -33,9 +33,9 @@ namespace BlackJack_TheSpire
         }
 
         public int GetSeed() { return seed; }
-        public void SetSeed(int value) { seed = value; }
+        public void SetSeed(int value) { seed = value; } 
 
-        public int GetCurrentChapter() { return currentChapter; }
+        public int GetCurrentChapter() { return currentChapter; } 
         public void SetCurrentChapter(int value) { currentChapter = value; }
 
         public int GetCurrentCycle() { return currentCycle; }
@@ -93,7 +93,7 @@ namespace BlackJack_TheSpire
             currentRound++;
         }
 
-        public void NextCycle()
+        public void NextCycle() // 사이클 넘기는거 라운드 초기화 같은 기능있음
         {
             currentCycle++;
             currentRound = 1;
@@ -111,9 +111,9 @@ namespace BlackJack_TheSpire
             return cycleScore >= targetScore;
         }
 
-        public int GetRemainingRounds()
+        public int GetRemainingRounds() // 남은 라운드 계산. 현재 라운드도 남은 라운드에 포함됨
         {
-            return 4 - currentRound + 1;
+            return 5 - currentRound ;
         }
 
         public int CalculateCycleReward()
