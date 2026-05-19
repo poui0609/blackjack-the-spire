@@ -43,9 +43,9 @@ namespace BlackJack_TheSpire
             isFolded = false;
         }
 
-        public void Draw()
+        public Card Draw()
         {
-            if (isRoundOver) return;
+            if (isRoundOver) return null;
 
             Card drawn = gameState.GetDeck().Draw();
             playerHand.AddCard(drawn);
@@ -54,6 +54,7 @@ namespace BlackJack_TheSpire
             {
                 EndRound();
             }
+            return drawn;
         }
 
         public void Stand()
@@ -65,13 +66,12 @@ namespace BlackJack_TheSpire
 
         public bool Fold()
         {
-            if (isRoundOver) return false;
             if (gameState.GetCycleScore() <= 0) return false;
 
-            isFolded = true;
             int penalty = gameState.GetCycleScore() / 2;
             gameState.SetCycleScore(gameState.GetCycleScore() - penalty);
-            EndRound();
+            playerHand.Clear();
+            isFolded = true;
             return true;
         }
 
