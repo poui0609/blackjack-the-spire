@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.safe = new System.Windows.Forms.Label();
+            this.coin = new System.Windows.Forms.Label();
             this.num = new System.Windows.Forms.Label();
             this.odds = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -39,7 +39,6 @@
             this.룰ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.score = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.get = new System.Windows.Forms.Label();
@@ -49,17 +48,18 @@
             this.stand = new System.Windows.Forms.Button();
             this.deck_count = new System.Windows.Forms.Button();
             this.deck = new System.Windows.Forms.Label();
+            this.playerhandpanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // safe
+            // coin
             // 
-            this.safe.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.safe.Location = new System.Drawing.Point(33, 71);
-            this.safe.Name = "safe";
-            this.safe.Size = new System.Drawing.Size(353, 78);
-            this.safe.TabIndex = 0;
-            this.safe.Text = "금고 금액 띄울곳";
+            this.coin.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.coin.Location = new System.Drawing.Point(33, 71);
+            this.coin.Name = "coin";
+            this.coin.Size = new System.Drawing.Size(353, 78);
+            this.coin.TabIndex = 0;
+            this.coin.Text = "금고 금액 띄울곳";
             // 
             // num
             // 
@@ -103,19 +103,19 @@
             // 저장및종료ToolStripMenuItem
             // 
             this.저장및종료ToolStripMenuItem.Name = "저장및종료ToolStripMenuItem";
-            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.저장및종료ToolStripMenuItem.Text = "재도전";
             // 
             // 재도전ToolStripMenuItem
             // 
             this.재도전ToolStripMenuItem.Name = "재도전ToolStripMenuItem";
-            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.재도전ToolStripMenuItem.Text = "나가기";
             // 
             // 게임종료ToolStripMenuItem
             // 
             this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
-            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.게임종료ToolStripMenuItem.Text = "게임종료";
             // 
             // 룰ToolStripMenuItem
@@ -142,15 +142,6 @@
             this.label2.Size = new System.Drawing.Size(785, 270);
             this.label2.TabIndex = 6;
             this.label2.Text = "아이템 띄울곳";
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label3.Location = new System.Drawing.Point(480, 373);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1082, 573);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "자기 카드 보여줄곳";
             // 
             // score
             // 
@@ -238,11 +229,19 @@
             this.deck.Text = "카드";
             this.deck.Click += new System.EventHandler(this.deck_Click);
             // 
+            // playerhandpanel
+            // 
+            this.playerhandpanel.Location = new System.Drawing.Point(508, 583);
+            this.playerhandpanel.Name = "playerhandpanel";
+            this.playerhandpanel.Size = new System.Drawing.Size(1054, 257);
+            this.playerhandpanel.TabIndex = 20;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
+            this.Controls.Add(this.playerhandpanel);
             this.Controls.Add(this.deck);
             this.Controls.Add(this.stand);
             this.Controls.Add(this.draw);
@@ -251,13 +250,12 @@
             this.Controls.Add(this.get);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.score);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.deck_count);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.odds);
             this.Controls.Add(this.num);
-            this.Controls.Add(this.safe);
+            this.Controls.Add(this.coin);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -271,7 +269,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label safe;
+        private System.Windows.Forms.Label coin;
         private System.Windows.Forms.Label odds;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 설정ToolStripMenuItem;
@@ -282,7 +280,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button deck_count;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label num;
         private System.Windows.Forms.Label score;
         private System.Windows.Forms.Label label4;
@@ -292,6 +289,7 @@
         private System.Windows.Forms.Button draw;
         private System.Windows.Forms.Button stand;
         private System.Windows.Forms.Label deck;
+        private System.Windows.Forms.Panel playerhandpanel;
     }
 }
 

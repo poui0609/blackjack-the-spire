@@ -9,16 +9,28 @@ namespace BlackJack_TheSpire
     internal class Deck
     {
         private List<Card> cards;
+        private List<Card> usedCards;
 
         public Deck()
         {
             cards = new List<Card>();
+            usedCards = new List<Card>();
             InitializeStandardDeck();
         }
 
         public int GetCount()
         {
             return cards.Count;
+        }
+
+        public int GetUsedCount()
+        {
+            return usedCards.Count;
+        }
+
+        public int GetTotalCount()
+        {
+            return cards.Count + usedCards.Count;
         }
 
         private void InitializeStandardDeck()
@@ -50,12 +62,19 @@ namespace BlackJack_TheSpire
 
             Card drawn = cards[0];
             cards.RemoveAt(0);
+            usedCards.Add(drawn);
             return drawn;
         }
 
         public void AddCard(Card card)
         {
             cards.Add(card);
+        }
+
+        public void ReturnUsedCards()
+        {
+            cards.AddRange(usedCards);
+            usedCards.Clear();
         }
 
         public List<Card> GenerateRandomCardChoices(int count = 3)
