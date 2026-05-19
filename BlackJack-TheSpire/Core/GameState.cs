@@ -138,7 +138,7 @@ namespace BlackJack_TheSpire
         {
             currentRound++;
             currentHand = 1;
-            roundScore = 0;
+            //roundScore = 0;
         }
 
         public bool IsTargetReached()
