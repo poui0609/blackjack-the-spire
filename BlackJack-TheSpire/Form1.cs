@@ -96,7 +96,6 @@ namespace BlackJack_TheSpire
             라운드끝();
         }
 
-
         private void 라운드끝()
         {
             //돈 주는거.
