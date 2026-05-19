@@ -33,6 +33,17 @@ namespace BlackJack_TheSpire
             return cards.Count + usedCards.Count;
         }
 
+        public List<Card> GetAllCards()
+        {
+            return cards;
+        }
+
+        public void ClearAllCards()
+        {
+            cards.Clear();
+            usedCards.Clear();
+        }
+
         private void InitializeStandardDeck()
         {
             foreach (CardType type in Enum.GetValues(typeof(CardType)))

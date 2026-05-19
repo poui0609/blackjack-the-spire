@@ -20,34 +20,20 @@ namespace BlackJack_TheSpire
 
             if (value == 21)
                 return 2.5;
-            else if (value == 20)
-                return 2.0;
-            else if (value == 19)
-                return 1.7;
-            else if (value == 18)
-                return 1.5;
-            else if (value == 17)
-                return 1.2;
-            else if (value == 16)
-                return 1.0;
-            else if (value >= 14)
-                return 0.9;
-            else if (value >= 11)
-                return 0.7;
-            else
-                return 0.5;
+
+            return value * 0.1;
         }
 
-        public static int CalculateScore(int bettingChips, double handMultiplier, double missionMultiplier, double itemMultiplier)
+        public static int CalculateScore(Hand hand)
         {
-            double total = bettingChips * handMultiplier * missionMultiplier * itemMultiplier;
+            if (hand.IsBust())
+                return 0;
+
+            int value = hand.CalculateValue();
+            double multiplier = GetHandMultiplier(hand);
+            double total = value * multiplier;
+
             return (int)total;
-        }
-
-        public static int CalculateFinalScore(int bettingChips, Hand hand, double missionMultiplier, double itemMultiplier)
-        {
-            double handMultiplier = GetHandMultiplier(hand);
-            return CalculateScore(bettingChips, handMultiplier, missionMultiplier, itemMultiplier);
         }
     }
 }
