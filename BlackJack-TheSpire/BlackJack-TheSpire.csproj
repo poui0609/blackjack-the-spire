@@ -57,6 +57,7 @@
     <Compile Include="Core\GameRandom.cs" />
     <Compile Include="Core\GameState.cs" />
     <Compile Include="Core\Hand.cs" />
+    <Compile Include="Item\Inventory.cs" />
     <Compile Include="Item\Item.cs" />
     <Compile Include="Item\ItemManager.cs" />
     <Compile Include="Program.cs" />

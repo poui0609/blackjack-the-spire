@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.coin = new System.Windows.Forms.Label();
             this.num = new System.Windows.Forms.Label();
             this.odds = new System.Windows.Forms.Label();
@@ -50,44 +51,55 @@
             this.deck = new System.Windows.Forms.Label();
             this.playerhandpanel = new System.Windows.Forms.Panel();
             this.foldnum = new System.Windows.Forms.Label();
+            this.slot1 = new System.Windows.Forms.Label();
+            this.slot2 = new System.Windows.Forms.Label();
+            this.slot3 = new System.Windows.Forms.Label();
+            this.slot4 = new System.Windows.Forms.Label();
+            this.slot5 = new System.Windows.Forms.Label();
+            this.ItemMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
+            this.ItemMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // coin
             // 
             this.coin.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.coin.Location = new System.Drawing.Point(33, 71);
+            this.coin.Location = new System.Drawing.Point(23, 47);
+            this.coin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.coin.Name = "coin";
-            this.coin.Size = new System.Drawing.Size(252, 61);
+            this.coin.Size = new System.Drawing.Size(176, 41);
             this.coin.TabIndex = 0;
             this.coin.Text = "금고 금액 띄울곳";
             // 
             // num
             // 
-            this.num.Location = new System.Drawing.Point(33, 345);
+            this.num.Location = new System.Drawing.Point(23, 230);
+            this.num.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.num.Name = "num";
-            this.num.Size = new System.Drawing.Size(139, 75);
+            this.num.Size = new System.Drawing.Size(97, 50);
             this.num.TabIndex = 2;
             this.num.Text = "숫자";
             // 
             // odds
             // 
-            this.odds.Location = new System.Drawing.Point(176, 345);
+            this.odds.Location = new System.Drawing.Point(123, 230);
+            this.odds.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.odds.Name = "odds";
-            this.odds.Size = new System.Drawing.Size(122, 75);
+            this.odds.Size = new System.Drawing.Size(85, 50);
             this.odds.TabIndex = 3;
             this.odds.Text = "배율";
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.설정ToolStripMenuItem,
             this.룰ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1578, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1105, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -98,83 +110,89 @@
             this.재도전ToolStripMenuItem,
             this.게임종료ToolStripMenuItem});
             this.설정ToolStripMenuItem.Name = "설정ToolStripMenuItem";
-            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(43, 22);
             this.설정ToolStripMenuItem.Text = "설정";
             // 
             // 저장및종료ToolStripMenuItem
             // 
             this.저장및종료ToolStripMenuItem.Name = "저장및종료ToolStripMenuItem";
-            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.저장및종료ToolStripMenuItem.Text = "재도전";
             // 
             // 재도전ToolStripMenuItem
             // 
             this.재도전ToolStripMenuItem.Name = "재도전ToolStripMenuItem";
-            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.재도전ToolStripMenuItem.Text = "나가기";
             // 
             // 게임종료ToolStripMenuItem
             // 
             this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
-            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.게임종료ToolStripMenuItem.Text = "게임종료";
             // 
             // 룰ToolStripMenuItem
             // 
             this.룰ToolStripMenuItem.Name = "룰ToolStripMenuItem";
-            this.룰ToolStripMenuItem.Size = new System.Drawing.Size(46, 29);
+            this.룰ToolStripMenuItem.Size = new System.Drawing.Size(31, 22);
             this.룰ToolStripMenuItem.Text = "룰";
             this.룰ToolStripMenuItem.Click += new System.EventHandler(this.룰ToolStripMenuItem_Click);
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(1313, 112);
+            this.label1.Location = new System.Drawing.Point(919, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(244, 223);
+            this.label1.Size = new System.Drawing.Size(171, 149);
             this.label1.TabIndex = 5;
             this.label1.Text = "미션띄울곳";
             // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(358, 51);
+            this.label2.Location = new System.Drawing.Point(251, 34);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(697, 270);
+            this.label2.Size = new System.Drawing.Size(488, 180);
             this.label2.TabIndex = 6;
             this.label2.Text = "아이템 띄울곳";
             // 
             // score
             // 
-            this.score.Location = new System.Drawing.Point(33, 175);
+            this.score.Location = new System.Drawing.Point(23, 117);
+            this.score.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.score.Name = "score";
-            this.score.Size = new System.Drawing.Size(252, 59);
+            this.score.Size = new System.Drawing.Size(176, 39);
             this.score.TabIndex = 9;
             this.score.Text = "라운드 패스 점수\r\n이번라운드에서 번 금액 / 목표 금액 이런식";
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label4.Location = new System.Drawing.Point(1061, 51);
+            this.label4.Location = new System.Drawing.Point(743, 34);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(249, 270);
+            this.label4.Size = new System.Drawing.Size(174, 180);
             this.label4.TabIndex = 10;
             this.label4.Text = "보스 효과";
             // 
             // get
             // 
-            this.get.Location = new System.Drawing.Point(33, 456);
+            this.get.Location = new System.Drawing.Point(23, 304);
+            this.get.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.get.Name = "get";
-            this.get.Size = new System.Drawing.Size(265, 60);
+            this.get.Size = new System.Drawing.Size(186, 40);
             this.get.TabIndex = 12;
             this.get.Text = "받는 점수 :";
             // 
             // foldbutten
             // 
             this.foldbutten.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.foldbutten.Location = new System.Drawing.Point(0, 712);
+            this.foldbutten.Location = new System.Drawing.Point(0, 475);
+            this.foldbutten.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.foldbutten.Name = "foldbutten";
-            this.foldbutten.Size = new System.Drawing.Size(159, 63);
+            this.foldbutten.Size = new System.Drawing.Size(111, 42);
             this.foldbutten.TabIndex = 15;
             this.foldbutten.Text = "폴드";
             this.foldbutten.UseVisualStyleBackColor = true;
@@ -182,18 +200,20 @@
             // 
             // round
             // 
-            this.round.Location = new System.Drawing.Point(33, 516);
+            this.round.Location = new System.Drawing.Point(23, 344);
+            this.round.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.round.Name = "round";
-            this.round.Size = new System.Drawing.Size(126, 75);
+            this.round.Size = new System.Drawing.Size(88, 50);
             this.round.TabIndex = 16;
             this.round.Text = "남은 턴";
             // 
             // draw
             // 
             this.draw.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.draw.Location = new System.Drawing.Point(0, 620);
+            this.draw.Location = new System.Drawing.Point(0, 413);
+            this.draw.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.draw.Name = "draw";
-            this.draw.Size = new System.Drawing.Size(338, 69);
+            this.draw.Size = new System.Drawing.Size(237, 46);
             this.draw.TabIndex = 17;
             this.draw.Text = "드로우";
             this.draw.UseVisualStyleBackColor = true;
@@ -202,9 +222,10 @@
             // stand
             // 
             this.stand.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.stand.Location = new System.Drawing.Point(179, 712);
+            this.stand.Location = new System.Drawing.Point(125, 475);
+            this.stand.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.stand.Name = "stand";
-            this.stand.Size = new System.Drawing.Size(159, 63);
+            this.stand.Size = new System.Drawing.Size(111, 42);
             this.stand.TabIndex = 18;
             this.stand.Text = "스탠드";
             this.stand.UseVisualStyleBackColor = true;
@@ -213,9 +234,10 @@
             // deck_count
             // 
             this.deck_count.Image = global::BlackJack_TheSpire.Properties.Resources.카드_뒷면;
-            this.deck_count.Location = new System.Drawing.Point(1336, 435);
+            this.deck_count.Location = new System.Drawing.Point(935, 290);
+            this.deck_count.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.deck_count.Name = "deck_count";
-            this.deck_count.Size = new System.Drawing.Size(209, 300);
+            this.deck_count.Size = new System.Drawing.Size(146, 200);
             this.deck_count.TabIndex = 7;
             this.deck_count.Text = "button1";
             this.deck_count.UseVisualStyleBackColor = true;
@@ -223,34 +245,111 @@
             // 
             // deck
             // 
-            this.deck.Location = new System.Drawing.Point(1459, 51);
+            this.deck.Location = new System.Drawing.Point(1021, 34);
+            this.deck.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.deck.Name = "deck";
-            this.deck.Size = new System.Drawing.Size(76, 61);
+            this.deck.Size = new System.Drawing.Size(53, 41);
             this.deck.TabIndex = 19;
             this.deck.Text = "카드";
             this.deck.Click += new System.EventHandler(this.deck_Click);
             // 
             // playerhandpanel
             // 
-            this.playerhandpanel.Location = new System.Drawing.Point(361, 435);
+            this.playerhandpanel.Location = new System.Drawing.Point(253, 290);
+            this.playerhandpanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.playerhandpanel.Name = "playerhandpanel";
-            this.playerhandpanel.Size = new System.Drawing.Size(949, 310);
+            this.playerhandpanel.Size = new System.Drawing.Size(664, 207);
             this.playerhandpanel.TabIndex = 20;
             // 
             // foldnum
             // 
             this.foldnum.AutoSize = true;
-            this.foldnum.Location = new System.Drawing.Point(209, 517);
+            this.foldnum.Location = new System.Drawing.Point(146, 345);
+            this.foldnum.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.foldnum.Name = "foldnum";
-            this.foldnum.Size = new System.Drawing.Size(54, 18);
+            this.foldnum.Size = new System.Drawing.Size(38, 12);
             this.foldnum.TabIndex = 21;
             this.foldnum.Text = "label3";
             // 
+            // slot1
+            // 
+            this.slot1.ContextMenuStrip = this.ItemMenu;
+            this.slot1.Location = new System.Drawing.Point(259, 56);
+            this.slot1.Name = "slot1";
+            this.slot1.Size = new System.Drawing.Size(90, 130);
+            this.slot1.TabIndex = 22;
+            this.slot1.Text = "슬롯1";
+            this.slot1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.slot1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            // 
+            // slot2
+            // 
+            this.slot2.ContextMenuStrip = this.ItemMenu;
+            this.slot2.Location = new System.Drawing.Point(355, 56);
+            this.slot2.Name = "slot2";
+            this.slot2.Size = new System.Drawing.Size(90, 130);
+            this.slot2.TabIndex = 23;
+            this.slot2.Text = "슬롯2";
+            this.slot2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.slot2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            // 
+            // slot3
+            // 
+            this.slot3.ContextMenuStrip = this.ItemMenu;
+            this.slot3.Location = new System.Drawing.Point(451, 56);
+            this.slot3.Name = "slot3";
+            this.slot3.Size = new System.Drawing.Size(90, 130);
+            this.slot3.TabIndex = 24;
+            this.slot3.Text = "슬롯3";
+            this.slot3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.slot3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            // 
+            // slot4
+            // 
+            this.slot4.ContextMenuStrip = this.ItemMenu;
+            this.slot4.Location = new System.Drawing.Point(547, 56);
+            this.slot4.Name = "slot4";
+            this.slot4.Size = new System.Drawing.Size(90, 130);
+            this.slot4.TabIndex = 25;
+            this.slot4.Text = "슬롯4";
+            this.slot4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.slot4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            // 
+            // slot5
+            // 
+            this.slot5.ContextMenuStrip = this.ItemMenu;
+            this.slot5.Location = new System.Drawing.Point(643, 56);
+            this.slot5.Name = "slot5";
+            this.slot5.Size = new System.Drawing.Size(90, 130);
+            this.slot5.TabIndex = 26;
+            this.slot5.Text = "슬롯5";
+            this.slot5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.slot5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.slot_MouseDown);
+            // 
+            // ItemMenu
+            // 
+            this.ItemMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.삭제ToolStripMenuItem});
+            this.ItemMenu.Name = "ItemMenu";
+            this.ItemMenu.Size = new System.Drawing.Size(181, 48);
+            // 
+            // 삭제ToolStripMenuItem
+            // 
+            this.삭제ToolStripMenuItem.Name = "삭제ToolStripMenuItem";
+            this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.삭제ToolStripMenuItem.Text = "삭제";
+            this.삭제ToolStripMenuItem.Click += new System.EventHandler(this.삭제ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1578, 844);
+            this.ClientSize = new System.Drawing.Size(1105, 563);
+            this.Controls.Add(this.slot5);
+            this.Controls.Add(this.slot4);
+            this.Controls.Add(this.slot3);
+            this.Controls.Add(this.slot2);
+            this.Controls.Add(this.slot1);
             this.Controls.Add(this.foldnum);
             this.Controls.Add(this.deck_count);
             this.Controls.Add(this.playerhandpanel);
@@ -270,11 +369,13 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.ItemMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,6 +405,13 @@
         private System.Windows.Forms.Label deck;
         private System.Windows.Forms.Panel playerhandpanel;
         private System.Windows.Forms.Label foldnum;
+        private System.Windows.Forms.Label slot1;
+        private System.Windows.Forms.Label slot2;
+        private System.Windows.Forms.Label slot3;
+        private System.Windows.Forms.Label slot4;
+        private System.Windows.Forms.Label slot5;
+        private System.Windows.Forms.ContextMenuStrip ItemMenu;
+        private System.Windows.Forms.ToolStripMenuItem 삭제ToolStripMenuItem;
     }
 }
 

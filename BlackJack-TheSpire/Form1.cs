@@ -20,6 +20,8 @@ namespace BlackJack_TheSpire
         private int value = 0; //숫자
         private double odd = 0; //배율
         private int fold_num = 0; //폴드 횟수
+        private Label[] itemSlots; //아이템 슬롯 변수
+        private Label selectedSlot; //아이템 슬롯 저장 변수
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace BlackJack_TheSpire
             gameState = new GameState();
             currentHand = new Hand();
             gameState.GetDeck().Shuffle();
+            itemSlots = new Label[] {slot1, slot2,  slot3, slot4, slot5};
             set_cycle();
         }
 
@@ -138,7 +141,8 @@ namespace BlackJack_TheSpire
             gameState.SetCurrentCycle(gameState.GetCurrentCycle() + 1);
             showcoin();
             store store = new store(gameState);
-            store.Show();
+            store.ShowDialog();
+            RefreshInventory();
             //저장
             //불러오기
             set_cycle();
@@ -202,13 +206,43 @@ namespace BlackJack_TheSpire
 
         private void RefreshInventory() //인벤토리 아이템 표시
         {
-            /*
-            inventoryList.Items.Clear();
-            foreach(Item item in gameState.GetInventory())
+            for (int i = 0; i < itemSlots.Length; i++)
             {
-                inventoryList.Items.Add(item.Name);
+                itemSlots[i].Text = "";
             }
-            */
+            List<Item> items = gameState.GetInventory().GetItems();
+            for (int i = 0; i < items.Count && i < itemSlots.Length; i++)
+            {
+                itemSlots[i].Text = items[i].Name;
+            }
+        }
+
+        private void slot_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+                selectedSlot = (Label)sender;
+        }
+
+        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (selectedSlot == null)
+                return;
+
+            int index =
+                Array.IndexOf(itemSlots, selectedSlot);
+
+            if (index < 0)
+                return;
+
+            List<Item> items =
+                gameState.GetInventory().GetItems();
+
+            if (index >= items.Count)
+                return;
+
+            items.RemoveAt(index);
+
+            RefreshInventory();
         }
     }
 }
