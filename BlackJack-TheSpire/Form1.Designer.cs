@@ -49,6 +49,7 @@
             this.deck_count = new System.Windows.Forms.Button();
             this.deck = new System.Windows.Forms.Label();
             this.playerhandpanel = new System.Windows.Forms.Panel();
+            this.foldnum = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,7 +184,7 @@
             // 
             this.round.Location = new System.Drawing.Point(33, 516);
             this.round.Name = "round";
-            this.round.Size = new System.Drawing.Size(252, 75);
+            this.round.Size = new System.Drawing.Size(126, 75);
             this.round.TabIndex = 16;
             this.round.Text = "남은 턴";
             // 
@@ -236,11 +237,21 @@
             this.playerhandpanel.Size = new System.Drawing.Size(949, 310);
             this.playerhandpanel.TabIndex = 20;
             // 
+            // foldnum
+            // 
+            this.foldnum.AutoSize = true;
+            this.foldnum.Location = new System.Drawing.Point(209, 517);
+            this.foldnum.Name = "foldnum";
+            this.foldnum.Size = new System.Drawing.Size(54, 18);
+            this.foldnum.TabIndex = 21;
+            this.foldnum.Text = "label3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1578, 844);
+            this.Controls.Add(this.foldnum);
             this.Controls.Add(this.deck_count);
             this.Controls.Add(this.playerhandpanel);
             this.Controls.Add(this.deck);
@@ -292,6 +303,7 @@
         private System.Windows.Forms.Button stand;
         private System.Windows.Forms.Label deck;
         private System.Windows.Forms.Panel playerhandpanel;
+        private System.Windows.Forms.Label foldnum;
     }
 }
 

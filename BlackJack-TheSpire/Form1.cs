@@ -28,10 +28,6 @@ namespace BlackJack_TheSpire
             currentHand = new Hand();
             gameState.GetDeck().Shuffle();
             set_cycle();
-            showround();
-            shownumodds();
-            showscore();
-            showcoin();
         }
 
         private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,7 +48,7 @@ namespace BlackJack_TheSpire
         {
             round.Text = $"{gameState.GetCurrentRound().ToString()} / 4";
         }
-        void shownumodds()
+        void shownumodds() //배율, 숫자 보여주는 메소드
         {
             value = currentHand.CalculateValue();
             odd = ScoreCalculator.GetHandMultiplier(currentHand);
@@ -60,24 +56,32 @@ namespace BlackJack_TheSpire
             odds.Text = odd.ToString();
             get.Text = $"받는 점수 :{Math.Ceiling(value * odd).ToString()}";
         }
+        void showfoldnum()
+        {
+            foldnum.Text = $"{fold_num.ToString()}";
+        }
         private void foldbutten_Click(object sender, EventArgs e)
         {
-            if (fold_num > 4)
+            if (fold_num > 3)
             {
-                               MessageBox.Show("더 이상 폴드할 수 없습니다.");
+                MessageBox.Show("더 이상 폴드할 수 없습니다.");
                 return;
             }
+            fold_num++;
             currentHand.Clear();
             value = 0;
             odd = 1;
             int score = gameState.GetRoundScore();
-            if (score > 0)
+            if (score > 1)
             {
                 gameState.SetRoundScore(score / 2);
+                shownumodds();
+                showscore();
+                showfoldnum();
+                playerhandpanel.Controls.Clear();
+                return;
             }
-            shownumodds();
-            showscore();
-            playerhandpanel.Controls.Clear();
+            MessageBox.Show("점수가 1점 이하이므로 폴드를 할 수 없습니다.");
         }
         private void draw_Click(object sender, EventArgs e)
         {
@@ -87,7 +91,7 @@ namespace BlackJack_TheSpire
             shownumodds();
         }
 
-        private void stand_Click(object sender, EventArgs e)
+        private void stand_Click(object sender, EventArgs e) //점수 정산, 점수확인 후 클리어 확인. 그리고 정보 갱신
         {
             gameState.SetRoundScore((int)(gameState.GetRoundScore() + value * odd));
             currentHand.Clear();
@@ -115,7 +119,7 @@ namespace BlackJack_TheSpire
                 
             }
         }
-        private void one_cycleend() //한 사이클 끝나면
+        private void one_cycleend() //한 사이클 끝나면 돈, 상점, 정보저장, 정보불러오기, 다음 사이클 세팅.
         {
             int nowcoin = gameState.GetCoin();
             //돈 주는거.
@@ -139,7 +143,7 @@ namespace BlackJack_TheSpire
             //불러오기
             set_cycle();
         }
-        private void set_cycle() //사이클 점수 설정
+        private void set_cycle() //사이클 세팅.
         {
             if (gameState.GetCurrentCycle() < 3)
             {
@@ -157,6 +161,11 @@ namespace BlackJack_TheSpire
             }
             gameState.SetRoundScore(0);
             fold_num = 0;
+            showround();
+            shownumodds();
+            showscore();
+            showcoin();
+            showfoldnum();
         }
         private void deck_count_Click(object sender, EventArgs e)//남은덱
         {
@@ -182,11 +191,12 @@ namespace BlackJack_TheSpire
 
             pb.BringToFront();
         }
-        Image GetCardImage(Card card) //사용법 : bin / debug / Cards 파일 안에
+        Image GetCardImage(Card card) //사용법 : Resources 폴더에 넣으면 됌
         {
             // string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
-            //string path = Path.Combine(Application.StartupPath, "Cards", fileName);
-            string path = Path.Combine(Application.StartupPath, "Cards", "card.png");
+            string fileName = "card.png";
+            string path = Path.Combine(Application.StartupPath,"..","..","Resources",fileName);
+            path = Path.GetFullPath(path);
             return Image.FromFile(path);
         }
 
