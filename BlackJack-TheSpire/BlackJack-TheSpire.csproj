@@ -47,8 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Card.cs" />
+    <Compile Include="Core\Save\CardSaveData.cs" />
     <Compile Include="Core\Deck.cs" />
-    <Compile Include="Core\RoundManager.cs" />
+    <Compile Include="Core\Manager\CycleManager.cs" />
+    <Compile Include="Core\Manager\RoundManager.cs" />
+    <Compile Include="Core\Manager\SaveManager.cs" />
+    <Compile Include="Core\Save\GameSaveData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BlackJack_TheSpire
 {
-    enum CardType // 문양
+    enum CardType
     {
         Spade, Club, Diamond, Heart
     }
-    enum CardValue // 숫자
+    enum CardValue
     {
         Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
     }
@@ -26,19 +26,21 @@ namespace BlackJack_TheSpire
         {
             this.type = type;
             this.value = value;
+            this.customBlackjackValue = 0;
+            this.hasCustomValue = false;
         }
 
-        public CardType GetCardType() //카드 문양 가져오는거
+        public CardType GetCardType()
         {
             return type;
         }
 
-        public CardValue GetCardValue() //카드 숫자 가져오는거
+        public CardValue GetCardValue()
         {
             return value;
         }
 
-        public int GetBlackjackValue() //잭 킹 퀸은 10으로 간주하는거. 에이스도 11로 간주함.
+        public int GetBlackjackValue()
         {
             if (hasCustomValue)
                 return customBlackjackValue;
@@ -54,6 +56,11 @@ namespace BlackJack_TheSpire
         public int GetMissionValue()
         {
             return (int)value;
+        }
+
+        public int GetCustomBlackjackValue()
+        {
+            return customBlackjackValue;
         }
 
         public void SetCustomBlackjackValue(int newValue)
