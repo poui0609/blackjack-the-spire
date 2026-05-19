@@ -17,6 +17,8 @@ namespace BlackJack_TheSpire
         private int targetScore;
         private Deck deck;
 
+        private List<Item> inventory; //아이템 넣어 놓을 인벤토리 추가
+
         public GameState()
         {
             seed = 0;
@@ -27,6 +29,8 @@ namespace BlackJack_TheSpire
             roundScore = 0;
             targetScore = 0;
             deck = new Deck();
+
+            inventory = new List<Item>(); //생성자 추가
         }
 
         public int GetSeed()
@@ -145,6 +149,16 @@ namespace BlackJack_TheSpire
         public int GetRemainingHands()
         {
             return 4 - currentHand + 1;
+        }
+
+        public List<Item> GetInventory()
+        {
+            return inventory;
+        }
+
+        public void AddItem(Item item)
+        {
+            inventory.Add(item);
         }
     }
 }
