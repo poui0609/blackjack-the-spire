@@ -182,18 +182,11 @@ namespace BlackJack_TheSpire
 
             pb.BringToFront();
         }
-        Image GetCardImage(Card card) //사용법 : bin / debug / Cards 파일 안에
+        Image GetCardImage(Card card) //사용법 : Resources 폴더에 넣으면 됌
         {
             // string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
-            //string path = Path.Combine(Application.StartupPath, "Cards", fileName);
-            string path = Path.Combine(
-        Application.StartupPath,
-        "..",
-        "..",
-        "Resources",
-        "card.png"
-    );
-
+            string fileName = "card.png";
+            string path = Path.Combine(Application.StartupPath,"..","..","Resources",fileName);
             path = Path.GetFullPath(path);
             return Image.FromFile(path);
         }
