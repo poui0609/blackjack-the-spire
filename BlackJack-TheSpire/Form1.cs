@@ -12,9 +12,15 @@ namespace BlackJack_TheSpire
 {
     public partial class Form1 : Form
     {
+        GameState gameState;
+        Hand currentHand;
         public Form1()
         {
             InitializeComponent();
+            GameRandom.SetRandomSeed();
+            gameState = new GameState();
+            currentHand = new Hand();
+            gameState.GetDeck().Shuffle();
             setting();
         }
 
@@ -100,7 +106,7 @@ namespace BlackJack_TheSpire
 
         private void 라운드끝() //라운드 구현할 때 사용해주셈
         {
-            store store = new store();
+            store store = new store(gameState);
             store.Show();
         }
 
@@ -112,6 +118,17 @@ namespace BlackJack_TheSpire
         private void deck_Click(object sender, EventArgs e) //전체 덱
         {
             //자기 덱 보여줄거 모달로다가
+        }
+
+        private void RefreshInventory() //인벤토리 아이템 표시
+        {
+            /*
+            inventoryList.Items.Clear();
+            foreach(Item item in gameState.GetInventory())
+            {
+                inventoryList.Items.Add(item.Name);
+            }
+            */
         }
     }
 }
