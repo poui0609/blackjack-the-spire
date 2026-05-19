@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Core\Card.cs" />
     <Compile Include="Core\Deck.cs" />
+    <Compile Include="Core\RoundManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
