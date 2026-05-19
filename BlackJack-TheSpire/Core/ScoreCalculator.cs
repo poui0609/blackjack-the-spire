@@ -8,7 +8,7 @@ namespace BlackJack_TheSpire
 {
     internal static class ScoreCalculator
     {
-        public static double GetHandMultiplier(Hand hand)
+        public static double GetHandMultiplier(Hand hand) // 배율 결정
         {
             if (hand.IsBust())
                 return 0.0;
@@ -24,7 +24,7 @@ namespace BlackJack_TheSpire
             return value * 0.1;
         }
 
-        public static int CalculateScore(Hand hand)
+        public static int CalculateScore(Hand hand) //이게 진짜 점수 계산 
         {
             if (hand.IsBust())
                 return 0;

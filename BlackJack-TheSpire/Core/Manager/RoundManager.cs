@@ -21,7 +21,7 @@ namespace BlackJack_TheSpire
             isFolded = false;
         }
 
-        public Hand GetPlayerHand()
+        public Hand GetPlayerHand() //핸드 가져오기
         {
             return playerHand;
         }
@@ -31,19 +31,19 @@ namespace BlackJack_TheSpire
             return isRoundOver;
         }
 
-        public bool IsFolded()
+        public bool IsFolded() //폴드했을때
         {
             return isFolded;
         }
 
-        public void StartRound()
+        public void StartRound() //라운드 시작. 사이클이랑 다름
         {
             playerHand.Clear();
             isRoundOver = false;
             isFolded = false;
         }
 
-        public Card Draw()
+        public Card Draw() //카드 뽑기
         {
             if (isRoundOver) return null;
 
@@ -57,14 +57,14 @@ namespace BlackJack_TheSpire
             return drawn;
         }
 
-        public void Stand()
+        public void Stand() //스탠드 하면 이거 가져오면 됨
         {
             if (isRoundOver) return;
 
             EndRound();
         }
 
-        public bool Fold()
+        public bool Fold() //폴드
         {
             if (gameState.GetCycleScore() <= 0) return false;
 
@@ -75,7 +75,7 @@ namespace BlackJack_TheSpire
             return true;
         }
 
-        private void EndRound()
+        private void EndRound() //라운드 종료
         {
             isRoundOver = true;
 
@@ -86,13 +86,13 @@ namespace BlackJack_TheSpire
             }
         }
 
-        public int GetLastRoundScore()
+        public int GetLastRoundScore() //마지막 라운드 점수 가져오기
         {
             if (isFolded) return 0;
             return ScoreCalculator.CalculateScore(playerHand);
         }
 
-        public bool CanFold()
+        public bool CanFold() //폴드 가능한지 여부
         {
             return !isRoundOver && gameState.GetCycleScore() > 0;
         }
