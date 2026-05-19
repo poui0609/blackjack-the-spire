@@ -55,6 +55,11 @@
             this.slot3 = new System.Windows.Forms.Label();
             this.slot4 = new System.Windows.Forms.Label();
             this.slot5 = new System.Windows.Forms.Label();
+            this.item1 = new System.Windows.Forms.Label();
+            this.item2 = new System.Windows.Forms.Label();
+            this.item3 = new System.Windows.Forms.Label();
+            this.item4 = new System.Windows.Forms.Label();
+            this.item5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -267,11 +272,96 @@
             this.foldnum.TabIndex = 21;
             this.foldnum.Text = "label3";
             // 
+            // slot1
+            // 
+            this.slot1.Location = new System.Drawing.Point(0, 0);
+            this.slot1.Name = "slot1";
+            this.slot1.Size = new System.Drawing.Size(100, 23);
+            this.slot1.TabIndex = 4;
+            // 
+            // slot2
+            // 
+            this.slot2.Location = new System.Drawing.Point(0, 0);
+            this.slot2.Name = "slot2";
+            this.slot2.Size = new System.Drawing.Size(100, 23);
+            this.slot2.TabIndex = 3;
+            // 
+            // slot3
+            // 
+            this.slot3.Location = new System.Drawing.Point(0, 0);
+            this.slot3.Name = "slot3";
+            this.slot3.Size = new System.Drawing.Size(100, 23);
+            this.slot3.TabIndex = 2;
+            // 
+            // slot4
+            // 
+            this.slot4.Location = new System.Drawing.Point(0, 0);
+            this.slot4.Name = "slot4";
+            this.slot4.Size = new System.Drawing.Size(100, 23);
+            this.slot4.TabIndex = 1;
+            // 
+            // slot5
+            // 
+            this.slot5.Location = new System.Drawing.Point(0, 0);
+            this.slot5.Name = "slot5";
+            this.slot5.Size = new System.Drawing.Size(100, 23);
+            this.slot5.TabIndex = 0;
+            // 
+            // item1
+            // 
+            this.item1.Location = new System.Drawing.Point(259, 60);
+            this.item1.Name = "item1";
+            this.item1.Size = new System.Drawing.Size(90, 130);
+            this.item1.TabIndex = 22;
+            this.item1.Text = "슬롯1";
+            this.item1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // item2
+            // 
+            this.item2.Location = new System.Drawing.Point(355, 60);
+            this.item2.Name = "item2";
+            this.item2.Size = new System.Drawing.Size(90, 130);
+            this.item2.TabIndex = 23;
+            this.item2.Text = "슬롯2";
+            this.item2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // item3
+            // 
+            this.item3.Location = new System.Drawing.Point(451, 60);
+            this.item3.Name = "item3";
+            this.item3.Size = new System.Drawing.Size(90, 130);
+            this.item3.TabIndex = 24;
+            this.item3.Text = "슬롯3";
+            this.item3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // item4
+            // 
+            this.item4.Location = new System.Drawing.Point(547, 60);
+            this.item4.Name = "item4";
+            this.item4.Size = new System.Drawing.Size(90, 130);
+            this.item4.TabIndex = 25;
+            this.item4.Text = "슬롯4";
+            this.item4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // item5
+            // 
+            this.item5.Location = new System.Drawing.Point(643, 60);
+            this.item5.Name = "item5";
+            this.item5.Size = new System.Drawing.Size(90, 130);
+            this.item5.TabIndex = 26;
+            this.item5.Text = "슬롯5";
+            this.item5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 563);
+            this.Controls.Add(this.item5);
+            this.Controls.Add(this.item4);
+            this.Controls.Add(this.item3);
+            this.Controls.Add(this.item2);
+            this.Controls.Add(this.item1);
             this.Controls.Add(this.slot5);
             this.Controls.Add(this.slot4);
             this.Controls.Add(this.slot3);
@@ -336,6 +426,11 @@
         private System.Windows.Forms.Label slot3;
         private System.Windows.Forms.Label slot4;
         private System.Windows.Forms.Label slot5;
+        private System.Windows.Forms.Label item1;
+        private System.Windows.Forms.Label item2;
+        private System.Windows.Forms.Label item3;
+        private System.Windows.Forms.Label item4;
+        private System.Windows.Forms.Label item5;
     }
 }
 

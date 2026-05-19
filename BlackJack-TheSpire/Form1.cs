@@ -29,7 +29,7 @@ namespace BlackJack_TheSpire
             gameState = new GameState();
             currentHand = new Hand();
             gameState.GetDeck().Shuffle();
-            itemSlots = new Label[] {slot1, slot2,  slot3, slot4, slot5};
+            itemSlots = new Label[] {item1, item2,  item3, item4, item5};
             set_cycle();
         }
 
@@ -213,7 +213,7 @@ namespace BlackJack_TheSpire
             List<Item> items = gameState.GetInventory().GetItems();
             for (int i = 0; i < items.Count && i < itemSlots.Length; i++)
             {
-                itemSlots[i].Text = items[i].Name;
+                itemSlots[i].Text = items[i].Name +"\n" + items[i].Description;
             }
         }
     }
