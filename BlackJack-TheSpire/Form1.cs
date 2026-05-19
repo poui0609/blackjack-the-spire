@@ -27,6 +27,11 @@ namespace BlackJack_TheSpire
             gameState = new GameState();
             currentHand = new Hand();
             gameState.GetDeck().Shuffle();
+            set_cycle();
+            showround();
+            shownumodds();
+            showscore();
+            showcoin();
         }
 
         private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,6 +110,7 @@ namespace BlackJack_TheSpire
             }
             if (gameState.GetCurrentRound() > 4)
             {
+                this.Close();
                 //게임오버. 점수도 못넘겼고 라운드도 끝남.
                 
             }
