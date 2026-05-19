@@ -56,24 +56,32 @@ namespace BlackJack_TheSpire
             odds.Text = odd.ToString();
             get.Text = $"받는 점수 :{Math.Ceiling(value * odd).ToString()}";
         }
+        void showfoldnum()
+        {
+            foldnum.Text = $"{fold_num.ToString()}";
+        }
         private void foldbutten_Click(object sender, EventArgs e)
         {
-            if (fold_num > 4)
+            if (fold_num > 3)
             {
                 MessageBox.Show("더 이상 폴드할 수 없습니다.");
                 return;
             }
+            fold_num++;
             currentHand.Clear();
             value = 0;
             odd = 1;
             int score = gameState.GetRoundScore();
-            if (score > 0)
+            if (score > 1)
             {
                 gameState.SetRoundScore(score / 2);
+                shownumodds();
+                showscore();
+                showfoldnum();
+                playerhandpanel.Controls.Clear();
+                return;
             }
-            shownumodds();
-            showscore();
-            playerhandpanel.Controls.Clear();
+            MessageBox.Show("점수가 1점 이하이므로 폴드를 할 수 없습니다.");
         }
         private void draw_Click(object sender, EventArgs e)
         {
@@ -157,6 +165,7 @@ namespace BlackJack_TheSpire
             shownumodds();
             showscore();
             showcoin();
+            showfoldnum();
         }
         private void deck_count_Click(object sender, EventArgs e)//남은덱
         {
