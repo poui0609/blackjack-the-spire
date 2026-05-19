@@ -9,79 +9,42 @@ namespace BlackJack_TheSpire
     internal class GameState
     {
         private int seed;
-        private int currentRound;
+        private int currentChapter;
         private int currentCycle;
-        private int currentHand;
+        private int currentRound;
         private int coin;
-        private int roundScore;
+        private int cycleScore;
         private int targetScore;
         private Deck deck;
-
-        private List<Item> inventory; //아이템 넣어 놓을 인벤토리 추가
+        private List<Item> inventory;
 
         public GameState()
         {
             seed = 0;
-            currentRound = 1;
+            currentChapter = 1;
             currentCycle = 1;
-            currentHand = 1;
+            currentRound = 1;
             coin = 0;
-            roundScore = 0;
+            cycleScore = 0;
             targetScore = 0;
             deck = new Deck();
-
-            inventory = new List<Item>(); //생성자 추가
+            inventory = new List<Item>();
         }
 
-        public int GetSeed()
-        {
-            return seed;
-        }
+        public int GetSeed() { return seed; }
+        public void SetSeed(int value) { seed = value; }
 
-        public void SetSeed(int value)
-        {
-            seed = value;
-        }
+        public int GetCurrentChapter() { return currentChapter; }
+        public void SetCurrentChapter(int value) { currentChapter = value; }
 
-        public int GetCurrentRound()
-        {
-            return currentRound;
-        }
+        public int GetCurrentCycle() { return currentCycle; }
+        public void SetCurrentCycle(int value) { currentCycle = value; }
 
-        public void SetCurrentRound(int value)
-        {
-            currentRound = value;
-        }
+        public int GetCurrentRound() { return currentRound; }
+        public void SetCurrentRound(int value) { currentRound = value; }
 
-        public int GetCurrentCycle()
-        {
-            return currentCycle;
-        }
-
-        public void SetCurrentCycle(int value)
-        {
-            currentCycle = value;
-        }
-
-        public int GetCurrentHand()
-        {
-            return currentHand;
-        }
-
-        public void SetCurrentHand(int value)
-        {
-            currentHand = value;
-        }
-
-        public int GetCoin()
-        {
-            return coin;
-        }
-
-        public void SetCoin(int value)
-        {
-            coin = value;
-        }
+        public int GetCoin() { return coin; }
+        public void SetCoin(int value) { coin = value; }
 
         public void AddCoin(int amount)
         {
@@ -94,61 +57,27 @@ namespace BlackJack_TheSpire
             if (coin < 0) coin = 0;
         }
 
-        public int GetRoundScore()
+        public int GetCycleScore() { return cycleScore; }
+        public void SetCycleScore(int value) { cycleScore = value; }
+
+        public void AddCycleScore(int amount)
         {
-            return roundScore;
+            cycleScore += amount;
         }
 
-        public void SetRoundScore(int value)
+        public int GetTargetScore() { return targetScore; }
+        public void SetTargetScore(int value) { targetScore = value; }
+
+        public Deck GetDeck() { return deck; }
+
+        public void AddItem(Item item)
         {
-            roundScore = value;
+            inventory.Add(item);
         }
 
-        public void AddRoundScore(int amount)
+        public void RemoveItem(Item item)
         {
-            roundScore += amount;
-        }
-
-        public int GetTargetScore()
-        {
-            return targetScore;
-        }
-
-        public void SetTargetScore(int value)
-        {
-            targetScore = value;
-        }
-
-        public Deck GetDeck()
-        {
-            return deck;
-        }
-
-        public void ResetRoundScore()
-        {
-            roundScore = 0;
-        }
-
-        public void NextHand()
-        {
-            currentHand++;
-        }
-
-        public void NextRound()
-        {
-            currentRound++;
-            currentHand = 1;
-            roundScore = 0;
-        }
-
-        public bool IsTargetReached()
-        {
-            return roundScore >= targetScore;
-        }
-
-        public int GetRemainingHands()
-        {
-            return 4 - currentHand + 1;
+            inventory.Remove(item);
         }
 
         public List<Item> GetInventory()
@@ -156,9 +85,52 @@ namespace BlackJack_TheSpire
             return inventory;
         }
 
-        public void AddItem(Item item)
+        public int GetInventoryCount()
         {
-            inventory.Add(item);
+            return inventory.Count;
+        }
+
+        public void ResetCycleScore()
+        {
+            cycleScore = 0;
+        }
+
+        public void NextRound()
+        {
+            currentRound++;
+        }
+
+        public void NextCycle()
+        {
+            currentCycle++;
+            currentRound = 1;
+            cycleScore = 0;
+
+            if (currentCycle > 4)
+            {
+                currentCycle = 1;
+                currentChapter++;
+            }
+        }
+
+        public bool IsTargetReached()
+        {
+            return cycleScore >= targetScore;
+        }
+
+        public int GetRemainingRounds()
+        {
+            return 4 - currentRound + 1;
+        }
+
+        public int CalculateCycleReward()
+        {
+            return GetRemainingRounds() * 2;
+        }
+
+        public bool IsGameClear()
+        {
+            return currentChapter > 6;
         }
     }
 }
