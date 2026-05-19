@@ -42,6 +42,16 @@ namespace BlackJack_TheSpire
         {
             gameState.ResetCycleScore();
             gameState.SetCurrentRound(1);
+
+            if (gameState.GetCurrentCycle() <= 2)
+            {
+                gameState.SetTargetScore(60);
+            }
+            else
+            {
+                gameState.SetTargetScore(80);
+            }
+
             isCycleOver = false;
             isCycleSuccess = false;
 

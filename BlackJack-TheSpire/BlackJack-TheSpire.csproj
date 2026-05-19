@@ -53,6 +53,12 @@
     <Compile Include="Core\Manager\RoundManager.cs" />
     <Compile Include="Core\Manager\SaveManager.cs" />
     <Compile Include="Core\Save\GameSaveData.cs" />
+    <Compile Include="DeckCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeckCount.Designer.cs">
+      <DependentUpon>DeckCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,12 @@
     <Compile Include="Core\GameRandom.cs" />
     <Compile Include="Core\GameState.cs" />
     <Compile Include="Core\Hand.cs" />
+    <Compile Include="HaveDeck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HaveDeck.Designer.cs">
+      <DependentUpon>HaveDeck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Item\Inventory.cs" />
     <Compile Include="Item\Item.cs" />
     <Compile Include="Item\ItemManager.cs" />
@@ -73,6 +85,12 @@
     <Compile Include="rules.Designer.cs">
       <DependentUpon>rules.cs</DependentUpon>
     </Compile>
+    <Compile Include="start.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="start.Designer.cs">
+      <DependentUpon>start.cs</DependentUpon>
+    </Compile>
     <Compile Include="store.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,8 +98,14 @@
       <DependentUpon>store.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\ScoreCalculator.cs" />
+    <EmbeddedResource Include="DeckCount.resx">
+      <DependentUpon>DeckCount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HaveDeck.resx">
+      <DependentUpon>HaveDeck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,6 +119,9 @@
     </Compile>
     <EmbeddedResource Include="rules.resx">
       <DependentUpon>rules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="start.resx">
+      <DependentUpon>start.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="store.resx">
       <DependentUpon>store.cs</DependentUpon>

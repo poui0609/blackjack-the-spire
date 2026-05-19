@@ -16,21 +16,28 @@ namespace BlackJack_TheSpire
     public partial class Form1 : Form
     {
         GameState gameState;
-        Hand currentHand;
-        private int value = 0; //숫자
-        private double odd = 0; //배율
+        CycleManager cycleManager;
+        RoundManager roundManager;
         private int fold_num = 0; //폴드 횟수
         private Label[] itemSlots; //아이템 슬롯 변수
         private Label selectedSlot; //아이템 슬롯 저장 변수
         public Form1()
         {
             InitializeComponent();
-            GameRandom.SetRandomSeed();
-            gameState = new GameState();
-            currentHand = new Hand();
+            start gamestart = new start();
+            if (gamestart.ShowDialog() != DialogResult.OK)
+            {
+                this.Close();
+                return;
+            }
+            gameState = gamestart.SelectedGameState;
+
+            roundManager = new RoundManager(gameState);
+            cycleManager = new CycleManager(gameState, roundManager);
             gameState.GetDeck().Shuffle();
             itemSlots = new Label[] {slot1, slot2,  slot3, slot4, slot5};
-            set_cycle();
+            cycleManager.StartCycle();
+            RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum();
         }
 
         private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,7 +52,7 @@ namespace BlackJack_TheSpire
         }
         void showscore() //점수 보여주는 메소드
         {
-            score.Text = $"{gameState.GetRoundScore().ToString()} / {gameState.GetTargetScore().ToString()}";
+            score.Text = $"{gameState.GetCycleScore().ToString()} / {gameState.GetTargetScore().ToString()}";
         }
         void showround() // 남은 턴 보여주는 메소드.
         {
@@ -53,8 +60,10 @@ namespace BlackJack_TheSpire
         }
         void shownumodds() //배율, 숫자 보여주는 메소드
         {
-            value = currentHand.CalculateValue();
-            odd = ScoreCalculator.GetHandMultiplier(currentHand);
+            Hand hand = roundManager.GetPlayerHand();
+
+            int value = hand.CalculateValue();
+            double odd = ScoreCalculator.GetHandMultiplier(hand);
             num.Text = value.ToString();
             odds.Text = odd.ToString();
             get.Text = $"받는 점수 :{Math.Ceiling(value * odd).ToString()}";
@@ -65,120 +74,60 @@ namespace BlackJack_TheSpire
         }
         private void foldbutten_Click(object sender, EventArgs e)
         {
-            if (fold_num > 3)
+            if (!roundManager.Fold())
             {
-                MessageBox.Show("더 이상 폴드할 수 없습니다.");
+                MessageBox.Show("폴드를 할 수 없습니다.");
                 return;
             }
             fold_num++;
-            currentHand.Clear();
-            value = 0;
-            odd = 1;
-            int score = gameState.GetRoundScore();
-            if (score > 1)
-            {
-                gameState.SetRoundScore(score / 2);
-                shownumodds();
-                showscore();
-                showfoldnum();
-                playerhandpanel.Controls.Clear();
-                return;
-            }
-            MessageBox.Show("점수가 1점 이하이므로 폴드를 할 수 없습니다.");
+            playerhandpanel.Controls.Clear();
+            showscore();
+            showfoldnum();
+            shownumodds();
         }
         private void draw_Click(object sender, EventArgs e)
         {
-            Card newcard = gameState.GetDeck().Draw();
-            currentHand.AddCard(newcard);
-            ShowPlayerHand(newcard);
+            Card drawCard = roundManager.Draw();
+            if (drawCard == null)
+                return;
+            ShowPlayerHand(drawCard);
             shownumodds();
         }
 
-        private void stand_Click(object sender, EventArgs e) //점수 정산, 점수확인 후 클리어 확인. 그리고 정보 갱신
+        private void stand_Click(object sender, EventArgs e)
         {
-            gameState.SetRoundScore((int)(gameState.GetRoundScore() + value * odd));
-            currentHand.Clear();
-            value = 0;
-            odd = 1;
+            roundManager.Stand();
+            cycleManager.OnRoundEnd();
+
             playerhandpanel.Controls.Clear();
-            gameState.NextRound();
-            round_check();
-            showround();
+
             shownumodds();
             showscore();
-        }
-        private void round_check() //라운드가 끝났는지
-        {
-            if(gameState.GetRoundScore() >= gameState.GetTargetScore())
-            {
-                gameState.SetCurrentRound(1);
-                one_cycleend();
-                return;
-            }
-            if (gameState.GetCurrentRound() > 4)
-            {
-                this.Close();
-                //게임오버. 점수도 못넘겼고 라운드도 끝남.
-                
-            }
-        }
-        private void one_cycleend() //한 사이클 끝나면 돈, 상점, 정보저장, 정보불러오기, 다음 사이클 세팅.
-        {
-            int nowcoin = gameState.GetCoin();
-            //돈 주는거.
-            switch (gameState.GetCurrentRound())
-            {
-                case 1:
-                    gameState.SetCoin(nowcoin + 6);
-                    break;
-                case 2:
-                    gameState.SetCoin(nowcoin + 4);
-                    break;
-                case 3:
-                    gameState.SetCoin(nowcoin + 2);
-                    break;
-            }
-            gameState.SetCurrentCycle(gameState.GetCurrentCycle() + 1);
-            showcoin();
-            store store = new store(gameState);
-            store.ShowDialog();
-            RefreshInventory();
-            //저장
-            //불러오기
-            set_cycle();
-        }
-        private void set_cycle() //사이클 세팅.
-        {
-            if (gameState.GetCurrentCycle() < 3)
-            {
-                gameState.SetTargetScore(60); // 일반 목표점수
-            }
-            else if (gameState.GetCurrentCycle() == 3)
-            {
-                gameState.SetTargetScore(70); // 어려운 목표점수
-            }
-             else
-            {
-                gameState.SetTargetScore(15); // 보스 목표점수
-                gameState.SetCurrentCycle(1);
-                //보스 아이템 추가해주셈
-            }
-            gameState.SetRoundScore(0);
-            fold_num = 0;
             showround();
-            shownumodds();
-            showscore();
-            showcoin();
-            showfoldnum();
+            if (cycleManager.IsCycleSuccess())
+            {
+                showcoin();
+
+                store store = new store(gameState);
+                store.ShowDialog();
+
+                RefreshInventory(); showcoin(); showfoldnum();
+
+                cycleManager.GoToNextCycle();
+
+                SaveManager.Save(gameState);    //저장
+            }
         }
         private void deck_count_Click(object sender, EventArgs e)//남은덱
         {
-            //남은 덱 보여주세요
+            DeckCount deckCount = new DeckCount(gameState);
+            deckCount.ShowDialog();
         }
 
         private void deck_Click(object sender, EventArgs e) //전체 덱
-        {
-            //자기 덱 보여줄거 모달로다가
+        { 
+            HaveDeck haveDeck = new HaveDeck(gameState);
+            haveDeck.ShowDialog();
         }
         private void ShowPlayerHand(Card card)
         {

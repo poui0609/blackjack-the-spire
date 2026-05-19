@@ -87,7 +87,10 @@ namespace BlackJack_TheSpire
             cards.AddRange(usedCards);
             usedCards.Clear();
         }
-
+        public List<Card> GetUsedCards()
+        {
+            return usedCards;
+        }
         public List<Card> GenerateRandomCardChoices(int count = 3)
         {
             List<Card> choices = new List<Card>();
@@ -103,5 +106,6 @@ namespace BlackJack_TheSpire
 
             return choices;
         }
+        
     }
 }
