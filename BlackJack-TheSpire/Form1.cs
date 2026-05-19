@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace BlackJack_TheSpire
 {
@@ -21,7 +24,6 @@ namespace BlackJack_TheSpire
             gameState = new GameState();
             currentHand = new Hand();
             gameState.GetDeck().Shuffle();
-            setting();
         }
 
         private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,82 +32,75 @@ namespace BlackJack_TheSpire
             rules.ShowDialog();
         }
 
-        int 금고;
-        int 점수;
-        int 목표점수;
-        int 숫자; //블랙잭해서 나온 숫자
-        float 배율;
-        int 턴; // 이번 라운드에서 할 수 있는 턴
-        int 현재턴; // 이번 라운드에서 몇번 째 턴인지
+        private int value = 0; //숫자
+        private double odd = 0; //배율
 
-        void setting() //라운드 시작할 때 갱신
+        void showcoin() //코인 보여주는 메소드
         {
-            금고 = 1;//여기에 저장한 값 넣어야징
-            점수 = 0;
-            목표점수 = 1; // 여기도 저장한 내용에서 뽑아와서 넣기
-            숫자 = 0;
-            배율 = 1;
-            턴 = 1; // 여기도 저장한 내용에서 뽑아와서 넣기
-            현재턴 = 0;
-            showscore();
-            showturn();
+            coin.Text = $"코인 : {gameState.GetCoin().ToString()}";
         }
-        
         void showscore() //점수 보여주는 메소드
         {
-            score.Text = $"{점수.ToString()} / {목표점수.ToString()}" ;
+            score.Text = $"{gameState.GetRoundScore().ToString()} / {gameState.GetTargetScore().ToString()}";
         }
-        void showturn() // 남은 턴 보여주는 메소드. 턴 지나면 마지막에 하나씩 넣어주셈
+        void showturn() // 남은 턴 보여주는 메소드.
         {
-              turn.Text = $"{현재턴.ToString()} / {턴.ToString()}";
-        }
-        void showget()//받을 점수 보여주는 메소드. 점수랑 배율 관련되서 마지막에 넣어주셈
-        {
-            get.Text = $"받는 점수 :{Math.Ceiling(숫자 * 배율).ToString()}";
+            turn.Text = $"{gameState.GetCurrentRound().ToString()} / 4";
         }
         void shownumodds()
         {
-            num.Text = 숫자.ToString();
-            odds.Text = 배율.ToString();
-            showget();
+            value = currentHand.CalculateValue();
+            odd = ScoreCalculator.GetHandMultiplier(currentHand);
+            num.Text = value.ToString();
+            odds.Text = odd.ToString();
+            get.Text = $"받는 점수 :{Math.Ceiling(value * odd).ToString()}";
         }
 
-        private void foldbutten_Click(object sender, EventArgs e)//폴드 누르면 뽑은 패 초기화 하는거 추가좀
+
+        private void foldbutten_Click(object sender, EventArgs e)
         {
-            숫자 = 0;
-            배율 = 1;
-            shownumodds();
-            showget();
-            if (점수 > 0)
+            currentHand.Clear();
+            value = 0;
+            odd = 1;
+            int score = gameState.GetRoundScore();
+            if (score > 0)
             {
-                점수 = 점수 / 2;
+                gameState.SetRoundScore(score / 2);
             }
+            shownumodds();
             showscore();
+            playerhandpanel.Controls.Clear();
         }
 
-        
+
+
 
         private void draw_Click(object sender, EventArgs e)
         {
-            //카드 뽑는 명령어 부탁바람. 뽑고 나서 숫자랑 배율 채워주면 됌
-            showget(); //받을 점수 보여주는 메소드임
+            Card newcard = gameState.GetDeck().Draw();
+            currentHand.AddCard(newcard);
+            ShowPlayerHand(newcard);
+            shownumodds();
         }
 
-        private void stand_Click(object sender, EventArgs e)// 블랙잭에서 이거 누르면 카드 뽑는거. 추가해주셈
+        private void stand_Click(object sender, EventArgs e)
         {
-            //++++++++++++
-            //여기다가 추가좀
-            //+++++++++++
-            점수 = 점수 + (int)Math.Ceiling(숫자 * 배율);
-            숫자 = 0;
-            배율 = 1;
+            gameState.SetRoundScore((int)(gameState.GetRoundScore() + value * odd));
+            value = 0;
+            odd = 1;
+            playerhandpanel.Controls.Clear();
+            gameState.NextRound();
+            showturn();
             shownumodds();
             showscore();
-            showget();
+            라운드끝();
         }
 
-        private void 라운드끝() //라운드 구현할 때 사용해주셈
+
+        private void 라운드끝()
         {
+            //돈 주는거.
+            showcoin();
             store store = new store(gameState);
             store.Show();
         }
@@ -118,6 +113,29 @@ namespace BlackJack_TheSpire
         private void deck_Click(object sender, EventArgs e) //전체 덱
         {
             //자기 덱 보여줄거 모달로다가
+        }
+        private void ShowPlayerHand(Card card)
+        {
+            PictureBox pb = new PictureBox();
+
+            pb.Size = new Size(100, 300);
+            pb.Image = GetCardImage(card);
+
+            int index = playerhandpanel.Controls.Count;
+
+            pb.Location = new Point(index * 50, 10);
+
+            playerhandpanel.Controls.Add(pb);
+
+            pb.BringToFront();
+        }
+        Image GetCardImage(Card card)
+        {
+            // string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
+            string fileName = "card.png";
+            string path = Path.Combine(Application.StartupPath, "Cards", fileName);
+
+            return Image.FromFile(path);
         }
 
         private void RefreshInventory() //인벤토리 아이템 표시
