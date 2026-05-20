@@ -60,6 +60,8 @@
             this.item3 = new System.Windows.Forms.Label();
             this.item4 = new System.Windows.Forms.Label();
             this.item5 = new System.Windows.Forms.Label();
+            this.Mission1 = new System.Windows.Forms.Label();
+            this.Mission2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -352,11 +354,31 @@
             this.item5.Text = "슬롯5";
             this.item5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Mission1
+            // 
+            this.Mission1.Location = new System.Drawing.Point(933, 98);
+            this.Mission1.Name = "Mission1";
+            this.Mission1.Size = new System.Drawing.Size(140, 50);
+            this.Mission1.TabIndex = 27;
+            this.Mission1.Text = "미션1";
+            this.Mission1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Mission2
+            // 
+            this.Mission2.Location = new System.Drawing.Point(933, 161);
+            this.Mission2.Name = "Mission2";
+            this.Mission2.Size = new System.Drawing.Size(140, 50);
+            this.Mission2.TabIndex = 28;
+            this.Mission2.Text = "미션2";
+            this.Mission2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 563);
+            this.Controls.Add(this.Mission2);
+            this.Controls.Add(this.Mission1);
             this.Controls.Add(this.item5);
             this.Controls.Add(this.item4);
             this.Controls.Add(this.item3);
@@ -431,6 +453,8 @@
         private System.Windows.Forms.Label item3;
         private System.Windows.Forms.Label item4;
         private System.Windows.Forms.Label item5;
+        private System.Windows.Forms.Label Mission1;
+        private System.Windows.Forms.Label Mission2;
     }
 }
 

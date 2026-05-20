@@ -35,9 +35,9 @@ namespace BlackJack_TheSpire
             roundManager = new RoundManager(gameState);
             cycleManager = new CycleManager(gameState, roundManager);
             gameState.GetDeck().Shuffle();
-            itemSlots = new Label[] {slot1, slot2,  slot3, slot4, slot5};
+            itemSlots = new Label[] {item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
-            RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum();
+            RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission();
         }
 
         private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -91,6 +91,7 @@ namespace BlackJack_TheSpire
             if (drawCard == null)
                 return;
             ShowPlayerHand(drawCard);
+            CheckMission();             //미션 성공했는지 확인하는 코드
             shownumodds();
         }
 
@@ -164,6 +165,36 @@ namespace BlackJack_TheSpire
             {
                 itemSlots[i].Text = items[i].Name +"\n" + items[i].Description;
             }
+        }
+
+        void ShowMission()
+        {
+            List<Mission> missions = gameState.GetCurrentMissions();
+            if(missions.Count > 0)
+            {
+                Mission1.Text = missions[0].Name + "\n" + missions[0].Description + "\n배율: X" + missions[0].BonusMultiplier;
+            }
+            if(missions.Count > 1)
+            {
+                Mission2.Text = missions[1].Name + "\n" + missions[1].Description + "\n배율: X" + missions[1].BonusMultiplier;
+            }
+        }
+
+        void CheckMission()
+        {
+            Hand hand = roundManager.GetPlayerHand();
+            List<Mission> missions = gameState.GetCurrentMissions();
+
+            foreach (Mission mission in missions)
+            {
+                if (!mission.IsCompleted && mission.Check(hand))
+                    mission.IsCompleted = true;
+            }
+
+            if (missions.Count > 0 && missions[0].IsCompleted)
+                Mission1.Text = "미션 성공!";
+            if (missions.Count > 1 && missions[1].IsCompleted)
+                Mission2.Text = "미션 성공!";
         }
     }
 }

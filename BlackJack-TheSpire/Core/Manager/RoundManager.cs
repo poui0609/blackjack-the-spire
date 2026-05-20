@@ -81,7 +81,16 @@ namespace BlackJack_TheSpire
 
             if (!isFolded)
             {
-                int score = ScoreCalculator.CalculateScore(playerHand);
+                int score = ScoreCalculator.CalculateScore(playerHand);   //라운드 끝나고 미션 성공시 배율 적용하는 곳
+
+                foreach (Mission mission in gameState.GetCurrentMissions())
+                {
+                    if (mission.IsCompleted)
+                    {
+                        score = (int)(score * (1.0 + mission.BonusMultiplier));
+                    }
+                }
+                
                 gameState.AddCycleScore(score);
             }
         }
@@ -95,6 +104,11 @@ namespace BlackJack_TheSpire
         public bool CanFold() //폴드 가능한지 여부
         {
             return !isRoundOver && gameState.GetCycleScore() > 0;
+        }
+
+        void ShowMission()
+        {
+
         }
     }
 }

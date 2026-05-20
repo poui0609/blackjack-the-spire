@@ -77,6 +77,8 @@
     <Compile Include="Item\Inventory.cs" />
     <Compile Include="Item\Item.cs" />
     <Compile Include="Item\ItemManager.cs" />
+    <Compile Include="Item\Mission.cs" />
+    <Compile Include="Item\MissionManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rules.cs">

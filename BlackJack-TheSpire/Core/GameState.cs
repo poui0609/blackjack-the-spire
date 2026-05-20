@@ -18,6 +18,7 @@ namespace BlackJack_TheSpire
         private int targetScore;
         private Deck deck;
         private Inventory inventory;
+        private List<Mission> currentMissions;
 
         public GameState() //초기값
         {
@@ -30,6 +31,7 @@ namespace BlackJack_TheSpire
             targetScore = 0;
             deck = new Deck();
             inventory = new Inventory();
+            currentMissions = new List<Mission>();
         }
 
         public int GetSeed() { return seed; }
@@ -124,6 +126,16 @@ namespace BlackJack_TheSpire
         public bool IsGameClear()
         {
             return currentChapter > 6;
+        }
+
+        public List<Mission> GetCurrentMissions()
+        {
+            return currentMissions;
+        }
+
+        public void SetCurrentMissions(List<Mission> missions)
+        {
+            currentMissions = missions;
         }
     }
 }

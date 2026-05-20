@@ -112,7 +112,7 @@ namespace BlackJack_TheSpire
             pushitem(2);
         }
 
-        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)  //마우스 우클릭 삭제 메소드
         {
             if (selectedSlot == null)
                 return;
@@ -134,7 +134,7 @@ namespace BlackJack_TheSpire
             RefreshInventory();
         }
 
-        private void slot_MouseDown(object sender, MouseEventArgs e)
+        private void slot_MouseDown(object sender, MouseEventArgs e) //마우스 우클릭 메소드
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -142,7 +142,7 @@ namespace BlackJack_TheSpire
             }
         }
 
-        private void drawLabel_Click(object sender, EventArgs e)
+        private void drawLabel_Click(object sender, EventArgs e) //카드 선택 메소드
         {
             Label clickedLabel = (Label)sender;
 
@@ -172,22 +172,7 @@ namespace BlackJack_TheSpire
             MessageBox.Show(selectedCard.ToString() + " 카드가 덱에 추가되었습니다!");
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pushdeck(int index) //덱에 넣는 명령어
-        {
-            Card selectedCard = randomCards[index];
-            gameState.GetDeck().AddCard(selectedCard);
-        }
-        private void pushitem(int index) //아이템에 넣는 명령어
+        private void pushitem(int index) //아이템을 인벤토리에 넣는 명령어
         {
             Item selectedItem = randomItems[index];
 

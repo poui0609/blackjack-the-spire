@@ -56,6 +56,8 @@ namespace BlackJack_TheSpire
             isCycleOver = false;
             isCycleSuccess = false;
 
+            gameState.SetCurrentMissions(MissionManager.GetRandomMissions(2)); //사이클 시작시 미션 랜덤 생성
+
             gameState.GetDeck().ReturnUsedCards();
             gameState.GetDeck().Shuffle();
 
