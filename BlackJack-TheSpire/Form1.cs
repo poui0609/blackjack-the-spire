@@ -132,13 +132,16 @@ namespace BlackJack_TheSpire
         private void ShowPlayerHand(Card card)
         {
             PictureBox pb = new PictureBox();
-
-            pb.Size = new Size(100, 300);
+            pb.BorderStyle = BorderStyle.None;
+            pb.BackColor = Color.Transparent;
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.Size = new Size(159, 220);
+            pb.AutoSize = false;
             pb.Image = GetCardImage(card);
 
             int index = playerhandpanel.Controls.Count;
 
-            pb.Location = new Point(index * 50, 10);
+            pb.Location = new Point(index * 100, 10);
 
             playerhandpanel.Controls.Add(pb);
 
@@ -146,8 +149,7 @@ namespace BlackJack_TheSpire
         }
         Image GetCardImage(Card card) //사용법 : Resources 폴더에 넣으면 됌
         {
-            // string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
-            string fileName = "card.png";
+            string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
             string path = Path.Combine(Application.StartupPath,"..","..","Resources",fileName);
             path = Path.GetFullPath(path);
             return Image.FromFile(path);

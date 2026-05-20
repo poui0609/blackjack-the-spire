@@ -51,7 +51,7 @@ namespace BlackJack_TheSpire
 
                 PictureBox pb = new PictureBox();
 
-                pb.Size = new Size(100, 150);
+                pb.Size = new Size(73, 101);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.Image = GetCardImage(card);
 
@@ -86,7 +86,7 @@ namespace BlackJack_TheSpire
         }
         Image GetCardImage(Card card)
         {
-            string fileName = "card.png";
+            string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
 
             string path =
                 Path.Combine(
