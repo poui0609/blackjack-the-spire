@@ -97,7 +97,6 @@
             this.룰ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1579, 33);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
@@ -291,7 +290,7 @@
             // 
             // slot5
             // 
-            this.slot5.Location = new System.Drawing.Point(0, 0);
+            this.slot5.Location = new System.Drawing.Point(82, 132);
             this.slot5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.slot5.Name = "slot5";
             this.slot5.Size = new System.Drawing.Size(143, 34);

@@ -22,12 +22,11 @@ namespace BlackJack_TheSpire
 
             ShowDeck();
         }
-        private void ShowDeck()
+        private List<Card> loadcount()
         {
-            List<Card> cards =
-                gameState.GetDeck().GetAllCards();
+            List<Card> cards = gameState.GetDeck().GetAllCards(); //남은 덱 가져오기
 
-            cards.Sort((a, b) =>
+            cards.Sort((a, b) => //가져온 덱 정렬
             {
                 int typeCompare =
                     a.GetCardType().CompareTo(b.GetCardType());
@@ -38,6 +37,11 @@ namespace BlackJack_TheSpire
                 return a.GetMissionValue()
                     .CompareTo(b.GetMissionValue());
             });
+            return cards;
+        }
+        private void ShowDeck()
+        {
+            List<Card> cards = loadcount();
 
             panel1.Controls.Clear();
             panel2.Controls.Clear();
@@ -64,7 +68,7 @@ namespace BlackJack_TheSpire
                 pb.BringToFront();
             }
         }
-        private Panel GetPanelByCardType(CardType type)
+        private Panel GetPanelByCardType(CardType type) //모양에 맞는 판넬 배정
         {
             switch (type)
             {
@@ -84,17 +88,11 @@ namespace BlackJack_TheSpire
                     return panel1;
             }
         }
-        Image GetCardImage(Card card)
+        Image GetCardImage(Card card) // 이미지 가져오기
         {
             string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
 
-            string path =
-                Path.Combine(
-                    Application.StartupPath,
-                    "..",
-                    "..",
-                    "Resources",
-                    fileName);
+            string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", fileName);
 
             path = Path.GetFullPath(path);
 

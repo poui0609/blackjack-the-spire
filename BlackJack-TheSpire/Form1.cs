@@ -25,12 +25,12 @@ namespace BlackJack_TheSpire
         {
             InitializeComponent();
             start gamestart = new start();
-            if (gamestart.ShowDialog() != DialogResult.OK)
+            if (gamestart.ShowDialog() != DialogResult.OK) //시작화면에서 버튼을 통해서 껐는지 확인. 잘못된 경로면 종료
             {
                 this.Close();
                 return;
             }
-            gameState = gamestart.SelectedGameState;
+            gameState = gamestart.SelectedGameState; //저장정보 반영
 
             roundManager = new RoundManager(gameState);
             cycleManager = new CycleManager(gameState, roundManager);
@@ -68,13 +68,13 @@ namespace BlackJack_TheSpire
             odds.Text = odd.ToString();
             get.Text = $"받는 점수 :{Math.Ceiling(value * odd).ToString()}";
         }
-        void showfoldnum()
+        void showfoldnum() //폴드 수 보여주는 메소드
         {
             foldnum.Text = $"{fold_num.ToString()}";
         }
         private void foldbutten_Click(object sender, EventArgs e)
         {
-            if (!roundManager.Fold())
+            if (!roundManager.Fold()) //폴드 수행. 폴드 불가능시 메시지 후 종료
             {
                 MessageBox.Show("폴드를 할 수 없습니다.");
                 return;
@@ -87,24 +87,25 @@ namespace BlackJack_TheSpire
         }
         private void draw_Click(object sender, EventArgs e)
         {
-            Card drawCard = roundManager.Draw();
+            Card drawCard = roundManager.Draw(); //카드뽑기
             if (drawCard == null)
                 return;
-            ShowPlayerHand(drawCard);
+            ShowPlayerHand(drawCard); //손패 이미지 추가
             shownumodds();
         }
 
         private void stand_Click(object sender, EventArgs e)
         {
-            roundManager.Stand();
-            cycleManager.OnRoundEnd();
+            roundManager.Stand(); 
+            cycleManager.OnRoundEnd(); 
 
             playerhandpanel.Controls.Clear();
 
             shownumodds();
             showscore();
-            showround();
-            if (cycleManager.IsCycleSuccess())
+            showround(); //스탠드 = 라운드 종료. 화면상 라운드 정보들 업데이트
+
+            if (cycleManager.IsCycleSuccess()) // 사이클이 끝나면
             {
                 showcoin();
 
@@ -132,9 +133,9 @@ namespace BlackJack_TheSpire
         private void ShowPlayerHand(Card card)
         {
             PictureBox pb = new PictureBox();
-            pb.BorderStyle = BorderStyle.None;
-            pb.BackColor = Color.Transparent;
-            pb.SizeMode = PictureBoxSizeMode.StretchImage;
+            pb.BorderStyle = BorderStyle.None; //테두리 제거
+            pb.BackColor = Color.Transparent; //색을 투명하게
+            pb.SizeMode = PictureBoxSizeMode.StretchImage; //크기가 이미지에 따라 조정되지 않게 고정
             pb.Size = new Size(159, 220);
             pb.AutoSize = false;
             pb.Image = GetCardImage(card);
@@ -145,12 +146,12 @@ namespace BlackJack_TheSpire
 
             playerhandpanel.Controls.Add(pb);
 
-            pb.BringToFront();
+            pb.BringToFront(); //최근거를 맨 위로 (최근게 겹쳐보이게)
         }
-        Image GetCardImage(Card card) //사용법 : Resources 폴더에 넣으면 됌
+        Image GetCardImage(Card card) //사진 가져오기
         {
-            string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
-            string path = Path.Combine(Application.StartupPath,"..","..","Resources",fileName);
+            string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png"; //이름설정
+            string path = Path.Combine(Application.StartupPath,"..","..","Resources",fileName); //경로설정
             path = Path.GetFullPath(path);
             return Image.FromFile(path);
         }
