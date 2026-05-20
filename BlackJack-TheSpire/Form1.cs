@@ -18,7 +18,13 @@ namespace BlackJack_TheSpire
         GameState gameState;
         CycleManager cycleManager;
         RoundManager roundManager;
+
+        PictureBox movingCard; //카드 움직이는 효과 때 사용
+        Card drawCard; //마지막으로 뽑은 카드
+        int targetX; //카드 움직일 때 어디까지 움직일지 저장하는 변수
+
         private int fold_num = 0; //폴드 횟수
+
         private Label[] itemSlots; //아이템 슬롯 변수
         private Label selectedSlot; //아이템 슬롯 저장 변수
         public Form1()
@@ -90,7 +96,8 @@ namespace BlackJack_TheSpire
             Card drawCard = roundManager.Draw(); //카드뽑기
             if (drawCard == null)
                 return;
-            ShowPlayerHand(drawCard); //손패 이미지 추가
+            this.drawCard = drawCard; //마지막으로 뽑은 카드 저장
+            ShowPlayerHand(); //손패 이미지 추가
             shownumodds();
         }
 
@@ -130,23 +137,62 @@ namespace BlackJack_TheSpire
             HaveDeck haveDeck = new HaveDeck(gameState);
             haveDeck.ShowDialog();
         }
-        private void ShowPlayerHand(Card card)
+        private void ShowPlayerHand()
         {
-            PictureBox pb = new PictureBox();
-            pb.BorderStyle = BorderStyle.None; //테두리 제거
-            pb.BackColor = Color.Transparent; //색을 투명하게
-            pb.SizeMode = PictureBoxSizeMode.StretchImage; //크기가 이미지에 따라 조정되지 않게 고정
-            pb.Size = new Size(159, 220);
-            pb.AutoSize = false;
-            pb.Image = GetCardImage(card);
+            movingCard = new PictureBox();
+
+            movingCard.BorderStyle = BorderStyle.None; //테두기 제거
+            movingCard.BackColor = Color.Transparent; //색 투명
+            movingCard.SizeMode = PictureBoxSizeMode.StretchImage; // 크기가 이미지 크기에 따라 조절되지 않게 고정
+
+            movingCard.Size = new Size(159, 220);
+            movingCard.AutoSize = false;
+
+            string path = @"..\..\Resources\card.png";
+            movingCard.Image = Image.FromFile(path); //뒷면이 쭉 이동
 
             int index = playerhandpanel.Controls.Count;
 
-            pb.Location = new Point(index * 100, 10);
+            // 최종 도착 위치
+            targetX = index * 100;
 
-            playerhandpanel.Controls.Add(pb);
+            // 시작 위치 (오른쪽 밖)
+            movingCard.Location = new Point(playerhandpanel.Width, 10);
 
-            pb.BringToFront(); //최근거를 맨 위로 (최근게 겹쳐보이게)
+            playerhandpanel.Controls.Add(movingCard); //패널에 카드 추가
+
+            movingCard.BringToFront(); // 최근거가 겹쳐보이게
+
+            draw_impact();
+        }
+        private void draw_impact()
+        {
+            moveTimer.Stop();
+
+            // 중복 연결 방지
+            moveTimer.Tick -= MoveCard;
+            moveTimer.Tick += MoveCard;
+
+            moveTimer.Interval = 10;
+            moveTimer.Start();
+        }
+
+        private async void MoveCard(object sender, EventArgs e)
+        {
+            int speed = 15;
+
+            movingCard.Left -= speed;
+
+            // 목표 위치 도착
+            if (movingCard.Left <= targetX)
+            {
+                movingCard.Left = targetX;
+
+                await Task.Delay(100); //0.1초 대기
+
+                movingCard.Image = GetCardImage(drawCard); //뒷면에서 카드로 이미지 변경
+                moveTimer.Stop();
+            }
         }
         Image GetCardImage(Card card) //사진 가져오기
         {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.coin = new System.Windows.Forms.Label();
             this.num = new System.Windows.Forms.Label();
             this.odds = new System.Windows.Forms.Label();
@@ -60,6 +61,7 @@
             this.item3 = new System.Windows.Forms.Label();
             this.item4 = new System.Windows.Forms.Label();
             this.item5 = new System.Windows.Forms.Label();
+            this.moveTimer = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,19 +116,19 @@
             // 저장및종료ToolStripMenuItem
             // 
             this.저장및종료ToolStripMenuItem.Name = "저장및종료ToolStripMenuItem";
-            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.저장및종료ToolStripMenuItem.Text = "재도전";
             // 
             // 재도전ToolStripMenuItem
             // 
             this.재도전ToolStripMenuItem.Name = "재도전ToolStripMenuItem";
-            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.재도전ToolStripMenuItem.Text = "나가기";
             // 
             // 게임종료ToolStripMenuItem
             // 
             this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
-            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.게임종료ToolStripMenuItem.Text = "게임종료";
             // 
             // 룰ToolStripMenuItem
@@ -290,7 +292,7 @@
             // 
             // slot5
             // 
-            this.slot5.Location = new System.Drawing.Point(82, 132);
+            this.slot5.Location = new System.Drawing.Point(71, 34);
             this.slot5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.slot5.Name = "slot5";
             this.slot5.Size = new System.Drawing.Size(143, 34);
@@ -424,6 +426,7 @@
         private System.Windows.Forms.Label item3;
         private System.Windows.Forms.Label item4;
         private System.Windows.Forms.Label item5;
+        private System.Windows.Forms.Timer moveTimer;
     }
 }
 
