@@ -36,40 +36,40 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(788, 100);
+            this.panel1.Size = new System.Drawing.Size(806, 197);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(0, 106);
+            this.panel2.Location = new System.Drawing.Point(8, 215);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(788, 100);
+            this.panel2.Size = new System.Drawing.Size(810, 179);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(0, 224);
+            this.panel3.Location = new System.Drawing.Point(21, 400);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(788, 100);
+            this.panel3.Size = new System.Drawing.Size(797, 189);
             this.panel3.TabIndex = 1;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(0, 338);
+            this.panel4.Location = new System.Drawing.Point(21, 595);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(788, 100);
+            this.panel4.Size = new System.Drawing.Size(803, 187);
             this.panel4.TabIndex = 1;
             // 
             // DeckCount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1195, 848);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "DeckCount";
             this.Text = "DeckCount";
