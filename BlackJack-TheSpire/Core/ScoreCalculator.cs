@@ -24,7 +24,7 @@ namespace BlackJack_TheSpire
             return value * 0.1;
         }
 
-        public static int CalculateScore(Hand hand) //이게 진짜 점수 계산 
+        public static int CalculateScore(Hand hand, GameState gameState) //이게 진짜 점수 계산 
         {
             if (hand.IsBust())
                 return 0;
@@ -32,6 +32,11 @@ namespace BlackJack_TheSpire
             int value = hand.CalculateValue();
             double multiplier = GetHandMultiplier(hand);
             double total = value * multiplier;
+
+            foreach (Item item in gameState.GetInventory().GetItems())
+            {
+                total *= item.ScoreMultiplier;
+            }
 
             return (int)total;
         }

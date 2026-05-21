@@ -36,9 +36,6 @@
             this.selectbtn2 = new System.Windows.Forms.Button();
             this.selectbtn3 = new System.Windows.Forms.Button();
             this.pass = new System.Windows.Forms.Button();
-            this.draw1 = new System.Windows.Forms.Label();
-            this.draw2 = new System.Windows.Forms.Label();
-            this.draw3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.slot1 = new System.Windows.Forms.Label();
             this.itemMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -48,7 +45,13 @@
             this.slot4 = new System.Windows.Forms.Label();
             this.slot5 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.draw1 = new System.Windows.Forms.PictureBox();
+            this.draw2 = new System.Windows.Forms.PictureBox();
+            this.draw3 = new System.Windows.Forms.PictureBox();
             this.itemMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.draw1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.draw2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.draw3)).BeginInit();
             this.SuspendLayout();
             // 
             // buy1
@@ -116,7 +119,7 @@
             // 
             // pass
             // 
-            this.pass.Location = new System.Drawing.Point(533, 291);
+            this.pass.Location = new System.Drawing.Point(538, 308);
             this.pass.Margin = new System.Windows.Forms.Padding(2);
             this.pass.Name = "pass";
             this.pass.Size = new System.Drawing.Size(98, 35);
@@ -124,39 +127,6 @@
             this.pass.Text = "나가기";
             this.pass.UseVisualStyleBackColor = true;
             this.pass.Click += new System.EventHandler(this.pass_Click);
-            // 
-            // draw1
-            // 
-            this.draw1.Location = new System.Drawing.Point(136, 184);
-            this.draw1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.draw1.Name = "draw1";
-            this.draw1.Size = new System.Drawing.Size(141, 105);
-            this.draw1.TabIndex = 7;
-            this.draw1.Text = "카드\r\n얘네는 하나 뽑으면 하나만 남기고 없애야함\r\n\r\n";
-            this.draw1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.draw1.Click += new System.EventHandler(this.drawLabel_Click);
-            // 
-            // draw2
-            // 
-            this.draw2.Location = new System.Drawing.Point(321, 184);
-            this.draw2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.draw2.Name = "draw2";
-            this.draw2.Size = new System.Drawing.Size(141, 105);
-            this.draw2.TabIndex = 8;
-            this.draw2.Text = "카드";
-            this.draw2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.draw2.Click += new System.EventHandler(this.drawLabel_Click);
-            // 
-            // draw3
-            // 
-            this.draw3.Location = new System.Drawing.Point(513, 184);
-            this.draw3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.draw3.Name = "draw3";
-            this.draw3.Size = new System.Drawing.Size(141, 105);
-            this.draw3.TabIndex = 9;
-            this.draw3.Text = "카드";
-            this.draw3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.draw3.Click += new System.EventHandler(this.drawLabel_Click);
             // 
             // label4
             // 
@@ -250,11 +220,47 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "우클릭으로\r\n삭제 가능";
             // 
+            // draw1
+            // 
+            this.draw1.BackColor = System.Drawing.Color.Transparent;
+            this.draw1.Location = new System.Drawing.Point(161, 170);
+            this.draw1.Name = "draw1";
+            this.draw1.Size = new System.Drawing.Size(90, 125);
+            this.draw1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.draw1.TabIndex = 17;
+            this.draw1.TabStop = false;
+            this.draw1.Click += new System.EventHandler(this.drawLabel_Click);
+            // 
+            // draw2
+            // 
+            this.draw2.BackColor = System.Drawing.Color.Transparent;
+            this.draw2.Location = new System.Drawing.Point(348, 170);
+            this.draw2.Name = "draw2";
+            this.draw2.Size = new System.Drawing.Size(90, 125);
+            this.draw2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.draw2.TabIndex = 18;
+            this.draw2.TabStop = false;
+            this.draw2.Click += new System.EventHandler(this.drawLabel_Click);
+            // 
+            // draw3
+            // 
+            this.draw3.BackColor = System.Drawing.Color.Transparent;
+            this.draw3.Location = new System.Drawing.Point(538, 170);
+            this.draw3.Name = "draw3";
+            this.draw3.Size = new System.Drawing.Size(90, 125);
+            this.draw3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.draw3.TabIndex = 19;
+            this.draw3.TabStop = false;
+            this.draw3.Click += new System.EventHandler(this.drawLabel_Click);
+            // 
             // store
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 354);
+            this.Controls.Add(this.draw3);
+            this.Controls.Add(this.draw2);
+            this.Controls.Add(this.draw1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.slot5);
             this.Controls.Add(this.slot4);
@@ -262,9 +268,6 @@
             this.Controls.Add(this.slot2);
             this.Controls.Add(this.slot1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.draw3);
-            this.Controls.Add(this.draw2);
-            this.Controls.Add(this.draw1);
             this.Controls.Add(this.pass);
             this.Controls.Add(this.selectbtn3);
             this.Controls.Add(this.selectbtn2);
@@ -277,6 +280,9 @@
             this.Text = "store";
             this.Load += new System.EventHandler(this.store_Load);
             this.itemMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.draw1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.draw2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.draw3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,9 +297,6 @@
         private System.Windows.Forms.Button selectbtn2;
         private System.Windows.Forms.Button selectbtn3;
         private System.Windows.Forms.Button pass;
-        private System.Windows.Forms.Label draw1;
-        private System.Windows.Forms.Label draw2;
-        private System.Windows.Forms.Label draw3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label slot1;
         private System.Windows.Forms.Label slot2;
@@ -303,5 +306,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ContextMenuStrip itemMenu;
         private System.Windows.Forms.ToolStripMenuItem 삭제ToolStripMenuItem;
+        private System.Windows.Forms.PictureBox draw1;
+        private System.Windows.Forms.PictureBox draw2;
+        private System.Windows.Forms.PictureBox draw3;
     }
 }
