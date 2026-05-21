@@ -14,14 +14,16 @@ namespace BlackJack_TheSpire
         public int Price;
 
         public Action<GameState> Effect;
+        public double ScoreMultiplier;
 
-        public Item(int id, string name, string description, int price, Action<GameState> effect)
+        public Item(int id, string name, string description, int price, double scoreMultiplier, Action<GameState> effect)
         {
             Id = id;
             Name = name;
             Description = description;
             Price = price;
             Effect = effect;
+            ScoreMultiplier = scoreMultiplier;
         }
     }
 }

@@ -239,6 +239,8 @@ namespace BlackJack_TheSpire
 
                 cycleManager.GoToNextCycle();
 
+                ShowMission();
+
                 SaveManager.Save(gameState);    //저장
             }
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -21,16 +22,17 @@ namespace BlackJack_TheSpire
             this.gameState = gameState;
 
             inventorySlots = new Label[] {slot1, slot2, slot3, slot4, slot5};
-            cardLabels = new Label[] { draw1, draw2, draw3 };
+            cardBoxes = new PictureBox[] { draw1, draw2, draw3 };
         }
         private Label[] inventorySlots;
         private Label selectedSlot;
-        private Label[] cardLabels;
+        private PictureBox[] cardBoxes;
 
         List<Card> randomCards;
         List<Item> randomItems;
         int item1, item2, item3, card1, card2, card3; //아이템과 카드 번호 저장하는 변수
         int safe;
+
 
 
         private void store_Load(object sender, EventArgs e) //랜덤 돌려서 아이템 채워넣기, 카드 채워넣기
@@ -64,20 +66,18 @@ namespace BlackJack_TheSpire
             }
 
             buy1.Text = randomItems[0].Name + "\n" + randomItems[0].Description + "\n" + randomItems[0].Price;
-
             buy2.Text = randomItems[1].Name + "\n" + randomItems[1].Description + "\n" + randomItems[1].Price;
-
             buy3.Text = randomItems[2].Name + "\n" + randomItems[2].Description + "\n" + randomItems[2].Price;
 
-            draw1.Text = randomCards[0].ToString();
-
-            draw2.Text = randomCards[1].ToString();
-
-            draw3.Text = randomCards[2].ToString();
+            cardBoxes[0].Image = GetCardImage(randomCards[0]);
+            cardBoxes[1].Image = GetCardImage(randomCards[1]);
+            cardBoxes[2].Image = GetCardImage(randomCards[2]);
 
             label4.Text = "보유 코인: " + gameState.GetCoin().ToString();
 
             RefreshInventory();
+
+            pass.Enabled = false;
         }
         private void RefreshInventory() //인벤토리 아이템 표시
         {
@@ -144,9 +144,9 @@ namespace BlackJack_TheSpire
 
         private void drawLabel_Click(object sender, EventArgs e) //카드 선택 메소드
         {
-            Label clickedLabel = (Label)sender;
+            PictureBox clickedBox = (PictureBox)sender;
 
-            int index = Array.IndexOf(cardLabels, clickedLabel);
+            int index = Array.IndexOf(cardBoxes, clickedBox);
 
             if (index < 0)
                 return;
@@ -155,19 +155,15 @@ namespace BlackJack_TheSpire
 
             gameState.GetDeck().AddCard(selectedCard);
 
-            for (int i = 0; i < cardLabels.Length; i++)
+            for (int i = 0; i < cardBoxes.Length; i++)
             {
-                if (i == index)
+                cardBoxes[i].Enabled = false;
+                if (i != index)
                 {
-                    cardLabels[i].Text = "선택 완료";
+                    cardBoxes[i].Visible = false;
                 }
-                else
-                {
-                    cardLabels[i].Text = "X";
-                }
-
-                cardLabels[i].Enabled = false;
             }
+            pass.Enabled = true;
 
             MessageBox.Show(selectedCard.ToString() + " 카드가 덱에 추가되었습니다!");
         }
@@ -201,6 +197,14 @@ namespace BlackJack_TheSpire
             }
             else
                 MessageBox.Show("코인 부족!");
+        }
+
+        Image GetCardImage(Card card)
+        {
+            string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
+            string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", fileName);
+            path = System.IO.Path.GetFullPath(path);
+            return Image.FromFile(path);
         }
     }
 }
