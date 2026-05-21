@@ -22,7 +22,10 @@ namespace BlackJack_TheSpire
         public static Mission GetRandomMission()
         {
             int index = GameRandom.Next(allMissions.Count);
-            return allMissions[index];
+
+            Mission original = allMissions[index];
+
+            return new Mission(original.Id, original.Name, original.Description, original.BonusMultiplier, original.Condition);
         }
 
         public static List<Mission> GetRandomMissions(int count)
