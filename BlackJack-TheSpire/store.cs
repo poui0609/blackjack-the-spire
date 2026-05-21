@@ -19,7 +19,14 @@ namespace BlackJack_TheSpire
             InitializeComponent();
 
             this.gameState = gameState;
+
+            inventorySlots = new Label[] {slot1, slot2, slot3, slot4, slot5};
+            cardLabels = new Label[] { draw1, draw2, draw3 };
         }
+        private Label[] inventorySlots;
+        private Label selectedSlot;
+        private Label[] cardLabels;
+
         List<Card> randomCards;
         List<Item> randomItems;
         int item1, item2, item3, card1, card2, card3; //아이템과 카드 번호 저장하는 변수
@@ -30,27 +37,59 @@ namespace BlackJack_TheSpire
         {
             randomCards = new List<Card>();
 
-            for (int i = 0; i < 3; i++)
+            while (randomCards.Count < 3)
             {
                 CardType[] allTypes = (CardType[])Enum.GetValues(typeof(CardType));
-                CardValue[] allValues = (CardValue[])Enum.GetValues (typeof(CardValue));
-                Card randomCard = new Card(allTypes[GameRandom.Next(allTypes.Length)], allValues[GameRandom.Next(allValues.Length)]);
-                randomCards.Add(randomCard);
+                CardValue[] allValues = (CardValue[])Enum.GetValues(typeof(CardValue));
+                Card newCard = new Card(allTypes[GameRandom.Next(allTypes.Length)], allValues[GameRandom.Next(allValues.Length)]);
+                bool exists = randomCards.Any(card => card.GetCardType() == newCard.GetCardType() && card.GetCardValue() == newCard.GetCardValue());
+                if (!exists)
+                {
+                    randomCards.Add(newCard);
+                }
             }
 
             randomItems = new List<Item>();
 
             for(int i = 0;i < 3; i++)
             {
-                randomItems.Add(ItemManager.GetRandomItem());
+                Item randomItem;
+                do
+                {
+                    randomItem = ItemManager.GetRandomItem();
+                }
+                while (randomItems.Contains(randomItem));
+
+                randomItems.Add(randomItem);
             }
-            label1.Text = randomItems[0].Name + "\n" + randomItems[0].Description;
 
-            label2.Text = randomItems[1].Name + "\n" + randomItems[1].Description;
+            buy1.Text = randomItems[0].Name + "\n" + randomItems[0].Description + "\n" + randomItems[0].Price;
 
-            label3.Text = randomItems[2].Name + "\n" + randomItems[2].Description;
+            buy2.Text = randomItems[1].Name + "\n" + randomItems[1].Description + "\n" + randomItems[1].Price;
+
+            buy3.Text = randomItems[2].Name + "\n" + randomItems[2].Description + "\n" + randomItems[2].Price;
+
+            draw1.Text = randomCards[0].ToString();
+
+            draw2.Text = randomCards[1].ToString();
+
+            draw3.Text = randomCards[2].ToString();
 
             label4.Text = "보유 코인: " + gameState.GetCoin().ToString();
+
+            RefreshInventory();
+        }
+        private void RefreshInventory() //인벤토리 아이템 표시
+        {
+            for (int i = 0; i < inventorySlots.Length; i++)
+            {
+                inventorySlots[i].Text = "";
+            }
+            List<Item> items = gameState.GetInventory().GetItems();
+            for (int i = 0; i < items.Count && i < inventorySlots.Length; i++)
+            {
+                inventorySlots[i].Text = items[i].Name;
+            }
         }
 
         private void selectbtn1_Click(object sender, EventArgs e)
@@ -73,34 +112,81 @@ namespace BlackJack_TheSpire
             pushitem(2);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)  //마우스 우클릭 삭제 메소드
         {
+            if (selectedSlot == null)
+                return;
 
+            int index =
+                Array.IndexOf(inventorySlots, selectedSlot);
+
+            if (index < 0)
+                return;
+
+            List<Item> items =
+                gameState.GetInventory().GetItems();
+
+            if (index >= items.Count)
+                return;
+
+            items.RemoveAt(index);
+
+            RefreshInventory();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void slot_MouseDown(object sender, MouseEventArgs e) //마우스 우클릭 메소드
         {
-
+            if (e.Button == MouseButtons.Right)
+            {
+                selectedSlot = (Label)sender;
+            }
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void drawLabel_Click(object sender, EventArgs e) //카드 선택 메소드
         {
+            Label clickedLabel = (Label)sender;
 
-        }
+            int index = Array.IndexOf(cardLabels, clickedLabel);
 
-        private void pushdeck(int index) //덱에 넣는 명령어
-        {
+            if (index < 0)
+                return;
+
             Card selectedCard = randomCards[index];
+
             gameState.GetDeck().AddCard(selectedCard);
+
+            for (int i = 0; i < cardLabels.Length; i++)
+            {
+                if (i == index)
+                {
+                    cardLabels[i].Text = "선택 완료";
+                }
+                else
+                {
+                    cardLabels[i].Text = "X";
+                }
+
+                cardLabels[i].Enabled = false;
+            }
+
+            MessageBox.Show(selectedCard.ToString() + " 카드가 덱에 추가되었습니다!");
         }
-        private void pushitem(int index) //아이템에 넣는 명령어
+
+        private void pushitem(int index) //아이템을 인벤토리에 넣는 명령어
         {
             Item selectedItem = randomItems[index];
 
             if (gameState.GetCoin() >= selectedItem.Price)
             {
+                bool success = gameState.GetInventory().AddItem(selectedItem);
+                if (!success)
+                {
+                    MessageBox.Show("인벤토리가 가득 찼습니다!");
+                    return;
+                }
+                
                 gameState.SubtractCoin(selectedItem.Price);
-                gameState.AddItem(selectedItem);
+                RefreshInventory();
 
                 if (index == 0)
                     selectbtn1.Enabled = false;

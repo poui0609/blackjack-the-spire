@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlackJack_TheSpire;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,10 @@ namespace BlackJack_TheSpire
         private int cycleScore;
         private int targetScore;
         private Deck deck;
-        private List<Item> inventory;
+        private Inventory inventory;
+        private List<Mission> currentMissions;
 
-        public GameState()
+        public GameState() //초기값
         {
             seed = 0;
             currentChapter = 1;
@@ -28,13 +30,14 @@ namespace BlackJack_TheSpire
             cycleScore = 0;
             targetScore = 0;
             deck = new Deck();
-            inventory = new List<Item>();
+            inventory = new Inventory();
+            currentMissions = new List<Mission>();
         }
 
         public int GetSeed() { return seed; }
-        public void SetSeed(int value) { seed = value; }
+        public void SetSeed(int value) { seed = value; } 
 
-        public int GetCurrentChapter() { return currentChapter; }
+        public int GetCurrentChapter() { return currentChapter; } 
         public void SetCurrentChapter(int value) { currentChapter = value; }
 
         public int GetCurrentCycle() { return currentCycle; }
@@ -70,24 +73,16 @@ namespace BlackJack_TheSpire
 
         public Deck GetDeck() { return deck; }
 
-        public void AddItem(Item item)
+        public Inventory GetInventory() { return inventory; }
+
+        public bool AddItem(Item item)
         {
-            inventory.Add(item);
+            return inventory.AddItem(item);
         }
 
         public void RemoveItem(Item item)
         {
-            inventory.Remove(item);
-        }
-
-        public List<Item> GetInventory()
-        {
-            return inventory;
-        }
-
-        public int GetInventoryCount()
-        {
-            return inventory.Count;
+            inventory.RemoveItem(item);
         }
 
         public void ResetCycleScore()
@@ -100,7 +95,7 @@ namespace BlackJack_TheSpire
             currentRound++;
         }
 
-        public void NextCycle()
+        public void NextCycle() // 사이클 넘기는거 라운드 초기화 같은 기능있음
         {
             currentCycle++;
             currentRound = 1;
@@ -118,9 +113,9 @@ namespace BlackJack_TheSpire
             return cycleScore >= targetScore;
         }
 
-        public int GetRemainingRounds()
+        public int GetRemainingRounds() // 남은 라운드 계산. 현재 라운드도 남은 라운드에 포함됨
         {
-            return 4 - currentRound + 1;
+            return 5 - currentRound ;
         }
 
         public int CalculateCycleReward()
@@ -131,6 +126,16 @@ namespace BlackJack_TheSpire
         public bool IsGameClear()
         {
             return currentChapter > 6;
+        }
+
+        public List<Mission> GetCurrentMissions()
+        {
+            return currentMissions;
+        }
+
+        public void SetCurrentMissions(List<Mission> missions)
+        {
+            currentMissions = missions;
         }
     }
 }
