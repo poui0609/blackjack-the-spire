@@ -26,6 +26,7 @@ namespace BlackJack_TheSpire
             RoundManager roundManager = new RoundManager(SelectedGameState);
             CycleManager cycleManager = new CycleManager(SelectedGameState, roundManager);
             cycleManager.StartCycle();
+            SelectedGameState.GetDeck().Shuffle();
             SaveManager.Save(SelectedGameState); //새로운 정보로 저장
 
             this.DialogResult = DialogResult.OK;

@@ -40,7 +40,6 @@ namespace BlackJack_TheSpire
 
             roundManager = new RoundManager(gameState);
             cycleManager = new CycleManager(gameState, roundManager);
-            gameState.GetDeck().Shuffle();
             itemSlots = new Label[] {item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission();
