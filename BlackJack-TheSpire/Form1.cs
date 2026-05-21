@@ -27,9 +27,40 @@ namespace BlackJack_TheSpire
 
         private Label[] itemSlots; //아이템 슬롯 변수
         private Label selectedSlot; //아이템 슬롯 저장 변수
+
+        // ===== 스케일링용 필드 =====
+        private float baseWidth;   // 디자이너에서 배치한 기준 너비
+        private float baseHeight;  // 디자이너에서 배치한 기준 높이
+
+        // 카드 기준 수치 (디자인 시 기준값) - 양쪽 메서드에서 공유
+        private const int CARD_BASE_WIDTH = 159;
+        private const int CARD_BASE_HEIGHT = 220;
+        private const int CARD_GAP = 100;       // 카드 사이 간격
+        private const int CARD_MARGIN_Y = 10;   // 카드 위쪽 여백
+
+        // 각 컨트롤의 원래(디자이너 시) 위치/크기/폰트
+        private struct ControlLayout
+        {
+            public float X, Y, Width, Height, FontSize;
+        }
+        private Dictionary<Control, ControlLayout> originalLayouts
+            = new Dictionary<Control, ControlLayout>();
+
         public Form1()
         {
             InitializeComponent();
+
+            // InitializeComponent 직후의 크기가 곧 디자이너 기준 크기
+            baseWidth = this.ClientSize.Width;
+            baseHeight = this.ClientSize.Height;
+
+            // 디자이너에 배치된 모든 컨트롤의 원래 레이아웃을 기록
+            RegisterAllControls(this);
+
+            // 이벤트 연결
+            this.Load += Form1_LayoutLoad;
+            this.Resize += Form1_LayoutResize;
+
             start gamestart = new start();
             if (gamestart.ShowDialog() != DialogResult.OK) //시작화면에서 버튼을 통해서 껐는지 확인. 잘못된 경로면 종료
             {
@@ -41,9 +72,93 @@ namespace BlackJack_TheSpire
             roundManager = new RoundManager(gameState);
             cycleManager = new CycleManager(gameState, roundManager);
             gameState.GetDeck().Shuffle();
-            itemSlots = new Label[] {item1, item2, item3, item4, item5 };
+            itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission();
+        }
+
+        // ===== 스케일링 메서드 =====
+
+        // 폼이 화면에 표시되기 직전 → 이때 전체화면으로 전환
+        private void Form1_LayoutLoad(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            // WindowState 변경이 Resize를 유발하므로 ApplyScale은 그쪽에서 실행됨
+        }
+
+        private void Form1_LayoutResize(object sender, EventArgs e)
+        {
+            if (originalLayouts.Count > 0)
+                ApplyScale();
+        }
+
+        // 모든 하위 컨트롤을 재귀로 등록 (Panel 안의 컨트롤까지 포함)
+        private void RegisterAllControls(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                originalLayouts[ctrl] = new ControlLayout
+                {
+                    X = ctrl.Left,
+                    Y = ctrl.Top,
+                    Width = ctrl.Width,
+                    Height = ctrl.Height,
+                    FontSize = ctrl.Font.Size
+                };
+                if (ctrl.HasChildren)
+                    RegisterAllControls(ctrl);
+            }
+        }
+
+        // 현재 폼 크기 / 기준 크기 비율로 모든 컨트롤 재배치
+        private void ApplyScale()
+        {
+            // 최소화 상태이거나 크기가 0이면 계산 무의미 → 건너뜀
+            if (this.WindowState == FormWindowState.Minimized)
+                return;
+            if (this.ClientSize.Width == 0 || this.ClientSize.Height == 0)
+                return;
+
+            float scaleX = this.ClientSize.Width / baseWidth;
+            float scaleY = this.ClientSize.Height / baseHeight;
+
+            // 디자이너에 배치된 컨트롤들 재배치
+            foreach (var pair in originalLayouts)
+            {
+                Control ctrl = pair.Key;
+                ControlLayout layout = pair.Value;
+
+                ctrl.Left = (int)(layout.X * scaleX);
+                ctrl.Top = (int)(layout.Y * scaleY);
+                ctrl.Width = (int)(layout.Width * scaleX);
+                ctrl.Height = (int)(layout.Height * scaleY);
+
+                // 폰트는 X/Y 중 작은 비율 기준 (글자 잘림 방지)
+                float fontScale = Math.Min(scaleX, scaleY);
+                ctrl.Font = new Font(ctrl.Font.FontFamily,
+                                     Math.Max(1f, layout.FontSize * fontScale),
+                                     ctrl.Font.Style);
+            }
+
+            // 런타임에 생성된 카드들도 다시 조정
+            // playerhandpanel 안의 PictureBox(카드)는 originalLayouts에 없으므로 별도 처리
+            int index = 0;
+            foreach (Control ctrl in playerhandpanel.Controls)
+            {
+                if (ctrl is PictureBox card)
+                {
+                    card.Size = new Size(
+                        (int)(CARD_BASE_WIDTH * scaleX),
+                        (int)(CARD_BASE_HEIGHT * scaleY));
+
+                    card.Location = new Point(
+                        (int)(index * CARD_GAP * scaleX),
+                        (int)(CARD_MARGIN_Y * scaleY));
+
+                    index++;
+                }
+            }
         }
 
         private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,8 +219,8 @@ namespace BlackJack_TheSpire
 
         private void stand_Click(object sender, EventArgs e)
         {
-            roundManager.Stand(); 
-            cycleManager.OnRoundEnd(); 
+            roundManager.Stand();
+            cycleManager.OnRoundEnd();
 
             playerhandpanel.Controls.Clear();
 
@@ -134,7 +249,7 @@ namespace BlackJack_TheSpire
         }
 
         private void deck_Click(object sender, EventArgs e) //전체 덱
-        { 
+        {
             HaveDeck haveDeck = new HaveDeck(gameState);
             haveDeck.ShowDialog();
         }
@@ -145,20 +260,29 @@ namespace BlackJack_TheSpire
             movingCard.BorderStyle = BorderStyle.None; //테두기 제거
             movingCard.BackColor = Color.Transparent; //색 투명
             movingCard.SizeMode = PictureBoxSizeMode.StretchImage; // 크기가 이미지 크기에 따라 조절되지 않게 고정
-
-            movingCard.Size = new Size(159, 220);
             movingCard.AutoSize = false;
+
+            // 현재 화면 비율 구하기
+            float scaleX = this.ClientSize.Width / baseWidth;
+            float scaleY = this.ClientSize.Height / baseHeight;
+
+            // 카드 기준 크기에 비율 적용
+            movingCard.Size = new Size(
+                (int)(CARD_BASE_WIDTH * scaleX),
+                (int)(CARD_BASE_HEIGHT * scaleY));
 
             string path = @"..\..\Resources\card.png";
             movingCard.Image = Image.FromFile(path); //뒷면이 쭉 이동
 
             int index = playerhandpanel.Controls.Count;
 
-            // 최종 도착 위치
-            targetX = index * 100;
+            // 최종 도착 위치 (카드 간격에 비율 적용)
+            targetX = (int)(index * CARD_GAP * scaleX);
 
-            // 시작 위치 (오른쪽 밖)
-            movingCard.Location = new Point(playerhandpanel.Width, 10);
+            // 시작 위치 (오른쪽 밖, Y 여백에 비율 적용)
+            movingCard.Location = new Point(
+                playerhandpanel.Width,
+                (int)(CARD_MARGIN_Y * scaleY));
 
             playerhandpanel.Controls.Add(movingCard); //패널에 카드 추가
 
@@ -198,7 +322,7 @@ namespace BlackJack_TheSpire
         Image GetCardImage(Card card) //사진 가져오기
         {
             string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png"; //이름설정
-            string path = Path.Combine(Application.StartupPath,"..","..","Resources",fileName); //경로설정
+            string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", fileName); //경로설정
             path = Path.GetFullPath(path);
             return Image.FromFile(path);
         }
@@ -212,18 +336,18 @@ namespace BlackJack_TheSpire
             List<Item> items = gameState.GetInventory().GetItems();
             for (int i = 0; i < items.Count && i < itemSlots.Length; i++)
             {
-                itemSlots[i].Text = items[i].Name +"\n" + items[i].Description;
+                itemSlots[i].Text = items[i].Name + "\n" + items[i].Description;
             }
         }
 
         void ShowMission()
         {
             List<Mission> missions = gameState.GetCurrentMissions();
-            if(missions.Count > 0)
+            if (missions.Count > 0)
             {
                 Mission1.Text = missions[0].Name + "\n" + missions[0].Description + "\n배율: X" + missions[0].BonusMultiplier;
             }
-            if(missions.Count > 1)
+            if (missions.Count > 1)
             {
                 Mission2.Text = missions[1].Name + "\n" + missions[1].Description + "\n배율: X" + missions[1].BonusMultiplier;
             }
