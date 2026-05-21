@@ -1,15 +1,10 @@
-﻿using System;
+﻿using BlackJack_TheSpire.Scaler;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace BlackJack_TheSpire
 {
@@ -18,6 +13,7 @@ namespace BlackJack_TheSpire
         GameState gameState;
         CycleManager cycleManager;
         RoundManager roundManager;
+        FormScaler scaler;
 
         PictureBox movingCard; //카드 움직이는 효과 때 사용
         Card drawCard; //마지막으로 뽑은 카드
@@ -28,38 +24,20 @@ namespace BlackJack_TheSpire
         private Label[] itemSlots; //아이템 슬롯 변수
         private Label selectedSlot; //아이템 슬롯 저장 변수
 
-        // ===== 스케일링용 필드 =====
-        private float baseWidth;   // 디자이너에서 배치한 기준 너비
-        private float baseHeight;  // 디자이너에서 배치한 기준 높이
-
         // 카드 기준 수치 (디자인 시 기준값) - 양쪽 메서드에서 공유
         private const int CARD_BASE_WIDTH = 159;
         private const int CARD_BASE_HEIGHT = 220;
         private const int CARD_GAP = 100;       // 카드 사이 간격
         private const int CARD_MARGIN_Y = 10;   // 카드 위쪽 여백
 
-        // 각 컨트롤의 원래(디자이너 시) 위치/크기/폰트
-        private struct ControlLayout
-        {
-            public float X, Y, Width, Height, FontSize;
-        }
-        private Dictionary<Control, ControlLayout> originalLayouts
-            = new Dictionary<Control, ControlLayout>();
-
         public Form1()
         {
             InitializeComponent();
 
-            // InitializeComponent 직후의 크기가 곧 디자이너 기준 크기
-            baseWidth = this.ClientSize.Width;
-            baseHeight = this.ClientSize.Height;
-
-            // 디자이너에 배치된 모든 컨트롤의 원래 레이아웃을 기록
-            RegisterAllControls(this);
+            scaler = new FormScaler(this);
 
             // 이벤트 연결
-            this.Load += Form1_LayoutLoad;
-            this.Resize += Form1_LayoutResize;
+            this.Resize += Form1_CardResize;
 
             start gamestart = new start();
             if (gamestart.ShowDialog() != DialogResult.OK) //시작화면에서 버튼을 통해서 껐는지 확인. 잘못된 경로면 종료
@@ -77,84 +55,26 @@ namespace BlackJack_TheSpire
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission();
         }
 
-        // ===== 스케일링 메서드 =====
-
-        // 폼이 화면에 표시되기 직전 → 이때 전체화면으로 전환
-        private void Form1_LayoutLoad(object sender, EventArgs e)
+        private void Form1_CardResize(object sender, EventArgs e)
         {
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
-            // WindowState 변경이 Resize를 유발하므로 ApplyScale은 그쪽에서 실행됨
+            ResizePlayerCards();
         }
 
-        private void Form1_LayoutResize(object sender, EventArgs e)
+        private void ResizePlayerCards()
         {
-            if (originalLayouts.Count > 0)
-                ApplyScale();
-        }
-
-        // 모든 하위 컨트롤을 재귀로 등록 (Panel 안의 컨트롤까지 포함)
-        private void RegisterAllControls(Control parent)
-        {
-            foreach (Control ctrl in parent.Controls)
-            {
-                originalLayouts[ctrl] = new ControlLayout
-                {
-                    X = ctrl.Left,
-                    Y = ctrl.Top,
-                    Width = ctrl.Width,
-                    Height = ctrl.Height,
-                    FontSize = ctrl.Font.Size
-                };
-                if (ctrl.HasChildren)
-                    RegisterAllControls(ctrl);
-            }
-        }
-
-        // 현재 폼 크기 / 기준 크기 비율로 모든 컨트롤 재배치
-        private void ApplyScale()
-        {
-            // 최소화 상태이거나 크기가 0이면 계산 무의미 → 건너뜀
-            if (this.WindowState == FormWindowState.Minimized)
-                return;
-            if (this.ClientSize.Width == 0 || this.ClientSize.Height == 0)
-                return;
-
-            float scaleX = this.ClientSize.Width / baseWidth;
-            float scaleY = this.ClientSize.Height / baseHeight;
-
-            // 디자이너에 배치된 컨트롤들 재배치
-            foreach (var pair in originalLayouts)
-            {
-                Control ctrl = pair.Key;
-                ControlLayout layout = pair.Value;
-
-                ctrl.Left = (int)(layout.X * scaleX);
-                ctrl.Top = (int)(layout.Y * scaleY);
-                ctrl.Width = (int)(layout.Width * scaleX);
-                ctrl.Height = (int)(layout.Height * scaleY);
-
-                // 폰트는 X/Y 중 작은 비율 기준 (글자 잘림 방지)
-                float fontScale = Math.Min(scaleX, scaleY);
-                ctrl.Font = new Font(ctrl.Font.FontFamily,
-                                     Math.Max(1f, layout.FontSize * fontScale),
-                                     ctrl.Font.Style);
-            }
-
-            // 런타임에 생성된 카드들도 다시 조정
-            // playerhandpanel 안의 PictureBox(카드)는 originalLayouts에 없으므로 별도 처리
             int index = 0;
+
             foreach (Control ctrl in playerhandpanel.Controls)
             {
                 if (ctrl is PictureBox card)
                 {
                     card.Size = new Size(
-                        (int)(CARD_BASE_WIDTH * scaleX),
-                        (int)(CARD_BASE_HEIGHT * scaleY));
+                        (int)(CARD_BASE_WIDTH * scaler.ScaleX),
+                        (int)(CARD_BASE_HEIGHT * scaler.ScaleY));
 
                     card.Location = new Point(
-                        (int)(index * CARD_GAP * scaleX),
-                        (int)(CARD_MARGIN_Y * scaleY));
+                        (int)(index * CARD_GAP * scaler.ScaleX),
+                        (int)(CARD_MARGIN_Y * scaler.ScaleY));
 
                     index++;
                 }
@@ -171,14 +91,17 @@ namespace BlackJack_TheSpire
         {
             coin.Text = $"코인 : {gameState.GetCoin().ToString()}";
         }
+
         void showscore() //점수 보여주는 메소드
         {
             score.Text = $"{gameState.GetCycleScore().ToString()} / {gameState.GetTargetScore().ToString()}";
         }
+
         void showround() // 남은 턴 보여주는 메소드.
         {
             round.Text = $"{gameState.GetCurrentRound().ToString()} / 4";
         }
+
         void shownumodds() //배율, 숫자 보여주는 메소드
         {
             Hand hand = roundManager.GetPlayerHand();
@@ -189,10 +112,12 @@ namespace BlackJack_TheSpire
             odds.Text = odd.ToString();
             get.Text = $"받는 점수 :{Math.Ceiling(value * odd).ToString()}";
         }
+
         void showfoldnum() //폴드 수 보여주는 메소드
         {
             foldnum.Text = $"{fold_num.ToString()}";
         }
+
         private void foldbutten_Click(object sender, EventArgs e)
         {
             if (!roundManager.Fold()) //폴드 수행. 폴드 불가능시 메시지 후 종료
@@ -206,11 +131,13 @@ namespace BlackJack_TheSpire
             showfoldnum();
             shownumodds();
         }
+
         private void draw_Click(object sender, EventArgs e)
         {
             Card drawCard = roundManager.Draw(); //카드뽑기
             if (drawCard == null)
                 return;
+
             this.drawCard = drawCard; //마지막으로 뽑은 카드 저장
             ShowPlayerHand(); //손패 이미지 추가
             CheckMission(); //미션 성공했는지 확인하는 코드
@@ -242,6 +169,7 @@ namespace BlackJack_TheSpire
                 SaveManager.Save(gameState);    //저장
             }
         }
+
         private void deck_count_Click(object sender, EventArgs e)//남은덱
         {
             DeckCount deckCount = new DeckCount(gameState);
@@ -253,6 +181,7 @@ namespace BlackJack_TheSpire
             HaveDeck haveDeck = new HaveDeck(gameState);
             haveDeck.ShowDialog();
         }
+
         private void ShowPlayerHand()
         {
             movingCard = new PictureBox();
@@ -262,14 +191,10 @@ namespace BlackJack_TheSpire
             movingCard.SizeMode = PictureBoxSizeMode.StretchImage; // 크기가 이미지 크기에 따라 조절되지 않게 고정
             movingCard.AutoSize = false;
 
-            // 현재 화면 비율 구하기
-            float scaleX = this.ClientSize.Width / baseWidth;
-            float scaleY = this.ClientSize.Height / baseHeight;
-
             // 카드 기준 크기에 비율 적용
             movingCard.Size = new Size(
-                (int)(CARD_BASE_WIDTH * scaleX),
-                (int)(CARD_BASE_HEIGHT * scaleY));
+                (int)(CARD_BASE_WIDTH * scaler.ScaleX),
+                (int)(CARD_BASE_HEIGHT * scaler.ScaleY));
 
             string path = @"..\..\Resources\card.png";
             movingCard.Image = Image.FromFile(path); //뒷면이 쭉 이동
@@ -277,12 +202,12 @@ namespace BlackJack_TheSpire
             int index = playerhandpanel.Controls.Count;
 
             // 최종 도착 위치 (카드 간격에 비율 적용)
-            targetX = (int)(index * CARD_GAP * scaleX);
+            targetX = (int)(index * CARD_GAP * scaler.ScaleX);
 
             // 시작 위치 (오른쪽 밖, Y 여백에 비율 적용)
             movingCard.Location = new Point(
                 playerhandpanel.Width,
-                (int)(CARD_MARGIN_Y * scaleY));
+                (int)(CARD_MARGIN_Y * scaler.ScaleY));
 
             playerhandpanel.Controls.Add(movingCard); //패널에 카드 추가
 
@@ -290,6 +215,7 @@ namespace BlackJack_TheSpire
 
             draw_impact();
         }
+
         private void draw_impact()
         {
             moveTimer.Stop();
@@ -319,6 +245,7 @@ namespace BlackJack_TheSpire
                 moveTimer.Stop();
             }
         }
+
         Image GetCardImage(Card card) //사진 가져오기
         {
             string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png"; //이름설정
@@ -333,6 +260,7 @@ namespace BlackJack_TheSpire
             {
                 itemSlots[i].Text = "";
             }
+
             List<Item> items = gameState.GetInventory().GetItems();
             for (int i = 0; i < items.Count && i < itemSlots.Length; i++)
             {

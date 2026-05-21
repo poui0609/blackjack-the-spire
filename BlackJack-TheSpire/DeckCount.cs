@@ -1,12 +1,8 @@
-﻿using System;
+﻿using BlackJack_TheSpire.Scaler;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BlackJack_TheSpire
@@ -14,19 +10,29 @@ namespace BlackJack_TheSpire
     public partial class DeckCount : Form
     {
         private GameState gameState;
+        private FormScaler scaler;
+
+        // 실행 중 생성되는 카드 PictureBox 기준값
+        private const int CARD_BASE_WIDTH = 73;
+        private const int CARD_BASE_HEIGHT = 101;
+        private const int CARD_GAP = 30;
+        private const int CARD_MARGIN_Y = 10;
+
         internal DeckCount(GameState gameState)
         {
             InitializeComponent();
+
+            scaler = new FormScaler(this);
 
             this.gameState = gameState;
 
             ShowDeck();
         }
+
         private List<Card> loadcount()
         {
-            List<Card> cards = gameState.GetDeck().GetAllCards(); //남은 덱 가져오기
-
-            cards.Sort((a, b) => //가져온 덱 정렬
+            List<Card> card = gameState.GetDeck().GetAllCards(); //남은 덱 가져오기
+            card.Sort((a, b) =>
             {
                 int typeCompare =
                     a.GetCardType().CompareTo(b.GetCardType());
@@ -34,11 +40,12 @@ namespace BlackJack_TheSpire
                 if (typeCompare != 0)
                     return typeCompare;
 
-                return a.GetMissionValue()
-                    .CompareTo(b.GetMissionValue());
+                return a.GetMissionValue().CompareTo(b.GetMissionValue());
             });
-            return cards;
+            return card;
+
         }
+
         private void ShowDeck()
         {
             List<Card> cards = loadcount();
@@ -50,25 +57,29 @@ namespace BlackJack_TheSpire
 
             foreach (Card card in cards)
             {
-                Panel targetPanel =
-                    GetPanelByCardType(card.GetCardType());
+                Panel targetPanel = GetPanelByCardType(card.GetCardType());
 
                 PictureBox pb = new PictureBox();
 
-                pb.Size = new Size(73, 101);
+                pb.Size = new Size(
+                    (int)(CARD_BASE_WIDTH * scaler.ScaleX),
+                    (int)(CARD_BASE_HEIGHT * scaler.ScaleY));
+
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.Image = GetCardImage(card);
 
                 int index = targetPanel.Controls.Count;
 
-                pb.Location = new Point(index * 30, 10);
+                pb.Location = new Point(
+                    (int)(index * CARD_GAP * scaler.ScaleX),
+                    (int)(CARD_MARGIN_Y * scaler.ScaleY));
 
                 targetPanel.Controls.Add(pb);
-
                 pb.BringToFront();
             }
         }
-        private Panel GetPanelByCardType(CardType type) //모양에 맞는 판넬 배정
+
+        private Panel GetPanelByCardType(CardType type) //모양별로 들어갈 판넬
         {
             switch (type)
             {
@@ -88,11 +99,17 @@ namespace BlackJack_TheSpire
                     return panel1;
             }
         }
-        Image GetCardImage(Card card) // 이미지 가져오기
+
+        Image GetCardImage(Card card) //이미지 불러오기
         {
             string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
 
-            string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", fileName);
+            string path = Path.Combine(
+                Application.StartupPath,
+                "..",
+                "..",
+                "Resources",
+                fileName);
 
             path = Path.GetFullPath(path);
 

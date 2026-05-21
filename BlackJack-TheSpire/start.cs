@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlackJack_TheSpire.Scaler;
+using System;
 using System.Windows.Forms;
 
 namespace BlackJack_TheSpire
 {
     public partial class start : Form
     {
+        FormScaler scaler;
+
         public start()
         {
             InitializeComponent();
+
+            scaler = new FormScaler(this);
         }
+
         internal GameState SelectedGameState { get; private set; }
+
         private void newbtn_Click(object sender, EventArgs e)
         {
             GameRandom.SetRandomSeed();

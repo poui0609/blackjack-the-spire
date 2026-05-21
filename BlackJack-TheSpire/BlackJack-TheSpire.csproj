@@ -87,6 +87,7 @@
     <Compile Include="rules.Designer.cs">
       <DependentUpon>rules.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scaler\FormScaler.cs" />
     <Compile Include="start.cs">
       <SubType>Form</SubType>
     </Compile>

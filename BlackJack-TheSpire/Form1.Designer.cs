@@ -51,11 +51,6 @@
             this.deck = new System.Windows.Forms.Label();
             this.playerhandpanel = new System.Windows.Forms.Panel();
             this.foldnum = new System.Windows.Forms.Label();
-            this.slot1 = new System.Windows.Forms.Label();
-            this.slot2 = new System.Windows.Forms.Label();
-            this.slot3 = new System.Windows.Forms.Label();
-            this.slot4 = new System.Windows.Forms.Label();
-            this.slot5 = new System.Windows.Forms.Label();
             this.item1 = new System.Windows.Forms.Label();
             this.item2 = new System.Windows.Forms.Label();
             this.item3 = new System.Windows.Forms.Label();
@@ -101,7 +96,7 @@
             this.룰ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1579, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1578, 33);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -118,19 +113,19 @@
             // 저장및종료ToolStripMenuItem
             // 
             this.저장및종료ToolStripMenuItem.Name = "저장및종료ToolStripMenuItem";
-            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.저장및종료ToolStripMenuItem.Text = "재도전";
             // 
             // 재도전ToolStripMenuItem
             // 
             this.재도전ToolStripMenuItem.Name = "재도전ToolStripMenuItem";
-            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.재도전ToolStripMenuItem.Text = "나가기";
             // 
             // 게임종료ToolStripMenuItem
             // 
             this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
-            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.게임종료ToolStripMenuItem.Text = "게임종료";
             // 
             // 룰ToolStripMenuItem
@@ -260,46 +255,6 @@
             this.foldnum.TabIndex = 21;
             this.foldnum.Text = "label3";
             // 
-            // slot1
-            // 
-            this.slot1.Location = new System.Drawing.Point(0, 0);
-            this.slot1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.slot1.Name = "slot1";
-            this.slot1.Size = new System.Drawing.Size(143, 34);
-            this.slot1.TabIndex = 4;
-            // 
-            // slot2
-            // 
-            this.slot2.Location = new System.Drawing.Point(0, 0);
-            this.slot2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.slot2.Name = "slot2";
-            this.slot2.Size = new System.Drawing.Size(143, 34);
-            this.slot2.TabIndex = 3;
-            // 
-            // slot3
-            // 
-            this.slot3.Location = new System.Drawing.Point(0, 0);
-            this.slot3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.slot3.Name = "slot3";
-            this.slot3.Size = new System.Drawing.Size(143, 34);
-            this.slot3.TabIndex = 2;
-            // 
-            // slot4
-            // 
-            this.slot4.Location = new System.Drawing.Point(0, 0);
-            this.slot4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.slot4.Name = "slot4";
-            this.slot4.Size = new System.Drawing.Size(143, 34);
-            this.slot4.TabIndex = 1;
-            // 
-            // slot5
-            // 
-            this.slot5.Location = new System.Drawing.Point(71, 34);
-            this.slot5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.slot5.Name = "slot5";
-            this.slot5.Size = new System.Drawing.Size(143, 34);
-            this.slot5.TabIndex = 0;
-            // 
             // item1
             // 
             this.item1.Location = new System.Drawing.Point(370, 90);
@@ -372,7 +327,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1579, 844);
+            this.ClientSize = new System.Drawing.Size(1578, 844);
             this.Controls.Add(this.Mission2);
             this.Controls.Add(this.Mission1);
             this.Controls.Add(this.item5);
@@ -380,11 +335,6 @@
             this.Controls.Add(this.item3);
             this.Controls.Add(this.item2);
             this.Controls.Add(this.item1);
-            this.Controls.Add(this.slot5);
-            this.Controls.Add(this.slot4);
-            this.Controls.Add(this.slot3);
-            this.Controls.Add(this.slot2);
-            this.Controls.Add(this.slot1);
             this.Controls.Add(this.foldnum);
             this.Controls.Add(this.deck_count);
             this.Controls.Add(this.playerhandpanel);
@@ -404,7 +354,6 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
@@ -438,11 +387,6 @@
         private System.Windows.Forms.Label deck;
         private System.Windows.Forms.Panel playerhandpanel;
         private System.Windows.Forms.Label foldnum;
-        private System.Windows.Forms.Label slot1;
-        private System.Windows.Forms.Label slot2;
-        private System.Windows.Forms.Label slot3;
-        private System.Windows.Forms.Label slot4;
-        private System.Windows.Forms.Label slot5;
         private System.Windows.Forms.Label item1;
         private System.Windows.Forms.Label item2;
         private System.Windows.Forms.Label item3;
