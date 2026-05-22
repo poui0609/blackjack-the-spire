@@ -31,12 +31,21 @@ namespace BlackJack_TheSpire
 
             int value = hand.CalculateValue();
             double multiplier = GetHandMultiplier(hand);
-            double total = value * multiplier;
+            
+            foreach (Mission mission in gameState.GetCurrentMissions())
+            {
+                if(mission.IsCompleted)
+                {
+                    multiplier *= mission.BonusMultiplier;
+                }
+            }
 
             foreach (Item item in gameState.GetInventory().GetItems())
             {
-                total *= item.ScoreMultiplier;
+                multiplier = item.Effect(gameState, hand, multiplier);
             }
+
+            double total = value * multiplier;
 
             return (int)total;
         }
