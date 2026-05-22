@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack_TheSpire
 {
-    internal class Mission
+    internal class Mission              //미션 클래스
     {
         public int Id;
         public string Name;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack_TheSpire
 {
-    internal class Inventory
+    internal class Inventory                   //아이템 구현 클래스
     {
         private List<Item> items;
 

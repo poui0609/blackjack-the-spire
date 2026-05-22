@@ -21,7 +21,7 @@ namespace BlackJack_TheSpire
 
             this.gameState = gameState;
 
-            inventorySlots = new Label[] {slot1, slot2, slot3, slot4, slot5};
+            inventorySlots = new Label[] {slot1, slot2, slot3, slot4, slot5};   
             cardBoxes = new PictureBox[] { draw1, draw2, draw3 };
         }
         private Label[] inventorySlots;
@@ -92,22 +92,22 @@ namespace BlackJack_TheSpire
             }
         }
 
-        private void selectbtn1_Click(object sender, EventArgs e)
+        private void selectbtn1_Click(object sender, EventArgs e)   //아이템 1번 구매
         {
             pushitem(0);
         }
 
-        private void selectbtn2_Click(object sender, EventArgs e)
+        private void selectbtn2_Click(object sender, EventArgs e)   //아이템 2번 구매
         {
             pushitem(1);
         }
 
-        private void pass_Click(object sender, EventArgs e)
+        private void pass_Click(object sender, EventArgs e)      //상점 나가기 
         {
             Close();
         }
 
-        private void selectbtn3_Click(object sender, EventArgs e)
+        private void selectbtn3_Click(object sender, EventArgs e)        //아이템 3번 구매
         {
             pushitem(2);
         }
@@ -142,7 +142,7 @@ namespace BlackJack_TheSpire
             }
         }
 
-        private void drawLabel_Click(object sender, EventArgs e) //카드 선택 메소드
+        private void drawLabel_Click(object sender, EventArgs e) //카드 선택 메소드, 상점 폼 아래 어떤 카드를 선택할 것인지
         {
             PictureBox clickedBox = (PictureBox)sender;
 
@@ -168,7 +168,7 @@ namespace BlackJack_TheSpire
             MessageBox.Show(selectedCard.ToString() + " 카드가 덱에 추가되었습니다!");
         }
 
-        private void pushitem(int index) //아이템을 인벤토리에 넣는 명령어
+        private void pushitem(int index)                             //아이템을 인벤토리에 넣는 명령어
         {
             Item selectedItem = randomItems[index];
 
@@ -199,7 +199,7 @@ namespace BlackJack_TheSpire
                 MessageBox.Show("코인 부족!");
         }
 
-        Image GetCardImage(Card card)
+        Image GetCardImage(Card card)                        //카드 이미지 넣는 메소드
         {
             string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
             string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", fileName);

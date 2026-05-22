@@ -106,11 +106,37 @@ namespace BlackJack_TheSpire
         {
             Hand hand = roundManager.GetPlayerHand();
 
+            if (hand.GetCardCount() == 0) { num.Text = "0"; odds.Text = "0"; get.Text = "받는 점수: 0"; return; };  //사이클 종료 후 메인 폼 UI 갱신
+
             int value = hand.CalculateValue();
-            double odd = ScoreCalculator.GetHandMultiplier(hand);
+            double baseOdd = ScoreCalculator.GetHandMultiplier(hand);
+            double totalMultiplier = baseOdd;
+            string oddsText = baseOdd.ToString("0.0");
+
+            foreach (Mission mission in gameState.GetCurrentMissions())
+            {
+                if (mission.IsCompleted)
+                {
+                    totalMultiplier *= mission.BonusMultiplier;
+                    oddsText += " x " + mission.BonusMultiplier.ToString("0.0");
+                }
+            }
+
+            foreach (Item item in gameState.GetInventory().GetItems())
+            {
+                double beforeMultiplier = totalMultiplier;
+                totalMultiplier = item.Effect(gameState, hand, totalMultiplier);
+
+                if (beforeMultiplier != totalMultiplier)
+                {
+                    double itemMultiplier = totalMultiplier / beforeMultiplier;
+                    oddsText += " x " + itemMultiplier.ToString("0.0");
+                }
+            }
+            int finalScore = (int)(value * totalMultiplier);
             num.Text = value.ToString();
-            odds.Text = odd.ToString();
-            get.Text = $"받는 점수 :{Math.Ceiling(value * odd).ToString()}";
+            odds.Text = oddsText + " = " + totalMultiplier.ToString("0.0");
+            get.Text = $"받는 점수: {finalScore}";
         }
 
         void showfoldnum() //폴드 수 보여주는 메소드
@@ -167,6 +193,8 @@ namespace BlackJack_TheSpire
                 cycleManager.GoToNextCycle();
 
                 ShowMission();
+                shownumodds();                //사이클 끝나고 메인 폼 화면 UI 갱신
+                showround();
 
                 SaveManager.Save(gameState);    //저장
             }
