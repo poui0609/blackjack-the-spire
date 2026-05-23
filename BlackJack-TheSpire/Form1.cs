@@ -10,10 +10,10 @@ namespace BlackJack_TheSpire
 {
     public partial class Form1 : Form
     {
-        GameState gameState;
-        CycleManager cycleManager;
-        RoundManager roundManager;
-        FormScaler scaler;
+        GameState gameState;    //게임 정보
+        CycleManager cycleManager;//사이클관리
+        RoundManager roundManager;//라운드관리
+        FormScaler scaler;          //화면 크기 조절.
 
         PictureBox movingCard; //카드 움직이는 효과 때 사용
         Card drawCard; //마지막으로 뽑은 카드
@@ -39,6 +39,10 @@ namespace BlackJack_TheSpire
             // 이벤트 연결
             this.Resize += Form1_CardResize;
 
+            gamestarting();
+        }
+        private void gamestarting() //게임 시작화면으로
+        {
             start gamestart = new start();
             if (gamestart.ShowDialog() != DialogResult.OK) //시작화면에서 버튼을 통해서 껐는지 확인. 잘못된 경로면 종료
             {
@@ -49,7 +53,6 @@ namespace BlackJack_TheSpire
 
             roundManager = new RoundManager(gameState);
             cycleManager = new CycleManager(gameState, roundManager);
-            gameState.GetDeck().Shuffle();
             itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission();
@@ -271,18 +274,12 @@ namespace BlackJack_TheSpire
 
                 await Task.Delay(100); //0.1초 대기
 
-                movingCard.Image = GetCardImage(drawCard); //뒷면에서 카드로 이미지 변경
+                movingCard.Image = CardImageLoader.GetCardImage(drawCard); //뒷면에서 카드로 이미지 변경
                 moveTimer.Stop();
             }
         }
 
-        Image GetCardImage(Card card) //사진 가져오기
-        {
-            string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png"; //이름설정
-            string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", fileName); //경로설정
-            path = Path.GetFullPath(path);
-            return Image.FromFile(path);
-        }
+        
 
         public void RefreshInventory() //인벤토리 아이템 표시
         {
@@ -326,6 +323,28 @@ namespace BlackJack_TheSpire
                 Mission1.Text = "미션 성공!";
             if (missions.Count > 1 && missions[1].IsCompleted)
                 Mission2.Text = "미션 성공!";
+        }
+
+        private void 나가기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gamestarting();
+        }
+
+        private void 게임종료ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 확인용 메시지 박스
+            DialogResult result = MessageBox.Show(
+                "정말로 게임을 종료하시겠습니까?",
+                "게임 종료",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit(); // 프로그램 종료
+            }
+            // No 선택하면 아무 일도 없음
         }
     }
 }
