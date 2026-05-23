@@ -1,15 +1,10 @@
-﻿using System;
+﻿using BlackJack_TheSpire.Scaler;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace BlackJack_TheSpire
 {
@@ -18,6 +13,7 @@ namespace BlackJack_TheSpire
         GameState gameState;
         CycleManager cycleManager;
         RoundManager roundManager;
+        FormScaler scaler;
 
         PictureBox movingCard; //카드 움직이는 효과 때 사용
         Card drawCard; //마지막으로 뽑은 카드
@@ -27,9 +23,22 @@ namespace BlackJack_TheSpire
 
         private Label[] itemSlots; //아이템 슬롯 변수
         private Label selectedSlot; //아이템 슬롯 저장 변수
+
+        // 카드 기준 수치 (디자인 시 기준값) - 양쪽 메서드에서 공유
+        private const int CARD_BASE_WIDTH = 159;
+        private const int CARD_BASE_HEIGHT = 220;
+        private const int CARD_GAP = 100;       // 카드 사이 간격
+        private const int CARD_MARGIN_Y = 10;   // 카드 위쪽 여백
+
         public Form1()
         {
             InitializeComponent();
+
+            scaler = new FormScaler(this);
+
+            // 이벤트 연결
+            this.Resize += Form1_CardResize;
+
             start gamestart = new start();
             if (gamestart.ShowDialog() != DialogResult.OK) //시작화면에서 버튼을 통해서 껐는지 확인. 잘못된 경로면 종료
             {
@@ -41,9 +50,35 @@ namespace BlackJack_TheSpire
             roundManager = new RoundManager(gameState);
             cycleManager = new CycleManager(gameState, roundManager);
             gameState.GetDeck().Shuffle();
-            itemSlots = new Label[] {item1, item2, item3, item4, item5 };
+            itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission();
+        }
+
+        private void Form1_CardResize(object sender, EventArgs e)
+        {
+            ResizePlayerCards();
+        }
+
+        private void ResizePlayerCards()
+        {
+            int index = 0;
+
+            foreach (Control ctrl in playerhandpanel.Controls)
+            {
+                if (ctrl is PictureBox card)
+                {
+                    card.Size = new Size(
+                        (int)(CARD_BASE_WIDTH * scaler.ScaleX),
+                        (int)(CARD_BASE_HEIGHT * scaler.ScaleY));
+
+                    card.Location = new Point(
+                        (int)(index * CARD_GAP * scaler.ScaleX),
+                        (int)(CARD_MARGIN_Y * scaler.ScaleY));
+
+                    index++;
+                }
+            }
         }
 
         private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,28 +91,59 @@ namespace BlackJack_TheSpire
         {
             coin.Text = $"코인 : {gameState.GetCoin().ToString()}";
         }
+
         void showscore() //점수 보여주는 메소드
         {
             score.Text = $"{gameState.GetCycleScore().ToString()} / {gameState.GetTargetScore().ToString()}";
         }
+
         void showround() // 남은 턴 보여주는 메소드.
         {
             round.Text = $"{gameState.GetCurrentRound().ToString()} / 4";
         }
+
         void shownumodds() //배율, 숫자 보여주는 메소드
         {
             Hand hand = roundManager.GetPlayerHand();
 
+            if (hand.GetCardCount() == 0) { num.Text = "0"; odds.Text = "0"; get.Text = "받는 점수: 0"; return; };  //사이클 종료 후 메인 폼 UI 갱신
+
             int value = hand.CalculateValue();
-            double odd = ScoreCalculator.GetHandMultiplier(hand);
+            double baseOdd = ScoreCalculator.GetHandMultiplier(hand);
+            double totalMultiplier = baseOdd;
+            string oddsText = baseOdd.ToString("0.0");
+
+            foreach (Mission mission in gameState.GetCurrentMissions())
+            {
+                if (mission.IsCompleted)
+                {
+                    totalMultiplier *= mission.BonusMultiplier;
+                    oddsText += " x " + mission.BonusMultiplier.ToString("0.0");
+                }
+            }
+
+            foreach (Item item in gameState.GetInventory().GetItems())
+            {
+                double beforeMultiplier = totalMultiplier;
+                totalMultiplier = item.Effect(gameState, hand, totalMultiplier);
+
+                if (beforeMultiplier != totalMultiplier)
+                {
+                    double itemMultiplier = totalMultiplier / beforeMultiplier;
+                    oddsText += " x " + itemMultiplier.ToString("0.0");
+                }
+            }
+            int finalScore = (int)(value * totalMultiplier);
             num.Text = value.ToString();
-            odds.Text = odd.ToString();
-            get.Text = $"받는 점수 :{Math.Ceiling(value * odd).ToString()}";
+            odds.Text = oddsText + " = " + totalMultiplier.ToString("0.0");
+            get.Text = $"받는 점수: {finalScore}";
         }
+
         void showfoldnum() //폴드 수 보여주는 메소드
         {
             foldnum.Text = $"{fold_num.ToString()}";
         }
+
         private void foldbutten_Click(object sender, EventArgs e)
         {
             if (!roundManager.Fold()) //폴드 수행. 폴드 불가능시 메시지 후 종료
@@ -91,11 +157,13 @@ namespace BlackJack_TheSpire
             showfoldnum();
             shownumodds();
         }
+
         private void draw_Click(object sender, EventArgs e)
         {
             Card drawCard = roundManager.Draw(); //카드뽑기
             if (drawCard == null)
                 return;
+
             this.drawCard = drawCard; //마지막으로 뽑은 카드 저장
             ShowPlayerHand(); //손패 이미지 추가
             CheckMission(); //미션 성공했는지 확인하는 코드
@@ -104,8 +172,8 @@ namespace BlackJack_TheSpire
 
         private void stand_Click(object sender, EventArgs e)
         {
-            roundManager.Stand(); 
-            cycleManager.OnRoundEnd(); 
+            roundManager.Stand();
+            cycleManager.OnRoundEnd();
 
             playerhandpanel.Controls.Clear();
 
@@ -124,9 +192,14 @@ namespace BlackJack_TheSpire
 
                 cycleManager.GoToNextCycle();
 
+                ShowMission();
+                shownumodds();                //사이클 끝나고 메인 폼 화면 UI 갱신
+                showround();
+
                 SaveManager.Save(gameState);    //저장
             }
         }
+
         private void deck_count_Click(object sender, EventArgs e)//남은덱
         {
             DeckCount deckCount = new DeckCount(gameState);
@@ -134,10 +207,11 @@ namespace BlackJack_TheSpire
         }
 
         private void deck_Click(object sender, EventArgs e) //전체 덱
-        { 
+        {
             HaveDeck haveDeck = new HaveDeck(gameState);
             haveDeck.ShowDialog();
         }
+
         private void ShowPlayerHand()
         {
             movingCard = new PictureBox();
@@ -145,20 +219,25 @@ namespace BlackJack_TheSpire
             movingCard.BorderStyle = BorderStyle.None; //테두기 제거
             movingCard.BackColor = Color.Transparent; //색 투명
             movingCard.SizeMode = PictureBoxSizeMode.StretchImage; // 크기가 이미지 크기에 따라 조절되지 않게 고정
-
-            movingCard.Size = new Size(159, 220);
             movingCard.AutoSize = false;
+
+            // 카드 기준 크기에 비율 적용
+            movingCard.Size = new Size(
+                (int)(CARD_BASE_WIDTH * scaler.ScaleX),
+                (int)(CARD_BASE_HEIGHT * scaler.ScaleY));
 
             string path = @"..\..\Resources\card.png";
             movingCard.Image = Image.FromFile(path); //뒷면이 쭉 이동
 
             int index = playerhandpanel.Controls.Count;
 
-            // 최종 도착 위치
-            targetX = index * 100;
+            // 최종 도착 위치 (카드 간격에 비율 적용)
+            targetX = (int)(index * CARD_GAP * scaler.ScaleX);
 
-            // 시작 위치 (오른쪽 밖)
-            movingCard.Location = new Point(playerhandpanel.Width, 10);
+            // 시작 위치 (오른쪽 밖, Y 여백에 비율 적용)
+            movingCard.Location = new Point(
+                playerhandpanel.Width,
+                (int)(CARD_MARGIN_Y * scaler.ScaleY));
 
             playerhandpanel.Controls.Add(movingCard); //패널에 카드 추가
 
@@ -166,6 +245,7 @@ namespace BlackJack_TheSpire
 
             draw_impact();
         }
+
         private void draw_impact()
         {
             moveTimer.Stop();
@@ -195,10 +275,11 @@ namespace BlackJack_TheSpire
                 moveTimer.Stop();
             }
         }
+
         Image GetCardImage(Card card) //사진 가져오기
         {
             string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png"; //이름설정
-            string path = Path.Combine(Application.StartupPath,"..","..","Resources",fileName); //경로설정
+            string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", fileName); //경로설정
             path = Path.GetFullPath(path);
             return Image.FromFile(path);
         }
@@ -209,21 +290,22 @@ namespace BlackJack_TheSpire
             {
                 itemSlots[i].Text = "";
             }
+
             List<Item> items = gameState.GetInventory().GetItems();
             for (int i = 0; i < items.Count && i < itemSlots.Length; i++)
             {
-                itemSlots[i].Text = items[i].Name +"\n" + items[i].Description;
+                itemSlots[i].Text = items[i].Name + "\n" + items[i].Description;
             }
         }
 
         void ShowMission()
         {
             List<Mission> missions = gameState.GetCurrentMissions();
-            if(missions.Count > 0)
+            if (missions.Count > 0)
             {
                 Mission1.Text = missions[0].Name + "\n" + missions[0].Description + "\n배율: X" + missions[0].BonusMultiplier;
             }
-            if(missions.Count > 1)
+            if (missions.Count > 1)
             {
                 Mission2.Text = missions[1].Name + "\n" + missions[1].Description + "\n배율: X" + missions[1].BonusMultiplier;
             }
