@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -327,5 +328,68 @@ namespace BlackJack_TheSpire
             if (missions.Count > 1 && missions[1].IsCompleted)
                 Mission2.Text = "미션 성공!";
         }
+<<<<<<< Updated upstream
+=======
+
+        private void 나가기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gamestarting();
+        }
+
+        private void 게임종료ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 확인용 메시지 박스
+            DialogResult result = MessageBox.Show(
+                "정말로 게임을 종료하시겠습니까?",
+                "게임 종료",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit(); // 프로그램 종료
+            }
+            // No 선택하면 아무 일도 없음
+        }
+
+        private void 추가ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CardType type =
+        (CardType)Enum.Parse(typeof(CardType), cbtype.SelectedItem.ToString());
+
+            CardValue value =
+                (CardValue)Enum.Parse(typeof(CardValue), cbvalue.SelectedItem.ToString());
+
+            Card newCard = new Card(type, value);
+
+            gameState.GetDeck().AddCard(newCard); // 카드 추가
+
+            MessageBox.Show($"{type} {value} 카드가 추가되었습니다.");
+        }
+
+        private void 제거ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CardType type =
+        (CardType)Enum.Parse(typeof(CardType), cbtype.SelectedItem.ToString());
+
+            CardValue value =
+                (CardValue)Enum.Parse(typeof(CardValue), cbvalue.SelectedItem.ToString());
+
+            List<Card> cards = gameState.GetDeck().GetAllCards();
+
+            Card targetCard = cards.FirstOrDefault(card =>card.GetCardType() == type && card.GetCardValue() == value); //덱에서 해당 카드 있는지 확인
+
+            if (targetCard == null)
+            {
+                MessageBox.Show("해당 카드가 덱에 없습니다.");
+                return;
+            }
+
+            cards.Remove(targetCard); //있으면 제거
+
+            MessageBox.Show($"{type} {value} 카드가 덱에서 제거되었습니다.");
+        }
+>>>>>>> Stashed changes
     }
 }

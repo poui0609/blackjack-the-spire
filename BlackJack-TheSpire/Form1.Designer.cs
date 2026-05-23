@@ -59,6 +59,13 @@
             this.Mission1 = new System.Windows.Forms.Label();
             this.Mission2 = new System.Windows.Forms.Label();
             this.moveTimer = new System.Windows.Forms.Timer(this.components);
+            this.변경ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.카드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.아이템ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbtype = new System.Windows.Forms.ToolStripComboBox();
+            this.cbvalue = new System.Windows.Forms.ToolStripComboBox();
+            this.추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.제거ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,10 +102,15 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.설정ToolStripMenuItem,
-            this.룰ToolStripMenuItem});
+            this.룰ToolStripMenuItem,
+            this.변경ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+<<<<<<< Updated upstream
             this.menuStrip1.Size = new System.Drawing.Size(1578, 33);
+=======
+            this.menuStrip1.Size = new System.Drawing.Size(2254, 33);
+>>>>>>> Stashed changes
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -114,6 +126,7 @@
             // 
             // 저장및종료ToolStripMenuItem
             // 
+<<<<<<< Updated upstream
             this.저장및종료ToolStripMenuItem.Name = "저장및종료ToolStripMenuItem";
             this.저장및종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.저장및종료ToolStripMenuItem.Text = "재도전";
@@ -123,6 +136,12 @@
             this.재도전ToolStripMenuItem.Name = "재도전ToolStripMenuItem";
             this.재도전ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.재도전ToolStripMenuItem.Text = "나가기";
+=======
+            this.나가기ToolStripMenuItem.Name = "나가기ToolStripMenuItem";
+            this.나가기ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.나가기ToolStripMenuItem.Text = "나가기";
+            this.나가기ToolStripMenuItem.Click += new System.EventHandler(this.나가기ToolStripMenuItem_Click);
+>>>>>>> Stashed changes
             // 
             // 게임종료ToolStripMenuItem
             // 
@@ -335,6 +354,75 @@
             this.Mission2.Text = "미션2";
             this.Mission2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // 변경ToolStripMenuItem
+            // 
+            this.변경ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.카드ToolStripMenuItem,
+            this.아이템ToolStripMenuItem});
+            this.변경ToolStripMenuItem.Name = "변경ToolStripMenuItem";
+            this.변경ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+            this.변경ToolStripMenuItem.Text = "변경";
+            // 
+            // 카드ToolStripMenuItem
+            // 
+            this.카드ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cbtype,
+            this.cbvalue,
+            this.추가ToolStripMenuItem,
+            this.제거ToolStripMenuItem});
+            this.카드ToolStripMenuItem.Name = "카드ToolStripMenuItem";
+            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.카드ToolStripMenuItem.Text = "카드";
+            // 
+            // 아이템ToolStripMenuItem
+            // 
+            this.아이템ToolStripMenuItem.Name = "아이템ToolStripMenuItem";
+            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.아이템ToolStripMenuItem.Text = "아이템";
+            // 
+            // cbtype
+            // 
+            this.cbtype.Items.AddRange(new object[] {
+            "Spade",
+            "Club",
+            "Diamond",
+            "Heart"});
+            this.cbtype.Name = "cbtype";
+            this.cbtype.Size = new System.Drawing.Size(121, 33);
+            // 
+            // cbvalue
+            // 
+            this.cbvalue.Items.AddRange(new object[] {
+            "Ace",
+            "Two",
+            "Three",
+            "Four",
+            "Five",
+            "Six",
+            "Seven",
+            "Eighg",
+            "Nine",
+            "Ten",
+            "Jack",
+            "Queen",
+            "King"});
+            this.cbvalue.Name = "cbvalue";
+            this.cbvalue.Size = new System.Drawing.Size(121, 33);
+            // 
+            // 추가ToolStripMenuItem
+            // 
+            this.추가ToolStripMenuItem.Name = "추가ToolStripMenuItem";
+            this.추가ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.추가ToolStripMenuItem.Text = "추가";
+            this.추가ToolStripMenuItem.Click += new System.EventHandler(this.추가ToolStripMenuItem_Click);
+            // 
+            // 제거ToolStripMenuItem
+            // 
+            this.제거ToolStripMenuItem.Name = "제거ToolStripMenuItem";
+            this.제거ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.제거ToolStripMenuItem.Text = "제거";
+            this.제거ToolStripMenuItem.Click += new System.EventHandler(this.제거ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -366,6 +454,10 @@
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+<<<<<<< Updated upstream
+=======
+            this.Margin = new System.Windows.Forms.Padding(4);
+>>>>>>> Stashed changes
             this.Name = "Form1";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
@@ -407,5 +499,12 @@
         private System.Windows.Forms.Label Mission1;
         private System.Windows.Forms.Label Mission2;
         private System.Windows.Forms.Timer moveTimer;
+        private System.Windows.Forms.ToolStripMenuItem 변경ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 카드ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 아이템ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox cbtype;
+        private System.Windows.Forms.ToolStripComboBox cbvalue;
+        private System.Windows.Forms.ToolStripMenuItem 추가ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 제거ToolStripMenuItem;
     }
 }

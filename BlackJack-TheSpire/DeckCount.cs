@@ -31,7 +31,8 @@ namespace BlackJack_TheSpire
 
         private List<Card> loadcount()
         {
-            List<Card> card = gameState.GetDeck().GetAllCards(); //남은 덱 가져오기
+            List<Card> card = new List<Card>();
+            card.AddRange(gameState.GetDeck().GetAllCards()); //남은 카드 가져오기
             card.Sort((a, b) =>
             {
                 int typeCompare =
