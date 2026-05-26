@@ -145,5 +145,14 @@
   <ItemGroup>
     <None Include="Resources\카드 뒷면.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\배경그림.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\배경그림1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\배경그림2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -26,8 +26,8 @@ namespace BlackJack_TheSpire
         private Label selectedSlot; //아이템 슬롯 저장 변수
 
         // 카드 기준 수치 (디자인 시 기준값) - 양쪽 메서드에서 공유
-        private const int CARD_BASE_WIDTH = 159;
-        private const int CARD_BASE_HEIGHT = 220;
+        private const int CARD_BASE_WIDTH = 145;
+        private const int CARD_BASE_HEIGHT = 200;
         private const int CARD_GAP = 100;       // 카드 사이 간격
         private const int CARD_MARGIN_Y = 10;   // 카드 위쪽 여백
 
