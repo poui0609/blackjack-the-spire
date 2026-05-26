@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlackJack_TheSpire.Scaler;
 
 namespace BlackJack_TheSpire
 {
@@ -69,9 +70,9 @@ namespace BlackJack_TheSpire
             buy2.Text = randomItems[1].Name + "\n" + randomItems[1].Description + "\n" + randomItems[1].Price;
             buy3.Text = randomItems[2].Name + "\n" + randomItems[2].Description + "\n" + randomItems[2].Price;
 
-            cardBoxes[0].Image = GetCardImage(randomCards[0]);
-            cardBoxes[1].Image = GetCardImage(randomCards[1]);
-            cardBoxes[2].Image = GetCardImage(randomCards[2]);
+            cardBoxes[0].Image = CardImageLoader.GetCardImage(randomCards[0]);
+            cardBoxes[1].Image = CardImageLoader.GetCardImage(randomCards[1]);
+            cardBoxes[2].Image = CardImageLoader.GetCardImage(randomCards[2]);
 
             label4.Text = "보유 코인: " + gameState.GetCoin().ToString();
 
@@ -197,14 +198,6 @@ namespace BlackJack_TheSpire
             }
             else
                 MessageBox.Show("코인 부족!");
-        }
-
-        Image GetCardImage(Card card)                        //카드 이미지 넣는 메소드
-        {
-            string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
-            string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", fileName);
-            path = System.IO.Path.GetFullPath(path);
-            return Image.FromFile(path);
         }
     }
 }
