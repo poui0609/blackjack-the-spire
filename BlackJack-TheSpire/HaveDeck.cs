@@ -31,8 +31,9 @@ namespace BlackJack_TheSpire
 
         private List<Card> Loaddeck() //남은 덱, 사용한 카드들 받아옴
         {
-            List<Card> card = gameState.GetDeck().GetAllCards();
+            List<Card> card = new List<Card>();
 
+            card.AddRange(gameState.GetDeck().GetAllCards());
             card.AddRange(gameState.GetDeck().GetUsedCards());
 
             card.Sort((a, b) =>
