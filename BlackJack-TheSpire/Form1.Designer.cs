@@ -97,7 +97,7 @@
             this.odds.BackColor = System.Drawing.Color.Transparent;
             this.odds.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.odds.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.odds.Location = new System.Drawing.Point(152, 204);
+            this.odds.Location = new System.Drawing.Point(152, 208);
             this.odds.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.odds.Name = "odds";
             this.odds.Size = new System.Drawing.Size(65, 39);
@@ -398,8 +398,9 @@
             // Mission1
             // 
             this.Mission1.BackColor = System.Drawing.Color.Transparent;
+            this.Mission1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Mission1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Mission1.Location = new System.Drawing.Point(929, 111);
+            this.Mission1.Location = new System.Drawing.Point(931, 107);
             this.Mission1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Mission1.Name = "Mission1";
             this.Mission1.Size = new System.Drawing.Size(102, 45);
@@ -410,8 +411,9 @@
             // Mission2
             // 
             this.Mission2.BackColor = System.Drawing.Color.Transparent;
+            this.Mission2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Mission2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Mission2.Location = new System.Drawing.Point(929, 168);
+            this.Mission2.Location = new System.Drawing.Point(931, 168);
             this.Mission2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Mission2.Name = "Mission2";
             this.Mission2.Size = new System.Drawing.Size(102, 46);

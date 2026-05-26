@@ -16,9 +16,12 @@ namespace BlackJack_TheSpire
     public partial class store : Form
     {
         private GameState gameState;
+        private FormScaler scaler;
         internal store(GameState gameState)
         {
             InitializeComponent();
+
+            scaler = new FormScaler(this);
 
             this.gameState = gameState;
 
@@ -74,7 +77,7 @@ namespace BlackJack_TheSpire
             cardBoxes[1].Image = CardImageLoader.GetCardImage(randomCards[1]);
             cardBoxes[2].Image = CardImageLoader.GetCardImage(randomCards[2]);
 
-            label4.Text = "보유 코인: " + gameState.GetCoin().ToString();
+            label4.Text = gameState.GetCoin().ToString();
 
             RefreshInventory();
 
@@ -194,7 +197,7 @@ namespace BlackJack_TheSpire
                 if (index == 2)
                     selectbtn3.Enabled = false;
 
-                label4.Text = "보유 코인: " +gameState.GetCoin().ToString();
+                label4.Text = gameState.GetCoin().ToString();
             }
             else
                 MessageBox.Show("코인 부족!");
