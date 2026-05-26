@@ -32,7 +32,7 @@ namespace BlackJack_TheSpire
         private List<Card> loadcount()
         {
             List<Card> card = new List<Card>();
-            card.AddRange(gameState.GetDeck().GetAllCards()); //남은 카드 가져오기
+            card.AddRange(gameState.GetDeck().GetAllCards());//남은 덱 가져오기
             card.Sort((a, b) =>
             {
                 int typeCompare =
@@ -67,7 +67,7 @@ namespace BlackJack_TheSpire
                     (int)(CARD_BASE_HEIGHT * scaler.ScaleY));
 
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                pb.Image = CardImageLoader.GetCardImage(card);
+                pb.Image = GetCardImage(card);
 
                 int index = targetPanel.Controls.Count;
 
@@ -99,6 +99,22 @@ namespace BlackJack_TheSpire
                 default:
                     return panel1;
             }
+        }
+
+        Image GetCardImage(Card card) //이미지 불러오기
+        {
+            string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png";
+
+            string path = Path.Combine(
+                Application.StartupPath,
+                "..",
+                "..",
+                "Resources",
+                fileName);
+
+            path = Path.GetFullPath(path);
+
+            return Image.FromFile(path);
         }
     }
 }
