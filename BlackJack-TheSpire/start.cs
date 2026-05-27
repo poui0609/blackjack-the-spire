@@ -46,5 +46,12 @@ namespace BlackJack_TheSpire
             this.Close();
         }
 
+        private void start_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult != DialogResult.OK)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
+        }
     }
 }
