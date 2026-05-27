@@ -34,28 +34,40 @@
             // 
             // newbtn
             // 
-            this.newbtn.Location = new System.Drawing.Point(232, 168);
+            this.newbtn.BackColor = System.Drawing.Color.Transparent;
+            this.newbtn.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.시작_버튼;
+            this.newbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.newbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.newbtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.newbtn.Location = new System.Drawing.Point(247, 168);
             this.newbtn.Name = "newbtn";
-            this.newbtn.Size = new System.Drawing.Size(127, 45);
+            this.newbtn.Size = new System.Drawing.Size(262, 106);
             this.newbtn.TabIndex = 0;
             this.newbtn.Text = "새로시작";
-            this.newbtn.UseVisualStyleBackColor = true;
+            this.newbtn.UseVisualStyleBackColor = false;
             this.newbtn.Click += new System.EventHandler(this.newbtn_Click);
             // 
             // loading
             // 
-            this.loading.Location = new System.Drawing.Point(232, 251);
+            this.loading.BackColor = System.Drawing.Color.Transparent;
+            this.loading.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.시작_버튼;
+            this.loading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.loading.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.loading.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.loading.Location = new System.Drawing.Point(247, 277);
             this.loading.Name = "loading";
-            this.loading.Size = new System.Drawing.Size(99, 47);
+            this.loading.Size = new System.Drawing.Size(262, 106);
             this.loading.TabIndex = 1;
             this.loading.Text = "이어하기";
-            this.loading.UseVisualStyleBackColor = true;
+            this.loading.UseVisualStyleBackColor = false;
             this.loading.Click += new System.EventHandler(this.loading_Click);
             // 
             // start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.시작배경1;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.loading);
             this.Controls.Add(this.newbtn);

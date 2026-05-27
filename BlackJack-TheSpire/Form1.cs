@@ -87,11 +87,6 @@ namespace BlackJack_TheSpire
             }
         }
 
-        private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            rules rules = new rules();
-            rules.ShowDialog();
-        }
 
         void showcoin() //코인 보여주는 메소드
         {
@@ -213,11 +208,6 @@ namespace BlackJack_TheSpire
             deckCount.ShowDialog();
         }
 
-        private void deck_Click(object sender, EventArgs e) //전체 덱
-        {
-            HaveDeck haveDeck = new HaveDeck(gameState);
-            haveDeck.ShowDialog();
-        }
 
         private void ShowPlayerHand()
         {
@@ -370,11 +360,6 @@ namespace BlackJack_TheSpire
 
 
         }
-        private void 나가기ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            gamestarting();
-        }
-
         private void 게임종료ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // 확인용 메시지 박스
@@ -392,5 +377,15 @@ namespace BlackJack_TheSpire
             // No 선택하면 아무 일도 없음
         }
 
+        private void 나가기ToolStripMenuItem_Clic(object sender, EventArgs e)
+        {
+            gamestarting();
+        }
+
+        private void deck_Click(object sender, EventArgs e)
+        {
+            HaveDeck haveDeck = new HaveDeck(gameState);
+            haveDeck.ShowDialog();
+        }
     }
 }
