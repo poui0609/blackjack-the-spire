@@ -73,6 +73,7 @@
             this.Controls.Add(this.newbtn);
             this.Name = "start";
             this.Text = "start";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.start_FormClosing);
             this.ResumeLayout(false);
 
         }

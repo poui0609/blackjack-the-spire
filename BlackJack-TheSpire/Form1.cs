@@ -48,9 +48,10 @@ namespace BlackJack_TheSpire
         {
 
             start gamestart = new start();
-            if (gamestart.ShowDialog() != DialogResult.OK) //시작화면에서 버튼을 통해서 껐는지 확인. 잘못된 경로면 종료
+            if (gamestart.ShowDialog() != DialogResult.OK) 
             {
                 Application.Exit();
+                return;
             }
             gameState = gamestart.SelectedGameState; //저장정보 반영
 
@@ -269,17 +270,9 @@ namespace BlackJack_TheSpire
 
                 await Task.Delay(100); //0.1초 대기
 
-                movingCard.Image = GetCardImage(drawCard); //뒷면에서 카드로 이미지 변경
+                movingCard.Image = CardImageLoader.GetCardImage(drawCard); //뒷면에서 카드로 이미지 변경
                 moveTimer.Stop();
             }
-        }
-
-        Image GetCardImage(Card card) //사진 가져오기
-        {
-            string fileName = card.GetCardType() + "_" + card.GetCardValue() + ".png"; //이름설정
-            string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", fileName); //경로설정
-            path = Path.GetFullPath(path);
-            return Image.FromFile(path);
         }
 
         public void RefreshInventory() //인벤토리 아이템 표시

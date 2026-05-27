@@ -45,5 +45,10 @@ namespace BlackJack_TheSpire
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void start_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
