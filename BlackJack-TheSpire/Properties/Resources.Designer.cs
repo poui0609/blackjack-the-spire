@@ -103,16 +103,6 @@ namespace BlackJack_TheSpire.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 상점_이미지 {
-            get {
-                object obj = ResourceManager.GetObject("상점 이미지", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap 상점_이미지1 {
             get {
                 object obj = ResourceManager.GetObject("상점 이미지1", resourceCulture);
@@ -126,16 +116,6 @@ namespace BlackJack_TheSpire.Properties {
         internal static System.Drawing.Bitmap 상점_이미지11 {
             get {
                 object obj = ResourceManager.GetObject("상점 이미지11", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap 상점_이미지12 {
-            get {
-                object obj = ResourceManager.GetObject("상점 이미지12", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
