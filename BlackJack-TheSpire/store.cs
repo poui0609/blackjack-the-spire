@@ -36,6 +36,7 @@ namespace BlackJack_TheSpire
         List<Item> randomItems;
         int item1, item2, item3, card1, card2, card3; //아이템과 카드 번호 저장하는 변수
         int safe;
+        bool isCardSelected = false;
 
 
 
@@ -81,7 +82,6 @@ namespace BlackJack_TheSpire
 
             RefreshInventory();
 
-            pass.Enabled = false;
         }
         private void RefreshInventory() //인벤토리 아이템 표시
         {
@@ -108,6 +108,11 @@ namespace BlackJack_TheSpire
 
         private void pass_Click(object sender, EventArgs e)      //상점 나가기 
         {
+            if (!isCardSelected)
+            {
+                MessageBox.Show("카드를 선택하세요!");
+                return;
+            }
             Close();
         }
 
@@ -167,7 +172,7 @@ namespace BlackJack_TheSpire
                     cardBoxes[i].Visible = false;
                 }
             }
-            pass.Enabled = true;
+            isCardSelected = true;
 
             MessageBox.Show(selectedCard.ToString() + " 카드가 덱에 추가되었습니다!");
         }
