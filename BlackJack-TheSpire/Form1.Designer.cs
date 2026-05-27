@@ -370,6 +370,7 @@
             // Mission1
             // 
             this.Mission1.BackColor = System.Drawing.Color.Transparent;
+            this.Mission1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Mission1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Mission1.Location = new System.Drawing.Point(1327, 166);
             this.Mission1.Name = "Mission1";
@@ -381,6 +382,7 @@
             // Mission2
             // 
             this.Mission2.BackColor = System.Drawing.Color.Transparent;
+            this.Mission2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Mission2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Mission2.Location = new System.Drawing.Point(1327, 252);
             this.Mission2.Name = "Mission2";
