@@ -86,12 +86,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="rules.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="rules.Designer.cs">
-      <DependentUpon>rules.cs</DependentUpon>
-    </Compile>
     <Compile Include="Scaler\CardImageLoader.cs" />
     <Compile Include="Scaler\FormScaler.cs" />
     <Compile Include="start.cs">
@@ -120,9 +114,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="rules.resx">
-      <DependentUpon>rules.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="start.resx">
       <DependentUpon>start.cs</DependentUpon>
@@ -156,16 +147,17 @@
     <None Include="Resources\배경그림2.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\덱 배경.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\시작배경1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\시작 버튼.png" />
     <None Include="Resources\ChatGPT Image 2026년 5월 26일 오후 05_07_57.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\상점 이미지.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\상점 이미지1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\상점 이미지12.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\상점 이미지11.png" />
