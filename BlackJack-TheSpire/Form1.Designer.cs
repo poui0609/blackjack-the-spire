@@ -132,14 +132,14 @@
             // 나가기ToolStripMenuItem
             // 
             this.나가기ToolStripMenuItem.Name = "나가기ToolStripMenuItem";
-            this.나가기ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.나가기ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.나가기ToolStripMenuItem.Text = "나가기";
-            this.나가기ToolStripMenuItem.Click += new System.EventHandler(this.나가기ToolStripMenuItem_Clic);
+            this.나가기ToolStripMenuItem.Click += new System.EventHandler(this.나가기ToolStripMenuItem_Click);
             // 
             // 게임종료ToolStripMenuItem
             // 
             this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
-            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.게임종료ToolStripMenuItem.Text = "게임종료";
             // 
             // 추가ToolStripMenuItem
@@ -161,7 +161,7 @@
             this.카드추가ToolStripMenuItem1,
             this.카드삭제ToolStripMenuItem});
             this.카드ToolStripMenuItem.Name = "카드ToolStripMenuItem";
-            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.카드ToolStripMenuItem.Text = "카드";
             // 
             // cbtype
@@ -214,19 +214,19 @@
             this.addItem,
             this.delItem});
             this.아이템ToolStripMenuItem.Name = "아이템ToolStripMenuItem";
-            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.아이템ToolStripMenuItem.Text = "아이템";
             // 
             // ItemCombo
             // 
             this.ItemCombo.Name = "ItemCombo";
-            this.ItemCombo.Size = new System.Drawing.Size(121, 23);
+            this.ItemCombo.Size = new System.Drawing.Size(121, 33);
             // 
             // addItem
             // 
             this.addItem.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.addItem.Name = "addItem";
-            this.addItem.Size = new System.Drawing.Size(100, 23);
+            this.addItem.Size = new System.Drawing.Size(100, 31);
             this.addItem.Text = "추가";
             this.addItem.Click += new System.EventHandler(this.addItem_Click);
             // 
@@ -234,7 +234,7 @@
             // 
             this.delItem.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.delItem.Name = "delItem";
-            this.delItem.Size = new System.Drawing.Size(100, 23);
+            this.delItem.Size = new System.Drawing.Size(100, 31);
             this.delItem.Text = "삭제";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
@@ -349,7 +349,7 @@
             // 
             this.item1.BackColor = System.Drawing.Color.Transparent;
             this.item1.ForeColor = System.Drawing.Color.White;
-            this.item1.Location = new System.Drawing.Point(276, 68);
+            this.item1.Location = new System.Drawing.Point(394, 99);
             this.item1.Name = "item1";
             this.item1.Size = new System.Drawing.Size(127, 183);
             this.item1.TabIndex = 22;
@@ -359,7 +359,7 @@
             // 
             this.item2.BackColor = System.Drawing.Color.Transparent;
             this.item2.ForeColor = System.Drawing.Color.White;
-            this.item2.Location = new System.Drawing.Point(382, 68);
+            this.item2.Location = new System.Drawing.Point(544, 99);
             this.item2.Name = "item2";
             this.item2.Size = new System.Drawing.Size(124, 183);
             this.item2.TabIndex = 23;
@@ -369,7 +369,7 @@
             // 
             this.item3.BackColor = System.Drawing.Color.Transparent;
             this.item3.ForeColor = System.Drawing.Color.White;
-            this.item3.Location = new System.Drawing.Point(485, 68);
+            this.item3.Location = new System.Drawing.Point(692, 99);
             this.item3.Name = "item3";
             this.item3.Size = new System.Drawing.Size(123, 183);
             this.item3.TabIndex = 24;
@@ -379,7 +379,7 @@
             // 
             this.item4.BackColor = System.Drawing.Color.Transparent;
             this.item4.ForeColor = System.Drawing.Color.White;
-            this.item4.Location = new System.Drawing.Point(587, 68);
+            this.item4.Location = new System.Drawing.Point(837, 99);
             this.item4.Name = "item4";
             this.item4.Size = new System.Drawing.Size(124, 183);
             this.item4.TabIndex = 25;
@@ -389,7 +389,7 @@
             // 
             this.item5.BackColor = System.Drawing.Color.Transparent;
             this.item5.ForeColor = System.Drawing.Color.White;
-            this.item5.Location = new System.Drawing.Point(689, 68);
+            this.item5.Location = new System.Drawing.Point(985, 99);
             this.item5.Name = "item5";
             this.item5.Size = new System.Drawing.Size(126, 183);
             this.item5.TabIndex = 26;
@@ -508,5 +508,6 @@
         private System.Windows.Forms.ToolStripComboBox ItemCombo;
         private System.Windows.Forms.ToolStripTextBox addItem;
         private System.Windows.Forms.ToolStripTextBox delItem;
+        private System.Windows.Forms.PictureBox deck;
     }
 }

@@ -370,6 +370,15 @@ namespace BlackJack_TheSpire
             }
             // No 선택하면 아무 일도 없음
         }
+        private void 나가기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gamestarting();
+        }
+        private void deck_Click(object sender, EventArgs e)
+        {
+            HaveDeck haveDeck = new HaveDeck(gameState);
+            haveDeck.ShowDialog();
+        }
 
         void InitItemShow()
         {
