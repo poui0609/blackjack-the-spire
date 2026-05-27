@@ -26,7 +26,16 @@ namespace BlackJack_TheSpire
 
         private void ending_Shown(object sender, EventArgs e)
         {
-
+            if (gamestate.IsGameClear())
+            {
+                result.Text = "클리어!";
+            }
+            else
+            {
+                result.Text = "패배...";
+            }
+            scorelbl.Text = $"점수: {gamestate.GetCycleScore()}";
+            goalscorelbl.Text = $"목표점수: {gamestate.GetTargetScore()}";
         }
     }
 }

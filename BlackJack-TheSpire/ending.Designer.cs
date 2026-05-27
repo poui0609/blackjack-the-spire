@@ -65,17 +65,17 @@
             // 
             // scorelbl
             // 
-            this.scorelbl.Location = new System.Drawing.Point(189, 211);
+            this.scorelbl.Location = new System.Drawing.Point(61, 202);
             this.scorelbl.Name = "scorelbl";
-            this.scorelbl.Size = new System.Drawing.Size(108, 56);
+            this.scorelbl.Size = new System.Drawing.Size(172, 56);
             this.scorelbl.TabIndex = 3;
             this.scorelbl.Text = "점수";
             // 
             // goalscorelbl
             // 
-            this.goalscorelbl.Location = new System.Drawing.Point(380, 215);
+            this.goalscorelbl.Location = new System.Drawing.Point(368, 202);
             this.goalscorelbl.Name = "goalscorelbl";
-            this.goalscorelbl.Size = new System.Drawing.Size(100, 23);
+            this.goalscorelbl.Size = new System.Drawing.Size(223, 56);
             this.goalscorelbl.TabIndex = 4;
             this.goalscorelbl.Text = "목표점수";
             // 
