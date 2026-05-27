@@ -45,6 +45,9 @@
             this.카드추가ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.카드삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.아이템ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemCombo = new System.Windows.Forms.ToolStripComboBox();
+            this.addItem = new System.Windows.Forms.ToolStripTextBox();
+            this.delItem = new System.Windows.Forms.ToolStripTextBox();
             this.score = new System.Windows.Forms.Label();
             this.get = new System.Windows.Forms.Label();
             this.foldbutten = new System.Windows.Forms.Button();
@@ -171,7 +174,7 @@
             this.카드추가ToolStripMenuItem1,
             this.카드삭제ToolStripMenuItem});
             this.카드ToolStripMenuItem.Name = "카드ToolStripMenuItem";
-            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.카드ToolStripMenuItem.Text = "카드";
             // 
             // cbtype
@@ -219,9 +222,34 @@
             // 
             // 아이템ToolStripMenuItem
             // 
+            this.아이템ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ItemCombo,
+            this.addItem,
+            this.delItem});
             this.아이템ToolStripMenuItem.Name = "아이템ToolStripMenuItem";
-            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.아이템ToolStripMenuItem.Text = "아이템";
+            // 
+            // ItemCombo
+            // 
+            this.ItemCombo.Name = "ItemCombo";
+            this.ItemCombo.Size = new System.Drawing.Size(121, 23);
+            // 
+            // addItem
+            // 
+            this.addItem.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.addItem.Name = "addItem";
+            this.addItem.Size = new System.Drawing.Size(100, 23);
+            this.addItem.Text = "추가";
+            this.addItem.Click += new System.EventHandler(this.addItem_Click);
+            // 
+            // delItem
+            // 
+            this.delItem.Font = new System.Drawing.Font("맑은 고딕", 9F);
+            this.delItem.Name = "delItem";
+            this.delItem.Size = new System.Drawing.Size(100, 23);
+            this.delItem.Text = "삭제";
+            this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
             // score
             // 
@@ -347,12 +375,13 @@
             this.foldnum.Name = "foldnum";
             this.foldnum.Size = new System.Drawing.Size(63, 43);
             this.foldnum.TabIndex = 21;
-            this.foldnum.Text = "label3";
+            this.foldnum.Text = "폴드";
             this.foldnum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // item1
             // 
             this.item1.BackColor = System.Drawing.Color.Transparent;
+            this.item1.ForeColor = System.Drawing.Color.White;
             this.item1.Location = new System.Drawing.Point(276, 68);
             this.item1.Name = "item1";
             this.item1.Size = new System.Drawing.Size(89, 122);
@@ -362,6 +391,7 @@
             // item2
             // 
             this.item2.BackColor = System.Drawing.Color.Transparent;
+            this.item2.ForeColor = System.Drawing.Color.White;
             this.item2.Location = new System.Drawing.Point(382, 68);
             this.item2.Name = "item2";
             this.item2.Size = new System.Drawing.Size(87, 122);
@@ -371,6 +401,7 @@
             // item3
             // 
             this.item3.BackColor = System.Drawing.Color.Transparent;
+            this.item3.ForeColor = System.Drawing.Color.White;
             this.item3.Location = new System.Drawing.Point(485, 68);
             this.item3.Name = "item3";
             this.item3.Size = new System.Drawing.Size(86, 122);
@@ -380,6 +411,7 @@
             // item4
             // 
             this.item4.BackColor = System.Drawing.Color.Transparent;
+            this.item4.ForeColor = System.Drawing.Color.White;
             this.item4.Location = new System.Drawing.Point(587, 68);
             this.item4.Name = "item4";
             this.item4.Size = new System.Drawing.Size(87, 122);
@@ -389,6 +421,7 @@
             // item5
             // 
             this.item5.BackColor = System.Drawing.Color.Transparent;
+            this.item5.ForeColor = System.Drawing.Color.White;
             this.item5.Location = new System.Drawing.Point(689, 68);
             this.item5.Name = "item5";
             this.item5.Size = new System.Drawing.Size(88, 122);
@@ -497,5 +530,8 @@
         private System.Windows.Forms.ToolStripMenuItem 아이템ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 카드추가ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 카드삭제ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox ItemCombo;
+        private System.Windows.Forms.ToolStripTextBox addItem;
+        private System.Windows.Forms.ToolStripTextBox delItem;
     }
 }

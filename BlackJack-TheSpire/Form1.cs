@@ -40,6 +40,8 @@ namespace BlackJack_TheSpire
             // 이벤트 연결
             this.Resize += Form1_CardResize;
 
+            InitItemShow();
+
             gamestarting();
         }
         public void gamestarting()
@@ -392,5 +394,54 @@ namespace BlackJack_TheSpire
             // No 선택하면 아무 일도 없음
         }
 
+        void InitItemShow()
+        {
+            ItemCombo.Items.Clear();
+            foreach (Item item in ItemManager.allItems)
+            {
+                ItemCombo.Items.Add(item.Name);
+            }
+            if (ItemCombo.Items.Count > 0)
+            {
+                ItemCombo.SelectedIndex = 0;
+            }
+        }
+        private void addItem_Click(object sender, EventArgs e)
+        {
+            if (ItemCombo.SelectedIndex < 0)
+                return;
+            Item selectedItem = ItemManager.allItems[ItemCombo.SelectedIndex];
+            bool success = gameState.AddItem(selectedItem);
+
+            if (!success)
+            {
+                MessageBox.Show("인벤토리가 가득 찼습니다.");
+                return;
+            }
+
+            RefreshInventory();
+
+            MessageBox.Show(selectedItem.Name + " 아이템 추가 완료!");
+        }
+
+        private void delItem_Click(object sender, EventArgs e)
+        {
+            if (ItemCombo.SelectedIndex < 0)
+                return;
+
+            Item selectedItem = ItemManager.allItems[ItemCombo.SelectedIndex];
+            List<Item> items = gameState.GetInventory().GetItems();
+            Item target = items.FirstOrDefault(i => i.Id == selectedItem.Id);
+
+            if (target == null)
+            {
+                MessageBox.Show("해당 아이템이 없습니다.");
+                return;
+            }
+
+            gameState.RemoveItem(target);
+            RefreshInventory();
+            MessageBox.Show(target.Name + " 아이템 삭제 완료!");
+        }
     }
 }
