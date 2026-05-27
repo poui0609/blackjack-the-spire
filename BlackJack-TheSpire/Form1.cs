@@ -41,8 +41,11 @@ namespace BlackJack_TheSpire
             this.Resize += Form1_CardResize;
 
             InitItemShow();
-
+        }
+        private void Form1_Shown(object sender, EventArgs e)
+        {
             gamestarting();
+
         }
         public void gamestarting()
         {
@@ -178,6 +181,15 @@ namespace BlackJack_TheSpire
         {
             roundManager.Stand();
             cycleManager.OnRoundEnd();
+
+            if (cycleManager.IsGameOver())
+            {
+                ending end = new ending(gameState);
+                end.ShowDialog();
+
+                this.Close();
+                return;
+            }
 
             playerhandpanel.Controls.Clear();
 

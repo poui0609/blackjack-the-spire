@@ -68,6 +68,12 @@
     <Compile Include="Core\GameRandom.cs" />
     <Compile Include="Core\GameState.cs" />
     <Compile Include="Core\Hand.cs" />
+    <Compile Include="ending.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ending.Designer.cs">
+      <DependentUpon>ending.cs</DependentUpon>
+    </Compile>
     <Compile Include="HaveDeck.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     <Compile Include="Core\ScoreCalculator.cs" />
     <EmbeddedResource Include="DeckCount.resx">
       <DependentUpon>DeckCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ending.resx">
+      <DependentUpon>ending.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

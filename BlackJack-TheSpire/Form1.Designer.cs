@@ -161,7 +161,7 @@
             this.카드추가ToolStripMenuItem1,
             this.카드삭제ToolStripMenuItem});
             this.카드ToolStripMenuItem.Name = "카드ToolStripMenuItem";
-            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(168, 34);
             this.카드ToolStripMenuItem.Text = "카드";
             // 
             // cbtype
@@ -214,7 +214,7 @@
             this.addItem,
             this.delItem});
             this.아이템ToolStripMenuItem.Name = "아이템ToolStripMenuItem";
-            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(168, 34);
             this.아이템ToolStripMenuItem.Text = "아이템";
             // 
             // ItemCombo
@@ -464,6 +464,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deck)).EndInit();
