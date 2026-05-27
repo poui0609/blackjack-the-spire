@@ -48,8 +48,7 @@ namespace BlackJack_TheSpire
             start gamestart = new start();
             if (gamestart.ShowDialog() != DialogResult.OK) //시작화면에서 버튼을 통해서 껐는지 확인. 잘못된 경로면 종료
             {
-                this.Close();
-                return;
+                Application.Exit();
             }
             gameState = gamestart.SelectedGameState; //저장정보 반영
 
