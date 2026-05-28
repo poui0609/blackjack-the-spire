@@ -392,7 +392,6 @@ namespace BlackJack_TheSpire
 
 
         }
-        
         private void 나가기ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             gamestarting();
@@ -470,5 +469,4 @@ namespace BlackJack_TheSpire
             // No 선택하면 아무 일도 없음
         }
     }
-    //gg
 }

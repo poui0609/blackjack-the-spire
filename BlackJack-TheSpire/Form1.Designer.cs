@@ -75,10 +75,9 @@
             this.coin.BackColor = System.Drawing.Color.Transparent;
             this.coin.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.coin.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.coin.Location = new System.Drawing.Point(112, 116);
-            this.coin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.coin.Location = new System.Drawing.Point(86, 87);
             this.coin.Name = "coin";
-            this.coin.Size = new System.Drawing.Size(277, 84);
+            this.coin.Size = new System.Drawing.Size(213, 63);
             this.coin.TabIndex = 0;
             this.coin.Text = "금고 금액 띄울곳";
             this.coin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,10 +87,9 @@
             this.num.BackColor = System.Drawing.Color.Transparent;
             this.num.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.num.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.num.Location = new System.Drawing.Point(112, 408);
-            this.num.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.num.Location = new System.Drawing.Point(86, 306);
             this.num.Name = "num";
-            this.num.Size = new System.Drawing.Size(117, 77);
+            this.num.Size = new System.Drawing.Size(90, 57);
             this.num.TabIndex = 2;
             this.num.Text = "숫자";
             this.num.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -101,10 +99,9 @@
             this.odds.BackColor = System.Drawing.Color.Transparent;
             this.odds.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.odds.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.odds.Location = new System.Drawing.Point(282, 408);
-            this.odds.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.odds.Location = new System.Drawing.Point(217, 306);
             this.odds.Name = "odds";
-            this.odds.Size = new System.Drawing.Size(121, 77);
+            this.odds.Size = new System.Drawing.Size(93, 57);
             this.odds.TabIndex = 3;
             this.odds.Text = "배율";
             this.odds.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,7 +116,8 @@
             this.추가ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1579, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1578, 35);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -167,7 +165,7 @@
             this.카드추가ToolStripMenuItem1,
             this.카드삭제ToolStripMenuItem});
             this.카드ToolStripMenuItem.Name = "카드ToolStripMenuItem";
-            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(219, 44);
+            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(168, 34);
             this.카드ToolStripMenuItem.Text = "카드";
             // 
             // cbtype
@@ -178,7 +176,7 @@
             "Diamond",
             "Heart"});
             this.cbtype.Name = "cbtype";
-            this.cbtype.Size = new System.Drawing.Size(121, 40);
+            this.cbtype.Size = new System.Drawing.Size(121, 33);
             // 
             // cbvalue
             // 
@@ -197,19 +195,19 @@
             "Queen",
             "King"});
             this.cbvalue.Name = "cbvalue";
-            this.cbvalue.Size = new System.Drawing.Size(121, 40);
+            this.cbvalue.Size = new System.Drawing.Size(121, 33);
             // 
             // 카드추가ToolStripMenuItem1
             // 
             this.카드추가ToolStripMenuItem1.Name = "카드추가ToolStripMenuItem1";
-            this.카드추가ToolStripMenuItem1.Size = new System.Drawing.Size(240, 44);
+            this.카드추가ToolStripMenuItem1.Size = new System.Drawing.Size(211, 34);
             this.카드추가ToolStripMenuItem1.Text = "추가";
             this.카드추가ToolStripMenuItem1.Click += new System.EventHandler(this.카드추가ToolStripMenuItem1_Click);
             // 
             // 카드삭제ToolStripMenuItem
             // 
             this.카드삭제ToolStripMenuItem.Name = "카드삭제ToolStripMenuItem";
-            this.카드삭제ToolStripMenuItem.Size = new System.Drawing.Size(240, 44);
+            this.카드삭제ToolStripMenuItem.Size = new System.Drawing.Size(211, 34);
             this.카드삭제ToolStripMenuItem.Text = "삭제";
             this.카드삭제ToolStripMenuItem.Click += new System.EventHandler(this.카드삭제ToolStripMenuItem_Click);
             // 
@@ -220,19 +218,19 @@
             this.addItem,
             this.delItem});
             this.아이템ToolStripMenuItem.Name = "아이템ToolStripMenuItem";
-            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(219, 44);
+            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(168, 34);
             this.아이템ToolStripMenuItem.Text = "아이템";
             // 
             // ItemCombo
             // 
             this.ItemCombo.Name = "ItemCombo";
-            this.ItemCombo.Size = new System.Drawing.Size(121, 40);
+            this.ItemCombo.Size = new System.Drawing.Size(121, 33);
             // 
             // addItem
             // 
             this.addItem.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.addItem.Name = "addItem";
-            this.addItem.Size = new System.Drawing.Size(100, 39);
+            this.addItem.Size = new System.Drawing.Size(100, 31);
             this.addItem.Text = "추가";
             this.addItem.Click += new System.EventHandler(this.addItem_Click);
             // 
@@ -240,7 +238,7 @@
             // 
             this.delItem.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.delItem.Name = "delItem";
-            this.delItem.Size = new System.Drawing.Size(100, 39);
+            this.delItem.Size = new System.Drawing.Size(100, 31);
             this.delItem.Text = "삭제";
             this.delItem.Click += new System.EventHandler(this.delItem_Click);
             // 
@@ -249,10 +247,9 @@
             this.score.BackColor = System.Drawing.Color.Transparent;
             this.score.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.score.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.score.Location = new System.Drawing.Point(112, 261);
-            this.score.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.score.Location = new System.Drawing.Point(86, 195);
             this.score.Name = "score";
-            this.score.Size = new System.Drawing.Size(291, 100);
+            this.score.Size = new System.Drawing.Size(224, 75);
             this.score.TabIndex = 9;
             this.score.Text = "라운드 패스 점수\r\n이번라운드에서 번 금액 / 목표 금액 이런식";
             this.score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -262,10 +259,9 @@
             this.get.BackColor = System.Drawing.Color.Transparent;
             this.get.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.get.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.get.Location = new System.Drawing.Point(112, 532);
-            this.get.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.get.Location = new System.Drawing.Point(86, 399);
             this.get.Name = "get";
-            this.get.Size = new System.Drawing.Size(291, 69);
+            this.get.Size = new System.Drawing.Size(224, 51);
             this.get.TabIndex = 12;
             this.get.Text = "받는 점수 :";
             this.get.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -275,10 +271,9 @@
             this.foldbutten.BackColor = System.Drawing.Color.Transparent;
             this.foldbutten.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.foldbutten.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.foldbutten.Location = new System.Drawing.Point(78, 875);
-            this.foldbutten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.foldbutten.Location = new System.Drawing.Point(60, 657);
             this.foldbutten.Name = "foldbutten";
-            this.foldbutten.Size = new System.Drawing.Size(169, 99);
+            this.foldbutten.Size = new System.Drawing.Size(130, 75);
             this.foldbutten.TabIndex = 15;
             this.foldbutten.Text = "폴드";
             this.foldbutten.UseVisualStyleBackColor = false;
@@ -289,10 +284,9 @@
             this.round.BackColor = System.Drawing.Color.Transparent;
             this.round.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.round.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.round.Location = new System.Drawing.Point(116, 659);
-            this.round.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.round.Location = new System.Drawing.Point(89, 495);
             this.round.Name = "round";
-            this.round.Size = new System.Drawing.Size(113, 68);
+            this.round.Size = new System.Drawing.Size(87, 51);
             this.round.TabIndex = 16;
             this.round.Text = "남은 턴";
             this.round.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -303,10 +297,9 @@
             this.draw.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.draw.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.draw.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.draw.Location = new System.Drawing.Point(78, 760);
-            this.draw.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.draw.Location = new System.Drawing.Point(60, 570);
             this.draw.Name = "draw";
-            this.draw.Size = new System.Drawing.Size(346, 88);
+            this.draw.Size = new System.Drawing.Size(266, 66);
             this.draw.TabIndex = 17;
             this.draw.Text = "드로우";
             this.draw.UseVisualStyleBackColor = false;
@@ -317,10 +310,9 @@
             this.stand.BackColor = System.Drawing.Color.Transparent;
             this.stand.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.stand.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.stand.Location = new System.Drawing.Point(268, 883);
-            this.stand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.stand.Location = new System.Drawing.Point(206, 663);
             this.stand.Name = "stand";
-            this.stand.Size = new System.Drawing.Size(156, 84);
+            this.stand.Size = new System.Drawing.Size(120, 63);
             this.stand.TabIndex = 18;
             this.stand.Text = "스탠드";
             this.stand.UseVisualStyleBackColor = false;
@@ -330,10 +322,9 @@
             // 
             this.deck_count.BackColor = System.Drawing.Color.Transparent;
             this.deck_count.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deck_count.Location = new System.Drawing.Point(1634, 493);
-            this.deck_count.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deck_count.Location = new System.Drawing.Point(1257, 369);
             this.deck_count.Name = "deck_count";
-            this.deck_count.Size = new System.Drawing.Size(311, 472);
+            this.deck_count.Size = new System.Drawing.Size(239, 354);
             this.deck_count.TabIndex = 7;
             this.deck_count.UseVisualStyleBackColor = false;
             this.deck_count.Click += new System.EventHandler(this.deck_count_Click);
@@ -341,10 +332,9 @@
             // playerhandpanel
             // 
             this.playerhandpanel.BackColor = System.Drawing.Color.Transparent;
-            this.playerhandpanel.Location = new System.Drawing.Point(516, 532);
-            this.playerhandpanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playerhandpanel.Location = new System.Drawing.Point(397, 399);
             this.playerhandpanel.Name = "playerhandpanel";
-            this.playerhandpanel.Size = new System.Drawing.Size(1201, 541);
+            this.playerhandpanel.Size = new System.Drawing.Size(924, 405);
             this.playerhandpanel.TabIndex = 20;
             // 
             // foldnum
@@ -352,10 +342,9 @@
             this.foldnum.BackColor = System.Drawing.Color.Transparent;
             this.foldnum.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.foldnum.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.foldnum.Location = new System.Drawing.Point(286, 640);
-            this.foldnum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.foldnum.Location = new System.Drawing.Point(220, 480);
             this.foldnum.Name = "foldnum";
-            this.foldnum.Size = new System.Drawing.Size(117, 85);
+            this.foldnum.Size = new System.Drawing.Size(90, 63);
             this.foldnum.TabIndex = 21;
             this.foldnum.Text = "폴드";
             this.foldnum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -364,10 +353,9 @@
             // 
             this.item1.BackColor = System.Drawing.Color.Transparent;
             this.item1.ForeColor = System.Drawing.Color.White;
-            this.item1.Location = new System.Drawing.Point(512, 132);
-            this.item1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.item1.Location = new System.Drawing.Point(394, 99);
             this.item1.Name = "item1";
-            this.item1.Size = new System.Drawing.Size(165, 244);
+            this.item1.Size = new System.Drawing.Size(127, 183);
             this.item1.TabIndex = 22;
             this.item1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -375,10 +363,9 @@
             // 
             this.item2.BackColor = System.Drawing.Color.Transparent;
             this.item2.ForeColor = System.Drawing.Color.White;
-            this.item2.Location = new System.Drawing.Point(707, 132);
-            this.item2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.item2.Location = new System.Drawing.Point(544, 99);
             this.item2.Name = "item2";
-            this.item2.Size = new System.Drawing.Size(161, 244);
+            this.item2.Size = new System.Drawing.Size(124, 183);
             this.item2.TabIndex = 23;
             this.item2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -386,10 +373,9 @@
             // 
             this.item3.BackColor = System.Drawing.Color.Transparent;
             this.item3.ForeColor = System.Drawing.Color.White;
-            this.item3.Location = new System.Drawing.Point(900, 132);
-            this.item3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.item3.Location = new System.Drawing.Point(693, 99);
             this.item3.Name = "item3";
-            this.item3.Size = new System.Drawing.Size(160, 244);
+            this.item3.Size = new System.Drawing.Size(123, 183);
             this.item3.TabIndex = 24;
             this.item3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -397,10 +383,9 @@
             // 
             this.item4.BackColor = System.Drawing.Color.Transparent;
             this.item4.ForeColor = System.Drawing.Color.White;
-            this.item4.Location = new System.Drawing.Point(1088, 132);
-            this.item4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.item4.Location = new System.Drawing.Point(837, 99);
             this.item4.Name = "item4";
-            this.item4.Size = new System.Drawing.Size(161, 244);
+            this.item4.Size = new System.Drawing.Size(124, 183);
             this.item4.TabIndex = 25;
             this.item4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -408,10 +393,9 @@
             // 
             this.item5.BackColor = System.Drawing.Color.Transparent;
             this.item5.ForeColor = System.Drawing.Color.White;
-            this.item5.Location = new System.Drawing.Point(1280, 132);
-            this.item5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.item5.Location = new System.Drawing.Point(984, 99);
             this.item5.Name = "item5";
-            this.item5.Size = new System.Drawing.Size(164, 244);
+            this.item5.Size = new System.Drawing.Size(126, 183);
             this.item5.TabIndex = 26;
             this.item5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -420,10 +404,9 @@
             this.Mission1.BackColor = System.Drawing.Color.Transparent;
             this.Mission1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Mission1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Mission1.Location = new System.Drawing.Point(1725, 221);
-            this.Mission1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Mission1.Location = new System.Drawing.Point(1327, 165);
             this.Mission1.Name = "Mission1";
-            this.Mission1.Size = new System.Drawing.Size(189, 90);
+            this.Mission1.Size = new System.Drawing.Size(146, 68);
             this.Mission1.TabIndex = 27;
             this.Mission1.Text = "미션1";
             this.Mission1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -433,10 +416,9 @@
             this.Mission2.BackColor = System.Drawing.Color.Transparent;
             this.Mission2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Mission2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Mission2.Location = new System.Drawing.Point(1725, 336);
-            this.Mission2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Mission2.Location = new System.Drawing.Point(1327, 252);
             this.Mission2.Name = "Mission2";
-            this.Mission2.Size = new System.Drawing.Size(189, 91);
+            this.Mission2.Size = new System.Drawing.Size(146, 68);
             this.Mission2.TabIndex = 28;
             this.Mission2.Text = "미션2";
             this.Mission2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -445,10 +427,9 @@
             // 
             this.deck.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.카드_뒷면;
             this.deck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck.Location = new System.Drawing.Point(1776, 87);
-            this.deck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deck.Location = new System.Drawing.Point(1366, 66);
             this.deck.Name = "deck";
-            this.deck.Size = new System.Drawing.Size(75, 87);
+            this.deck.Size = new System.Drawing.Size(57, 66);
             this.deck.TabIndex = 29;
             this.deck.TabStop = false;
             this.deck.Click += new System.EventHandler(this.deck_Click);
@@ -457,19 +438,19 @@
             // 
             this.bosslbl.BackColor = System.Drawing.Color.Transparent;
             this.bosslbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.bosslbl.Location = new System.Drawing.Point(1142, 92);
+            this.bosslbl.Location = new System.Drawing.Point(1143, 93);
             this.bosslbl.Name = "bosslbl";
-            this.bosslbl.Size = new System.Drawing.Size(200, 304);
+            this.bosslbl.Size = new System.Drawing.Size(154, 228);
             this.bosslbl.TabIndex = 30;
             this.bosslbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.배경그림2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(2053, 1125);
+            this.ClientSize = new System.Drawing.Size(1578, 844);
             this.Controls.Add(this.bosslbl);
             this.Controls.Add(this.deck);
             this.Controls.Add(this.odds);
@@ -496,7 +477,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Shown += new System.EventHandler(this.Form1_Shown);

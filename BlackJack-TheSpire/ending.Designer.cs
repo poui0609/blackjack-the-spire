@@ -39,19 +39,17 @@
             // 
             // result
             // 
-            this.result.Location = new System.Drawing.Point(283, 73);
-            this.result.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.result.Location = new System.Drawing.Point(218, 55);
             this.result.Name = "result";
-            this.result.Size = new System.Drawing.Size(256, 76);
+            this.result.Size = new System.Drawing.Size(197, 57);
             this.result.TabIndex = 0;
             this.result.Text = "성공, 실패";
             // 
             // seedlbl
             // 
-            this.seedlbl.Location = new System.Drawing.Point(256, 180);
-            this.seedlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.seedlbl.Location = new System.Drawing.Point(197, 135);
             this.seedlbl.Name = "seedlbl";
-            this.seedlbl.Size = new System.Drawing.Size(130, 31);
+            this.seedlbl.Size = new System.Drawing.Size(394, 24);
             this.seedlbl.TabIndex = 1;
             this.seedlbl.Text = "시드라벨";
             // 
@@ -59,44 +57,40 @@
             // 
             this.deck.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.카드_뒷면;
             this.deck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck.Location = new System.Drawing.Point(853, 328);
-            this.deck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.deck.Location = new System.Drawing.Point(656, 246);
             this.deck.Name = "deck";
-            this.deck.Size = new System.Drawing.Size(135, 176);
+            this.deck.Size = new System.Drawing.Size(104, 132);
             this.deck.TabIndex = 2;
             this.deck.TabStop = false;
             this.deck.Click += new System.EventHandler(this.deck_Click);
             // 
             // scorelbl
             // 
-            this.scorelbl.Location = new System.Drawing.Point(79, 269);
-            this.scorelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.scorelbl.Location = new System.Drawing.Point(61, 202);
             this.scorelbl.Name = "scorelbl";
-            this.scorelbl.Size = new System.Drawing.Size(224, 75);
+            this.scorelbl.Size = new System.Drawing.Size(172, 56);
             this.scorelbl.TabIndex = 3;
             this.scorelbl.Text = "점수";
             // 
             // goalscorelbl
             // 
-            this.goalscorelbl.Location = new System.Drawing.Point(478, 269);
-            this.goalscorelbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.goalscorelbl.Location = new System.Drawing.Point(368, 202);
             this.goalscorelbl.Name = "goalscorelbl";
-            this.goalscorelbl.Size = new System.Drawing.Size(290, 75);
+            this.goalscorelbl.Size = new System.Drawing.Size(223, 56);
             this.goalscorelbl.TabIndex = 4;
             this.goalscorelbl.Text = "목표점수";
             // 
             // ending
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 600);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.goalscorelbl);
             this.Controls.Add(this.scorelbl);
             this.Controls.Add(this.deck);
             this.Controls.Add(this.seedlbl);
             this.Controls.Add(this.result);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ending";
             this.Text = "Form2";
             this.Shown += new System.EventHandler(this.ending_Shown);
