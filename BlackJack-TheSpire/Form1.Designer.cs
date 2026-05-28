@@ -64,6 +64,7 @@
             this.Mission2 = new System.Windows.Forms.Label();
             this.moveTimer = new System.Windows.Forms.Timer(this.components);
             this.deck = new System.Windows.Forms.PictureBox();
+            this.bosslbl = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deck)).BeginInit();
             this.SuspendLayout();
@@ -107,14 +108,13 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.설정ToolStripMenuItem,
             this.추가ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1579, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1579, 36);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -126,7 +126,7 @@
             this.게임종료ToolStripMenuItem});
             this.설정ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.설정ToolStripMenuItem.Name = "설정ToolStripMenuItem";
-            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(64, 32);
             this.설정ToolStripMenuItem.Text = "설정";
             // 
             // 나가기ToolStripMenuItem
@@ -150,7 +150,7 @@
             this.아이템ToolStripMenuItem});
             this.추가ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.추가ToolStripMenuItem.Name = "추가ToolStripMenuItem";
-            this.추가ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+            this.추가ToolStripMenuItem.Size = new System.Drawing.Size(64, 32);
             this.추가ToolStripMenuItem.Text = "추가";
             // 
             // 카드ToolStripMenuItem
@@ -224,7 +224,6 @@
             // 
             // addItem
             // 
-            this.addItem.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.addItem.Name = "addItem";
             this.addItem.Size = new System.Drawing.Size(100, 31);
             this.addItem.Text = "추가";
@@ -232,7 +231,6 @@
             // 
             // delItem
             // 
-            this.delItem.Font = new System.Drawing.Font("맑은 고딕", 9F);
             this.delItem.Name = "delItem";
             this.delItem.Size = new System.Drawing.Size(100, 31);
             this.delItem.Text = "삭제";
@@ -430,6 +428,14 @@
             this.deck.TabStop = false;
             this.deck.Click += new System.EventHandler(this.deck_Click);
             // 
+            // bosslbl
+            // 
+            this.bosslbl.Location = new System.Drawing.Point(1142, 92);
+            this.bosslbl.Name = "bosslbl";
+            this.bosslbl.Size = new System.Drawing.Size(154, 228);
+            this.bosslbl.TabIndex = 30;
+            this.bosslbl.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -437,6 +443,7 @@
             this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.배경그림2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1579, 844);
+            this.Controls.Add(this.bosslbl);
             this.Controls.Add(this.deck);
             this.Controls.Add(this.odds);
             this.Controls.Add(this.foldnum);
@@ -510,5 +517,6 @@
         private System.Windows.Forms.ToolStripTextBox addItem;
         private System.Windows.Forms.ToolStripTextBox delItem;
         private System.Windows.Forms.PictureBox deck;
+        private System.Windows.Forms.Label bosslbl;
     }
 }

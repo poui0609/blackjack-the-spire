@@ -58,6 +58,15 @@ namespace BlackJack_TheSpire
 
             gameState.SetCurrentMissions(MissionManager.GetRandomMissions(2)); //사이클 시작시 미션 랜덤 생성
 
+            if (gameState.GetCurrentCycle() % 4 == 0) //4번째 사이클마다 보스 랜덤 생성
+            {
+                gameState.SetCurrentBoss(BossManager.GetRandomBoss());
+            }
+            else
+            {
+                gameState.SetCurrentBoss(null);
+            }
+
             gameState.GetDeck().ReturnUsedCards();
             gameState.GetDeck().Shuffle();
 
