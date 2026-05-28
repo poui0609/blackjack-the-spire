@@ -119,8 +119,7 @@
             this.추가ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(2053, 48);
+            this.menuStrip1.Size = new System.Drawing.Size(1579, 33);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -132,21 +131,22 @@
             this.게임종료ToolStripMenuItem});
             this.설정ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.설정ToolStripMenuItem.Name = "설정ToolStripMenuItem";
-            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(82, 42);
+            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
             this.설정ToolStripMenuItem.Text = "설정";
             // 
             // 나가기ToolStripMenuItem
             // 
             this.나가기ToolStripMenuItem.Name = "나가기ToolStripMenuItem";
-            this.나가기ToolStripMenuItem.Size = new System.Drawing.Size(243, 44);
+            this.나가기ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.나가기ToolStripMenuItem.Text = "나가기";
             this.나가기ToolStripMenuItem.Click += new System.EventHandler(this.나가기ToolStripMenuItem_Click);
             // 
             // 게임종료ToolStripMenuItem
             // 
             this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
-            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(243, 44);
+            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.게임종료ToolStripMenuItem.Text = "게임종료";
+            this.게임종료ToolStripMenuItem.Click += new System.EventHandler(this.게임종료ToolStripMenuItem_Click_1);
             // 
             // 추가ToolStripMenuItem
             // 
@@ -156,7 +156,7 @@
             this.아이템ToolStripMenuItem});
             this.추가ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.추가ToolStripMenuItem.Name = "추가ToolStripMenuItem";
-            this.추가ToolStripMenuItem.Size = new System.Drawing.Size(82, 42);
+            this.추가ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
             this.추가ToolStripMenuItem.Text = "추가";
             // 
             // 카드ToolStripMenuItem
@@ -455,12 +455,13 @@
             // 
             // bosslbl
             // 
-            this.bosslbl.Location = new System.Drawing.Point(1485, 123);
-            this.bosslbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bosslbl.BackColor = System.Drawing.Color.Transparent;
+            this.bosslbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.bosslbl.Location = new System.Drawing.Point(1142, 92);
             this.bosslbl.Name = "bosslbl";
             this.bosslbl.Size = new System.Drawing.Size(200, 304);
             this.bosslbl.TabIndex = 30;
-            this.bosslbl.Text = "label1";
+            this.bosslbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
