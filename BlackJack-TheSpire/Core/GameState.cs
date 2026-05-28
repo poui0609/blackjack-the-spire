@@ -16,6 +16,7 @@ namespace BlackJack_TheSpire
         private int coin;
         private int cycleScore;
         private int targetScore;
+        private Boss currentBoss;
         private Deck deck;
         private Inventory inventory;
         private List<Mission> currentMissions;
@@ -136,6 +137,15 @@ namespace BlackJack_TheSpire
         public void SetCurrentMissions(List<Mission> missions)
         {
             currentMissions = missions;
+        }
+        public Boss GetCurrentBoss()
+        {
+            return currentBoss;
+        }
+
+        public void SetCurrentBoss(Boss boss)
+        {
+            currentBoss = boss;
         }
     }
 }
