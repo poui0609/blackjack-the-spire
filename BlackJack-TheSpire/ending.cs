@@ -36,6 +36,7 @@ namespace BlackJack_TheSpire
             }
             scorelbl.Text = $"점수: {gamestate.GetCycleScore()}";
             goalscorelbl.Text = $"목표점수: {gamestate.GetTargetScore()}";
+            seedlbl.Text = $"시드: {gamestate.GetSeed()}";
         }
     }
 }

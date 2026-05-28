@@ -392,22 +392,7 @@ namespace BlackJack_TheSpire
 
 
         }
-        private void 게임종료ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // 확인용 메시지 박스
-            DialogResult result = MessageBox.Show(
-                "정말로 게임을 종료하시겠습니까?",
-                "게임 종료",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                Application.Exit(); // 프로그램 종료
-            }
-            // No 선택하면 아무 일도 없음
-        }
+        
         private void 나가기ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             gamestarting();
@@ -466,6 +451,23 @@ namespace BlackJack_TheSpire
             gameState.RemoveItem(target);
             RefreshInventory();
             MessageBox.Show(target.Name + " 아이템 삭제 완료!");
+        }
+
+        private void 게임종료ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // 확인용 메시지 박스
+            DialogResult result = MessageBox.Show(
+                "정말로 게임을 종료하시겠습니까?",
+                "게임 종료",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit(); // 프로그램 종료
+            }
+            // No 선택하면 아무 일도 없음
         }
     }
     //gg
