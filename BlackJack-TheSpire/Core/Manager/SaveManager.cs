@@ -55,8 +55,10 @@ namespace BlackJack_TheSpire
             GameSaveData data = new GameSaveData();
 
             data.Seed = gameState.GetSeed();
+            data.RandomCallCount = GameRandom.GetCallCount(); //현재까지 난수 몇번 꺼냈는지 저장
             data.CurrentChapter = gameState.GetCurrentChapter();
             data.CurrentCycle = gameState.GetCurrentCycle();
+            data.CurrentRound = gameState.GetCurrentRound(); //라운드도 저장
             data.Coin = gameState.GetCoin();
             data.CycleScore = gameState.GetCycleScore();
             data.TargetScore = gameState.GetTargetScore();
@@ -88,11 +90,12 @@ namespace BlackJack_TheSpire
             gameState.SetSeed(data.Seed);
             gameState.SetCurrentChapter(data.CurrentChapter);
             gameState.SetCurrentCycle(data.CurrentCycle);
+            gameState.SetCurrentRound(data.CurrentRound); //라운드 복원
             gameState.SetCoin(data.Coin);
             gameState.SetCycleScore(data.CycleScore);
             gameState.SetTargetScore(data.TargetScore);
 
-            GameRandom.SetSeed(data.Seed);
+            GameRandom.Restore(data.Seed, data.RandomCallCount); //시드 맞추고 난수 위치까지 복원
 
             Deck deck = gameState.GetDeck();
             deck.ClearAllCards();
