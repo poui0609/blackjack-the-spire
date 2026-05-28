@@ -43,15 +43,17 @@ namespace BlackJack_TheSpire
             gameState.ResetCycleScore();
             gameState.SetCurrentRound(1);
 
-            /*if (gameState.GetCurrentCycle() <= 2)
+            /*if (gameState.GetCurrentCycle() == 1)
             {
-                gameState.SetTargetScore(60); // 하드코딩 되어있길래 일단 주석처리함
+                gameState.SetTargetScore(80); // 하드코딩 되어있길래 일단 주석처리함
                                               // 일단 점수 설정은 현빈씨가 해야함
             }
             else
             {
-                gameState.SetTargetScore(80);
+                gameState.SetTargetScore(100);
             }*/
+
+            gameState.SetTargetScore(gameState.GetCurrentChapter()*80 + (gameState.GetCurrentCycle() - 1) * 20); //사이클마다 목표점수 증가 챕터도.
 
             isCycleOver = false;
             isCycleSuccess = false;
@@ -66,7 +68,7 @@ namespace BlackJack_TheSpire
             {
                 gameState.SetCurrentBoss(null);
             }
-
+            
             gameState.GetDeck().ReturnUsedCards();
             gameState.GetDeck().Shuffle();
 

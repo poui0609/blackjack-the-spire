@@ -95,12 +95,12 @@ namespace BlackJack_TheSpire
 
         public void NextRound()
         {
-            currentRound++;
+            currentRound += 1;
         }
 
         public void NextCycle() // 사이클 넘기는거 라운드 초기화 같은 기능있음
         {
-            currentCycle++;
+            currentCycle += 1;
             currentRound = 1;
             cycleScore = 0;
 
@@ -123,7 +123,7 @@ namespace BlackJack_TheSpire
 
         public int CalculateCycleReward()
         {
-            return GetRemainingRounds() * 2;
+            return coin/5 + GetRemainingRounds() * 2 ;
         }
 
         public bool IsGameClear()

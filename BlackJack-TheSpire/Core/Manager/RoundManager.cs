@@ -78,8 +78,6 @@ namespace BlackJack_TheSpire
         private void EndRound() //라운드 종료
         {
             isRoundOver = true;
-
-
             if (!isFolded)
             { 
                 int score = ScoreCalculator.CalculateScore(playerHand, gameState);           //라운드 끝나고 미션 성공시 배율 적용하는 곳
