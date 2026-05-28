@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(start));
             this.newbtn = new System.Windows.Forms.Button();
             this.loading = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -39,9 +40,10 @@
             this.newbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.newbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.newbtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.newbtn.Location = new System.Drawing.Point(247, 168);
+            this.newbtn.Location = new System.Drawing.Point(321, 224);
+            this.newbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.newbtn.Name = "newbtn";
-            this.newbtn.Size = new System.Drawing.Size(262, 106);
+            this.newbtn.Size = new System.Drawing.Size(341, 141);
             this.newbtn.TabIndex = 0;
             this.newbtn.Text = "새로시작";
             this.newbtn.UseVisualStyleBackColor = false;
@@ -54,9 +56,10 @@
             this.loading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.loading.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.loading.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.loading.Location = new System.Drawing.Point(247, 277);
+            this.loading.Location = new System.Drawing.Point(321, 369);
+            this.loading.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.loading.Name = "loading";
-            this.loading.Size = new System.Drawing.Size(262, 106);
+            this.loading.Size = new System.Drawing.Size(341, 141);
             this.loading.TabIndex = 1;
             this.loading.Text = "이어하기";
             this.loading.UseVisualStyleBackColor = false;
@@ -64,13 +67,15 @@
             // 
             // start
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.시작배경1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1040, 600);
             this.Controls.Add(this.loading);
             this.Controls.Add(this.newbtn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "start";
             this.Text = "start";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.start_FormClosing);

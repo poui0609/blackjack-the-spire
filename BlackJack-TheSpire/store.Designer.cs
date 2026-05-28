@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(store));
             this.buy1 = new System.Windows.Forms.Label();
             this.buy2 = new System.Windows.Forms.Label();
             this.buy3 = new System.Windows.Forms.Label();
@@ -97,7 +98,7 @@
             this.selectbtn1.BackColor = System.Drawing.Color.Transparent;
             this.selectbtn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.selectbtn1.Location = new System.Drawing.Point(462, 406);
-            this.selectbtn1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.selectbtn1.Margin = new System.Windows.Forms.Padding(4);
             this.selectbtn1.Name = "selectbtn1";
             this.selectbtn1.Size = new System.Drawing.Size(238, 62);
             this.selectbtn1.TabIndex = 3;
@@ -109,7 +110,7 @@
             this.selectbtn2.BackColor = System.Drawing.Color.Transparent;
             this.selectbtn2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.selectbtn2.Location = new System.Drawing.Point(862, 404);
-            this.selectbtn2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.selectbtn2.Margin = new System.Windows.Forms.Padding(4);
             this.selectbtn2.Name = "selectbtn2";
             this.selectbtn2.Size = new System.Drawing.Size(241, 66);
             this.selectbtn2.TabIndex = 4;
@@ -121,7 +122,7 @@
             this.selectbtn3.BackColor = System.Drawing.Color.Transparent;
             this.selectbtn3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.selectbtn3.Location = new System.Drawing.Point(1257, 404);
-            this.selectbtn3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.selectbtn3.Margin = new System.Windows.Forms.Padding(4);
             this.selectbtn3.Name = "selectbtn3";
             this.selectbtn3.Size = new System.Drawing.Size(240, 66);
             this.selectbtn3.TabIndex = 5;
@@ -135,7 +136,7 @@
             this.pass.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.pass.ForeColor = System.Drawing.Color.Gold;
             this.pass.Location = new System.Drawing.Point(1296, 936);
-            this.pass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pass.Margin = new System.Windows.Forms.Padding(4);
             this.pass.Name = "pass";
             this.pass.Size = new System.Drawing.Size(238, 50);
             this.pass.TabIndex = 6;
@@ -244,7 +245,7 @@
             // 
             this.draw1.BackColor = System.Drawing.Color.Transparent;
             this.draw1.Location = new System.Drawing.Point(490, 570);
-            this.draw1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.draw1.Margin = new System.Windows.Forms.Padding(6);
             this.draw1.Name = "draw1";
             this.draw1.Size = new System.Drawing.Size(191, 300);
             this.draw1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -256,7 +257,7 @@
             // 
             this.draw2.BackColor = System.Drawing.Color.Transparent;
             this.draw2.Location = new System.Drawing.Point(888, 570);
-            this.draw2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.draw2.Margin = new System.Windows.Forms.Padding(6);
             this.draw2.Name = "draw2";
             this.draw2.Size = new System.Drawing.Size(186, 300);
             this.draw2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -268,7 +269,7 @@
             // 
             this.draw3.BackColor = System.Drawing.Color.Transparent;
             this.draw3.Location = new System.Drawing.Point(1287, 570);
-            this.draw3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.draw3.Margin = new System.Windows.Forms.Padding(6);
             this.draw3.Name = "draw3";
             this.draw3.Size = new System.Drawing.Size(186, 300);
             this.draw3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -300,7 +301,8 @@
             this.Controls.Add(this.buy2);
             this.Controls.Add(this.buy1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "store";
             this.Text = "store";
             this.Load += new System.EventHandler(this.store_Load);
