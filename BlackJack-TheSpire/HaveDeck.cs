@@ -53,6 +53,7 @@ namespace BlackJack_TheSpire
         private void ShowDeck()
         {
             List<Card> cards = Loaddeck();
+            List<Card> usedCards = gameState.GetDeck().GetUsedCards();
 
             panel1.Controls.Clear();
             panel2.Controls.Clear();
@@ -72,7 +73,14 @@ namespace BlackJack_TheSpire
 
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                pb.Image = CardImageLoader.GetCardImage(card);
+                Image img = CardImageLoader.GetCardImage(card);
+
+                if (usedCards.Contains(card))
+                {
+                    img = InvertImage(img);
+                }
+
+                pb.Image = img;
 
                 int index = targetPanel.Controls.Count;
 
@@ -105,6 +113,29 @@ namespace BlackJack_TheSpire
                 default:
                     return panel1;
             }
+        }
+        private Bitmap InvertImage(Image original)
+        {
+            Bitmap bmp = new Bitmap(original);
+
+            for (int y = 0; y < bmp.Height; y++)
+            {
+                for (int x = 0; x < bmp.Width; x++)
+                {
+                    Color c = bmp.GetPixel(x, y);
+
+                    Color inverted = Color.FromArgb(
+                        c.A,
+                        255 - c.R,
+                        255 - c.G,
+                        255 - c.B
+                    );
+
+                    bmp.SetPixel(x, y, inverted);
+                }
+            }
+
+            return bmp;
         }
     }
 }

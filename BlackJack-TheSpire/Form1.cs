@@ -64,6 +64,8 @@ namespace BlackJack_TheSpire
             itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission(); ShowBoss(); //게임 시작 후 메인 폼 UI 갱신
+
+            UpdateButtonState();
         }
 
         private void Form1_CardResize(object sender, EventArgs e)
@@ -90,6 +92,17 @@ namespace BlackJack_TheSpire
                     index++;
                 }
             }
+        }
+
+        private void UpdateButtonState()
+        {
+            int cardCount = roundManager.GetPlayerHand().GetCardCount();
+
+            draw.Enabled = !roundManager.IsRoundOver();
+
+            foldbutten.Enabled = roundManager.CanFold();
+
+            stand.Enabled = cardCount >= 2;
         }
 
 
@@ -187,6 +200,8 @@ namespace BlackJack_TheSpire
             showscore();
             showfoldnum();
             shownumodds();
+
+            UpdateButtonState();
         }
 
         private void draw_Click(object sender, EventArgs e)
@@ -199,6 +214,8 @@ namespace BlackJack_TheSpire
             ShowPlayerHand(); //손패 이미지 추가
             CheckMission(); //미션 성공했는지 확인하는 코드
             shownumodds();
+
+            UpdateButtonState();
         }
 
         private void stand_Click(object sender, EventArgs e)
@@ -221,6 +238,8 @@ namespace BlackJack_TheSpire
             showscore();
             showround(); //스탠드 = 라운드 종료. 화면상 라운드 정보들 업데이트
 
+            UpdateButtonState();
+
             if (cycleManager.IsCycleSuccess()) // 사이클이 끝나면
             {
                 showcoin();
@@ -238,16 +257,11 @@ namespace BlackJack_TheSpire
                 showscore();
                 ShowBoss();
 
+                UpdateButtonState();
+
                 SaveManager.Save(gameState);    //저장
             }
         }
-
-        private void deck_count_Click(object sender, EventArgs e)//남은덱
-        {
-            DeckCount deckCount = new DeckCount(gameState);
-            deckCount.ShowDialog();
-        }
-
 
         private void ShowPlayerHand()
         {
@@ -467,6 +481,12 @@ namespace BlackJack_TheSpire
                 Application.Exit(); // 프로그램 종료
             }
             // No 선택하면 아무 일도 없음
+        }
+
+        private void deck_Click_1(object sender, EventArgs e)
+        {
+            HaveDeck haveDeck = new HaveDeck(gameState);
+            haveDeck.ShowDialog();
         }
     }
 }

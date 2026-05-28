@@ -63,9 +63,9 @@ namespace BlackJack_TheSpire.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 덱_배경 {
+        internal static System.Drawing.Bitmap ChatGPT_Image_2026년_5월_26일_오후_05_07_57 {
             get {
-                object obj = ResourceManager.GetObject("덱 배경", resourceCulture);
+                object obj = ResourceManager.GetObject("ChatGPT Image 2026년 5월 26일 오후 05_07_57", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace BlackJack_TheSpire.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap ChatGPT_Image_2026년_5월_26일_오후_05_07_57 {
+        internal static System.Drawing.Bitmap 덱_배경 {
             get {
-                object obj = ResourceManager.GetObject("ChatGPT Image 2026년 5월 26일 오후 05_07_57", resourceCulture);
+                object obj = ResourceManager.GetObject("덱 배경", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace BlackJack_TheSpire.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 시작_버튼 {
+        internal static System.Drawing.Bitmap 버튼사진 {
             get {
-                object obj = ResourceManager.GetObject("시작 버튼", resourceCulture);
+                object obj = ResourceManager.GetObject("버튼사진", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace BlackJack_TheSpire.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 시작배경1 {
+        internal static System.Drawing.Bitmap 상점_이미지11 {
             get {
-                object obj = ResourceManager.GetObject("시작배경1", resourceCulture);
+                object obj = ResourceManager.GetObject("상점 이미지11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,19 @@ namespace BlackJack_TheSpire.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap 상점_이미지11 {
+        internal static System.Drawing.Bitmap 시작_버튼 {
             get {
-                object obj = ResourceManager.GetObject("상점 이미지11", resourceCulture);
+                object obj = ResourceManager.GetObject("시작 버튼", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 시작배경1 {
+            get {
+                object obj = ResourceManager.GetObject("시작배경1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -53,7 +53,6 @@
             this.round = new System.Windows.Forms.Label();
             this.draw = new System.Windows.Forms.Button();
             this.stand = new System.Windows.Forms.Button();
-            this.deck_count = new System.Windows.Forms.Button();
             this.playerhandpanel = new System.Windows.Forms.Panel();
             this.foldnum = new System.Windows.Forms.Label();
             this.item1 = new System.Windows.Forms.Label();
@@ -64,10 +63,12 @@
             this.Mission1 = new System.Windows.Forms.Label();
             this.Mission2 = new System.Windows.Forms.Label();
             this.moveTimer = new System.Windows.Forms.Timer(this.components);
-            this.deck = new System.Windows.Forms.PictureBox();
             this.bosslbl = new System.Windows.Forms.Label();
+            this.deck = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deck)).BeginInit();
             this.SuspendLayout();
             // 
             // coin
@@ -135,14 +136,14 @@
             // 나가기ToolStripMenuItem
             // 
             this.나가기ToolStripMenuItem.Name = "나가기ToolStripMenuItem";
-            this.나가기ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.나가기ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.나가기ToolStripMenuItem.Text = "나가기";
             this.나가기ToolStripMenuItem.Click += new System.EventHandler(this.나가기ToolStripMenuItem_Click);
             // 
             // 게임종료ToolStripMenuItem
             // 
             this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
-            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
             this.게임종료ToolStripMenuItem.Text = "게임종료";
             this.게임종료ToolStripMenuItem.Click += new System.EventHandler(this.게임종료ToolStripMenuItem_Click_1);
             // 
@@ -271,9 +272,10 @@
             this.foldbutten.BackColor = System.Drawing.Color.Transparent;
             this.foldbutten.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.foldbutten.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.foldbutten.Location = new System.Drawing.Point(60, 657);
+            this.foldbutten.Image = global::BlackJack_TheSpire.Properties.Resources.버튼사진;
+            this.foldbutten.Location = new System.Drawing.Point(60, 663);
             this.foldbutten.Name = "foldbutten";
-            this.foldbutten.Size = new System.Drawing.Size(130, 75);
+            this.foldbutten.Size = new System.Drawing.Size(130, 69);
             this.foldbutten.TabIndex = 15;
             this.foldbutten.Text = "폴드";
             this.foldbutten.UseVisualStyleBackColor = false;
@@ -297,6 +299,7 @@
             this.draw.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.draw.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.draw.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.draw.Image = global::BlackJack_TheSpire.Properties.Resources.버튼사진;
             this.draw.Location = new System.Drawing.Point(60, 570);
             this.draw.Name = "draw";
             this.draw.Size = new System.Drawing.Size(266, 66);
@@ -310,24 +313,14 @@
             this.stand.BackColor = System.Drawing.Color.Transparent;
             this.stand.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.stand.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.stand.Location = new System.Drawing.Point(206, 663);
+            this.stand.Image = global::BlackJack_TheSpire.Properties.Resources.버튼사진;
+            this.stand.Location = new System.Drawing.Point(196, 663);
             this.stand.Name = "stand";
-            this.stand.Size = new System.Drawing.Size(120, 63);
+            this.stand.Size = new System.Drawing.Size(130, 69);
             this.stand.TabIndex = 18;
             this.stand.Text = "스탠드";
             this.stand.UseVisualStyleBackColor = false;
             this.stand.Click += new System.EventHandler(this.stand_Click);
-            // 
-            // deck_count
-            // 
-            this.deck_count.BackColor = System.Drawing.Color.Transparent;
-            this.deck_count.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deck_count.Location = new System.Drawing.Point(1257, 369);
-            this.deck_count.Name = "deck_count";
-            this.deck_count.Size = new System.Drawing.Size(239, 354);
-            this.deck_count.TabIndex = 7;
-            this.deck_count.UseVisualStyleBackColor = false;
-            this.deck_count.Click += new System.EventHandler(this.deck_count_Click);
             // 
             // playerhandpanel
             // 
@@ -423,17 +416,6 @@
             this.Mission2.Text = "미션2";
             this.Mission2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // deck
-            // 
-            this.deck.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.카드_뒷면;
-            this.deck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck.Location = new System.Drawing.Point(1366, 66);
-            this.deck.Name = "deck";
-            this.deck.Size = new System.Drawing.Size(57, 66);
-            this.deck.TabIndex = 29;
-            this.deck.TabStop = false;
-            this.deck.Click += new System.EventHandler(this.deck_Click);
-            // 
             // bosslbl
             // 
             this.bosslbl.BackColor = System.Drawing.Color.Transparent;
@@ -444,6 +426,51 @@
             this.bosslbl.TabIndex = 30;
             this.bosslbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // deck
+            // 
+            this.deck.BackColor = System.Drawing.Color.Transparent;
+            this.deck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.deck.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deck.Location = new System.Drawing.Point(1262, 377);
+            this.deck.Name = "deck";
+            this.deck.Size = new System.Drawing.Size(230, 354);
+            this.deck.TabIndex = 31;
+            this.deck.UseVisualStyleBackColor = false;
+            this.deck.Click += new System.EventHandler(this.deck_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(724, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 18);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "아이템";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(1185, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 18);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "디버프";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(1379, 114);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 18);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "미션";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -451,8 +478,11 @@
             this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.배경그림2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1578, 844);
-            this.Controls.Add(this.bosslbl);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.deck);
+            this.Controls.Add(this.bosslbl);
             this.Controls.Add(this.odds);
             this.Controls.Add(this.foldnum);
             this.Controls.Add(this.Mission2);
@@ -462,7 +492,6 @@
             this.Controls.Add(this.item3);
             this.Controls.Add(this.item2);
             this.Controls.Add(this.item1);
-            this.Controls.Add(this.deck_count);
             this.Controls.Add(this.playerhandpanel);
             this.Controls.Add(this.stand);
             this.Controls.Add(this.draw);
@@ -483,7 +512,6 @@
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.deck)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -497,7 +525,6 @@
         private System.Windows.Forms.ToolStripMenuItem 설정ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 나가기ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 게임종료ToolStripMenuItem;
-        private System.Windows.Forms.Button deck_count;
         private System.Windows.Forms.Label num;
         private System.Windows.Forms.Label score;
         private System.Windows.Forms.Label get;
@@ -525,7 +552,10 @@
         private System.Windows.Forms.ToolStripComboBox ItemCombo;
         private System.Windows.Forms.ToolStripTextBox addItem;
         private System.Windows.Forms.ToolStripTextBox delItem;
-        private System.Windows.Forms.PictureBox deck;
         private System.Windows.Forms.Label bosslbl;
+        private System.Windows.Forms.Button deck;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
