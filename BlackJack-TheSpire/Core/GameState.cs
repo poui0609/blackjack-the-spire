@@ -123,7 +123,7 @@ namespace BlackJack_TheSpire
 
         public int CalculateCycleReward()
         {
-            return coin/5 + GetRemainingRounds() * 2 ;
+            return coin/5 + GetRemainingRounds() * 2 + 4 ;
         }
 
         public bool IsGameClear()
