@@ -33,9 +33,7 @@ namespace BlackJack_TheSpire
         {
             List<Card> card = new List<Card>();
 
-            card.AddRange(gameState.GetDeck().GetAllCards());   //남은카드들 가져오기
-            card.AddRange(gameState.GetDeck().GetUsedCards());  //쓴 카드들 가져오기
-
+            card.AddRange(gameState.GetDeck().GetAllCards());
             card.AddRange(gameState.GetDeck().GetUsedCards());
 
             card.Sort((a, b) =>

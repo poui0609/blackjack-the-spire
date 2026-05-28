@@ -36,37 +36,43 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Location = new System.Drawing.Point(69, 76);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(885, 193);
+            this.panel1.Size = new System.Drawing.Size(1046, 170);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(6, 212);
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Location = new System.Drawing.Point(69, 252);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(879, 177);
+            this.panel2.Size = new System.Drawing.Size(1046, 170);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
-            this.panel3.Location = new System.Drawing.Point(6, 383);
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Location = new System.Drawing.Point(69, 428);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(879, 186);
+            this.panel3.Size = new System.Drawing.Size(1046, 170);
             this.panel3.TabIndex = 1;
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(6, 560);
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Location = new System.Drawing.Point(69, 604);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(879, 190);
+            this.panel4.Size = new System.Drawing.Size(1046, 170);
             this.panel4.TabIndex = 1;
             // 
             // HaveDeck
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 762);
+            this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.덱_배경;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1195, 848);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);

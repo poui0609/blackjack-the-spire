@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,10 +11,10 @@ namespace BlackJack_TheSpire
 {
     public partial class Form1 : Form
     {
-        GameState gameState;    //게임 정보
-        CycleManager cycleManager;//사이클관리
-        RoundManager roundManager;//라운드관리
-        FormScaler scaler;          //화면 크기 조절.
+        GameState gameState;
+        CycleManager cycleManager;
+        RoundManager roundManager;
+        FormScaler scaler;
 
         PictureBox movingCard; //카드 움직이는 효과 때 사용
         Card drawCard; //마지막으로 뽑은 카드
@@ -25,8 +26,8 @@ namespace BlackJack_TheSpire
         private Label selectedSlot; //아이템 슬롯 저장 변수
 
         // 카드 기준 수치 (디자인 시 기준값) - 양쪽 메서드에서 공유
-        private const int CARD_BASE_WIDTH = 159;
-        private const int CARD_BASE_HEIGHT = 220;
+        private const int CARD_BASE_WIDTH = 145;
+        private const int CARD_BASE_HEIGHT = 200;
         private const int CARD_GAP = 100;       // 카드 사이 간격
         private const int CARD_MARGIN_Y = 10;   // 카드 위쪽 여백
 
@@ -39,20 +40,27 @@ namespace BlackJack_TheSpire
             // 이벤트 연결
             this.Resize += Form1_CardResize;
 
-            gamestarting();
+            InitItemShow();
         }
-        private void gamestarting() //게임 시작화면으로
+        private void Form1_Shown(object sender, EventArgs e)
         {
+            gamestarting();
+
+        }
+        public void gamestarting()
+        {
+
             start gamestart = new start();
-            if (gamestart.ShowDialog() != DialogResult.OK) //시작화면에서 버튼을 통해서 껐는지 확인. 잘못된 경로면 종료
+            if (gamestart.ShowDialog() != DialogResult.OK) 
             {
-                this.Close();
+                Application.Exit();
                 return;
             }
             gameState = gamestart.SelectedGameState; //저장정보 반영
 
             roundManager = new RoundManager(gameState);
             cycleManager = new CycleManager(gameState, roundManager);
+            gameState.GetDeck().Shuffle();
             itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission();
@@ -84,11 +92,6 @@ namespace BlackJack_TheSpire
             }
         }
 
-        private void 룰ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            rules rules = new rules();
-            rules.ShowDialog();
-        }
 
         void showcoin() //코인 보여주는 메소드
         {
@@ -109,7 +112,8 @@ namespace BlackJack_TheSpire
         {
             Hand hand = roundManager.GetPlayerHand();
 
-            if (hand.GetCardCount() == 0) { num.Text = "0"; odds.Text = "0"; get.Text = "받는 점수: 0"; return; };  //사이클 종료 후 메인 폼 UI 갱신
+            if (hand.GetCardCount() == 0) { num.Text = "0"; odds.Text = "0"; get.Text = "받는 점수: 0"; return; }
+            ;  //사이클 종료 후 메인 폼 UI 갱신
 
             int value = hand.CalculateValue();
             double baseOdd = ScoreCalculator.GetHandMultiplier(hand);
@@ -178,6 +182,15 @@ namespace BlackJack_TheSpire
             roundManager.Stand();
             cycleManager.OnRoundEnd();
 
+            if (cycleManager.IsGameOver())
+            {
+                ending end = new ending(gameState);
+                end.ShowDialog();
+
+                this.Close();
+                return;
+            }
+
             playerhandpanel.Controls.Clear();
 
             shownumodds();
@@ -209,11 +222,6 @@ namespace BlackJack_TheSpire
             deckCount.ShowDialog();
         }
 
-        private void deck_Click(object sender, EventArgs e) //전체 덱
-        {
-            HaveDeck haveDeck = new HaveDeck(gameState);
-            haveDeck.ShowDialog();
-        }
 
         private void ShowPlayerHand()
         {
@@ -279,8 +287,6 @@ namespace BlackJack_TheSpire
             }
         }
 
-        
-
         public void RefreshInventory() //인벤토리 아이템 표시
         {
             for (int i = 0; i < itemSlots.Length; i++)
@@ -325,11 +331,41 @@ namespace BlackJack_TheSpire
                 Mission2.Text = "미션 성공!";
         }
 
-        private void 나가기ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 카드추가ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            gamestarting();
+            CardType type = (CardType)Enum.Parse(typeof(CardType), cbtype.SelectedItem.ToString());
+
+            CardValue value = (CardValue)Enum.Parse(typeof(CardValue), cbvalue.SelectedItem.ToString());
+
+            Card newCard = new Card(type, value);
+
+            gameState.GetDeck().AddCard(newCard); // 카드 추가
+
+            MessageBox.Show($"{type} {value} 카드가 추가되었습니다.");
         }
 
+        private void 카드삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CardType type = (CardType)Enum.Parse(typeof(CardType), cbtype.SelectedItem.ToString());
+
+            CardValue value = (CardValue)Enum.Parse(typeof(CardValue), cbvalue.SelectedItem.ToString());
+
+            List<Card> cards = gameState.GetDeck().GetAllCards();
+
+            Card targetCard = cards.FirstOrDefault(card => card.GetCardType() == type && card.GetCardValue() == value); //덱에서 해당 카드 있는지 확인
+
+            if (targetCard == null)
+            {
+                MessageBox.Show("해당 카드가 덱에 없습니다.");
+                return;
+            }
+
+            cards.Remove(targetCard); //있으면 제거
+
+            MessageBox.Show($"{type} {value} 카드가 덱에서 제거되었습니다.");
+
+
+        }
         private void 게임종료ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // 확인용 메시지 박스
@@ -345,6 +381,65 @@ namespace BlackJack_TheSpire
                 Application.Exit(); // 프로그램 종료
             }
             // No 선택하면 아무 일도 없음
+        }
+        private void 나가기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gamestarting();
+        }
+        private void deck_Click(object sender, EventArgs e)
+        {
+            HaveDeck haveDeck = new HaveDeck(gameState);
+            haveDeck.ShowDialog();
+        }
+
+        void InitItemShow()
+        {
+            ItemCombo.Items.Clear();
+            foreach (Item item in ItemManager.allItems)
+            {
+                ItemCombo.Items.Add(item.Name);
+            }
+            if (ItemCombo.Items.Count > 0)
+            {
+                ItemCombo.SelectedIndex = 0;
+            }
+        }
+        private void addItem_Click(object sender, EventArgs e)
+        {
+            if (ItemCombo.SelectedIndex < 0)
+                return;
+            Item selectedItem = ItemManager.allItems[ItemCombo.SelectedIndex];
+            bool success = gameState.AddItem(selectedItem);
+
+            if (!success)
+            {
+                MessageBox.Show("인벤토리가 가득 찼습니다.");
+                return;
+            }
+
+            RefreshInventory();
+
+            MessageBox.Show(selectedItem.Name + " 아이템 추가 완료!");
+        }
+
+        private void delItem_Click(object sender, EventArgs e)
+        {
+            if (ItemCombo.SelectedIndex < 0)
+                return;
+
+            Item selectedItem = ItemManager.allItems[ItemCombo.SelectedIndex];
+            List<Item> items = gameState.GetInventory().GetItems();
+            Item target = items.FirstOrDefault(i => i.Id == selectedItem.Id);
+
+            if (target == null)
+            {
+                MessageBox.Show("해당 아이템이 없습니다.");
+                return;
+            }
+
+            gameState.RemoveItem(target);
+            RefreshInventory();
+            MessageBox.Show(target.Name + " 아이템 삭제 완료!");
         }
     }
     //gg
