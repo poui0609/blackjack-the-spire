@@ -63,7 +63,7 @@ namespace BlackJack_TheSpire
             gameState.GetDeck().Shuffle();
             itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
-            RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission();
+            RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission(); ShowBoss(); //게임 시작 후 메인 폼 UI 갱신
         }
 
         private void Form1_CardResize(object sender, EventArgs e)
@@ -140,6 +140,19 @@ namespace BlackJack_TheSpire
                     oddsText += " x " + itemMultiplier.ToString("0.0");
                 }
             }
+            Boss boss = gameState.GetCurrentBoss();
+
+            if (boss != null)
+            {
+                double beforeMultiplier = totalMultiplier;
+                totalMultiplier = boss.Effect(gameState, hand, totalMultiplier);
+
+                if (beforeMultiplier != totalMultiplier)
+                {
+                    double bossMultiplier = totalMultiplier / beforeMultiplier;
+                    oddsText += " x " + bossMultiplier.ToString("0.0");
+                }
+            }
             int finalScore = (int)(value * totalMultiplier);
             num.Text = value.ToString();
             odds.Text = oddsText + " = " + totalMultiplier.ToString("0.0");
@@ -150,7 +163,18 @@ namespace BlackJack_TheSpire
         {
             foldnum.Text = $"{fold_num.ToString()}";
         }
+        void ShowBoss() //보스 보여주는 메소드
+        {
+            Boss boss = gameState.GetCurrentBoss();
 
+            if (boss == null)
+            {
+                bosslbl.Text = "";
+                return;
+            }
+
+            bosslbl.Text = boss.Name + "\n" + boss.Description;
+        }
         private void foldbutten_Click(object sender, EventArgs e)
         {
             if (!roundManager.Fold()) //폴드 수행. 폴드 불가능시 메시지 후 종료
@@ -211,6 +235,7 @@ namespace BlackJack_TheSpire
                 ShowMission();
                 shownumodds();                //사이클 끝나고 메인 폼 화면 UI 갱신
                 showround();
+                ShowBoss();
 
                 SaveManager.Save(gameState);    //저장
             }

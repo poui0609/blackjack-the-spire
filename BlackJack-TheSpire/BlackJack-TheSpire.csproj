@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BossCode.cs" />
     <Compile Include="Core\Card.cs" />
     <Compile Include="Core\Save\CardSaveData.cs" />
     <Compile Include="Core\Deck.cs" />
