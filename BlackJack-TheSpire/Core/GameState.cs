@@ -24,7 +24,7 @@ namespace BlackJack_TheSpire
  
         public GameState() //초기값
         {
-            seed = 0;
+            seed = GameRandom.GetCurrentSeed();
             currentChapter = 1;
             currentCycle = 1;
             currentRound = 1;
