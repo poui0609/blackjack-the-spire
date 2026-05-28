@@ -28,5 +28,28 @@ namespace BlackJack_TheSpire
             int index = GameRandom.Next(allItems.Count);
             return allItems[index];
         }
+
+        public static Item GetRandomUniqueItem(GameState gameState)
+        {
+            List<int> usedIds = gameState.GetUsedShopItem();
+
+            List<Item> availableItems =
+                allItems.Where(item => !usedIds.Contains(item.Id)).ToList();
+
+            if (availableItems.Count == 0)
+            {
+                usedIds.Clear();
+
+                availableItems = allItems.ToList();
+            }
+
+            int index = GameRandom.Next(availableItems.Count);
+
+            Item selected = availableItems[index];
+
+            usedIds.Add(selected.Id);
+
+            return selected;
+        }
     }
 }

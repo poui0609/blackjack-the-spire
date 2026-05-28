@@ -63,7 +63,7 @@ namespace BlackJack_TheSpire
                 Item randomItem;
                 do
                 {
-                    randomItem = ItemManager.GetRandomItem();
+                    randomItem = ItemManager.GetRandomUniqueItem(gameState);
                 }
                 while (randomItems.Contains(randomItem));
 
