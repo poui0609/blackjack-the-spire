@@ -235,6 +235,7 @@ namespace BlackJack_TheSpire
                 ShowMission();
                 shownumodds();                //사이클 끝나고 메인 폼 화면 UI 갱신
                 showround();
+                showscore();
                 ShowBoss();
 
                 SaveManager.Save(gameState);    //저장
