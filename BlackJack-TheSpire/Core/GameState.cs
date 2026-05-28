@@ -20,7 +20,8 @@ namespace BlackJack_TheSpire
         private Deck deck;
         private Inventory inventory;
         private List<Mission> currentMissions;
-
+        private List<int> usedShopItem = new List<int>();
+ 
         public GameState() //초기값
         {
             seed = 0;
@@ -33,6 +34,7 @@ namespace BlackJack_TheSpire
             deck = new Deck();
             inventory = new Inventory();
             currentMissions = new List<Mission>();
+            usedShopItem = new List<int>();
         }
 
         public int GetSeed() { return seed; }
@@ -146,6 +148,11 @@ namespace BlackJack_TheSpire
         public void SetCurrentBoss(Boss boss)
         {
             currentBoss = boss;
+        }
+
+        public List<int> GetUsedShopItem()
+        {
+            return usedShopItem;
         }
     }
 }

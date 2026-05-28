@@ -467,4 +467,5 @@ namespace BlackJack_TheSpire
             MessageBox.Show(target.Name + " 아이템 삭제 완료!");
         }
     }
+    //gg
 }
