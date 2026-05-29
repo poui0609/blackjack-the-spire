@@ -87,6 +87,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RoundClear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoundClear.Designer.cs">
+      <DependentUpon>RoundClear.cs</DependentUpon>
+    </Compile>
     <Compile Include="Scaler\CardImageLoader.cs" />
     <Compile Include="Scaler\FormScaler.cs" />
     <Compile Include="start.cs">
@@ -115,6 +121,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoundClear.resx">
+      <DependentUpon>RoundClear.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="start.resx">
       <DependentUpon>start.cs</DependentUpon>
@@ -165,6 +174,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\버튼사진.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image 2026년 5월 29일 오후 02_59_55.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image 2026년 5월 29일 오후 04_48_05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image 2026년 5월 29일 오후 04_48_051.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image 2026년 5월 29일 오후 05_04_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChatGPT Image 2026년 5월 29일 오후 05_04_261.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

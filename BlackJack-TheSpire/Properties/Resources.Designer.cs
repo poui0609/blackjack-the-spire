@@ -73,6 +73,56 @@ namespace BlackJack_TheSpire.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_2026년_5월_29일_오후_02_59_55 {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 2026년 5월 29일 오후 02_59_55", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_2026년_5월_29일_오후_04_48_05 {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 2026년 5월 29일 오후 04_48_05", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_2026년_5월_29일_오후_04_48_051 {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 2026년 5월 29일 오후 04_48_051", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_2026년_5월_29일_오후_05_04_26 {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 2026년 5월 29일 오후 05_04_26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_Image_2026년_5월_29일_오후_05_04_261 {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT Image 2026년 5월 29일 오후 05_04_261", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap 덱_배경 {
             get {
                 object obj = ResourceManager.GetObject("덱 배경", resourceCulture);

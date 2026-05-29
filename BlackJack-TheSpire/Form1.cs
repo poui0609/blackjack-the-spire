@@ -220,8 +220,10 @@ namespace BlackJack_TheSpire
 
         private void stand_Click(object sender, EventArgs e)
         {
+            int beforeCoin = gameState.GetCoin();
             roundManager.Stand();
             cycleManager.OnRoundEnd();
+            int earnedCoin = gameState.GetCoin() - beforeCoin;    //사이클에서 얻은 코인 수
 
             if (cycleManager.IsGameOver())
             {
@@ -240,8 +242,12 @@ namespace BlackJack_TheSpire
 
             UpdateButtonState();
 
+
             if (cycleManager.IsCycleSuccess()) // 사이클이 끝나면
             {
+                RoundClear roundClear = new RoundClear(gameState, gameState.GetCurrentCycle(), gameState.GetCycleScore(), gameState.GetTargetScore(), earnedCoin);
+                roundClear.ShowDialog();                                            // 사이클 종료 후 클리어 화면 띄우기
+
                 showcoin();
 
                 store store = new store(gameState);

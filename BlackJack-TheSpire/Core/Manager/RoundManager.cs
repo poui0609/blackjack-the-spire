@@ -82,6 +82,7 @@ namespace BlackJack_TheSpire
             { 
                 int score = ScoreCalculator.CalculateScore(playerHand, gameState);           //라운드 끝나고 미션 성공시 배율 적용하는 곳
                 gameState.AddCycleScore(score);
+                gameState.AddRoundScore(score);
             }
         }
 

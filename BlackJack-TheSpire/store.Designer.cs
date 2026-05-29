@@ -59,10 +59,10 @@
             this.buy1.BackColor = System.Drawing.Color.Transparent;
             this.buy1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buy1.ForeColor = System.Drawing.Color.White;
-            this.buy1.Location = new System.Drawing.Point(442, 94);
-            this.buy1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.buy1.Location = new System.Drawing.Point(238, 82);
+            this.buy1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.buy1.Name = "buy1";
-            this.buy1.Size = new System.Drawing.Size(297, 274);
+            this.buy1.Size = new System.Drawing.Size(160, 103);
             this.buy1.TabIndex = 0;
             this.buy1.Text = "label1";
             this.buy1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -72,10 +72,10 @@
             this.buy2.BackColor = System.Drawing.Color.Transparent;
             this.buy2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buy2.ForeColor = System.Drawing.Color.White;
-            this.buy2.Location = new System.Drawing.Point(832, 94);
-            this.buy2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.buy2.Location = new System.Drawing.Point(443, 81);
+            this.buy2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.buy2.Name = "buy2";
-            this.buy2.Size = new System.Drawing.Size(312, 274);
+            this.buy2.Size = new System.Drawing.Size(168, 103);
             this.buy2.TabIndex = 1;
             this.buy2.Text = "label2";
             this.buy2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -85,10 +85,10 @@
             this.buy3.BackColor = System.Drawing.Color.Transparent;
             this.buy3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buy3.ForeColor = System.Drawing.Color.White;
-            this.buy3.Location = new System.Drawing.Point(1228, 94);
-            this.buy3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.buy3.Location = new System.Drawing.Point(657, 81);
+            this.buy3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.buy3.Name = "buy3";
-            this.buy3.Size = new System.Drawing.Size(306, 274);
+            this.buy3.Size = new System.Drawing.Size(165, 103);
             this.buy3.TabIndex = 2;
             this.buy3.Text = "label3";
             this.buy3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -97,10 +97,10 @@
             // 
             this.selectbtn1.BackColor = System.Drawing.Color.Transparent;
             this.selectbtn1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.selectbtn1.Location = new System.Drawing.Point(462, 406);
-            this.selectbtn1.Margin = new System.Windows.Forms.Padding(4);
+            this.selectbtn1.Location = new System.Drawing.Point(251, 197);
+            this.selectbtn1.Margin = new System.Windows.Forms.Padding(2);
             this.selectbtn1.Name = "selectbtn1";
-            this.selectbtn1.Size = new System.Drawing.Size(238, 62);
+            this.selectbtn1.Size = new System.Drawing.Size(128, 31);
             this.selectbtn1.TabIndex = 3;
             this.selectbtn1.UseVisualStyleBackColor = false;
             this.selectbtn1.Click += new System.EventHandler(this.selectbtn1_Click);
@@ -109,10 +109,10 @@
             // 
             this.selectbtn2.BackColor = System.Drawing.Color.Transparent;
             this.selectbtn2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.selectbtn2.Location = new System.Drawing.Point(862, 404);
-            this.selectbtn2.Margin = new System.Windows.Forms.Padding(4);
+            this.selectbtn2.Location = new System.Drawing.Point(455, 197);
+            this.selectbtn2.Margin = new System.Windows.Forms.Padding(2);
             this.selectbtn2.Name = "selectbtn2";
-            this.selectbtn2.Size = new System.Drawing.Size(241, 66);
+            this.selectbtn2.Size = new System.Drawing.Size(139, 31);
             this.selectbtn2.TabIndex = 4;
             this.selectbtn2.UseVisualStyleBackColor = false;
             this.selectbtn2.Click += new System.EventHandler(this.selectbtn2_Click);
@@ -121,10 +121,10 @@
             // 
             this.selectbtn3.BackColor = System.Drawing.Color.Transparent;
             this.selectbtn3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.selectbtn3.Location = new System.Drawing.Point(1257, 404);
-            this.selectbtn3.Margin = new System.Windows.Forms.Padding(4);
+            this.selectbtn3.Location = new System.Drawing.Point(676, 197);
+            this.selectbtn3.Margin = new System.Windows.Forms.Padding(2);
             this.selectbtn3.Name = "selectbtn3";
-            this.selectbtn3.Size = new System.Drawing.Size(240, 66);
+            this.selectbtn3.Size = new System.Drawing.Size(129, 31);
             this.selectbtn3.TabIndex = 5;
             this.selectbtn3.UseVisualStyleBackColor = false;
             this.selectbtn3.Click += new System.EventHandler(this.selectbtn3_Click);
@@ -135,10 +135,10 @@
             this.pass.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.pass.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.pass.ForeColor = System.Drawing.Color.Gold;
-            this.pass.Location = new System.Drawing.Point(1296, 936);
-            this.pass.Margin = new System.Windows.Forms.Padding(4);
+            this.pass.Location = new System.Drawing.Point(678, 477);
+            this.pass.Margin = new System.Windows.Forms.Padding(2);
             this.pass.Name = "pass";
-            this.pass.Size = new System.Drawing.Size(238, 50);
+            this.pass.Size = new System.Drawing.Size(157, 29);
             this.pass.TabIndex = 6;
             this.pass.UseVisualStyleBackColor = false;
             this.pass.Click += new System.EventHandler(this.pass_Click);
@@ -148,10 +148,9 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(617, 936);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(818, 30);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(223, 48);
+            this.label4.Size = new System.Drawing.Size(67, 24);
             this.label4.TabIndex = 10;
             this.label4.Text = "코인";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -161,10 +160,9 @@
             this.slot1.BackColor = System.Drawing.Color.Transparent;
             this.slot1.ContextMenuStrip = this.itemMenu;
             this.slot1.ForeColor = System.Drawing.Color.White;
-            this.slot1.Location = new System.Drawing.Point(74, 248);
-            this.slot1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.slot1.Location = new System.Drawing.Point(40, 111);
             this.slot1.Name = "slot1";
-            this.slot1.Size = new System.Drawing.Size(253, 116);
+            this.slot1.Size = new System.Drawing.Size(136, 58);
             this.slot1.TabIndex = 11;
             this.slot1.Text = "슬롯1";
             this.slot1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -176,12 +174,12 @@
             this.itemMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.삭제ToolStripMenuItem});
             this.itemMenu.Name = "itemMenu";
-            this.itemMenu.Size = new System.Drawing.Size(137, 42);
+            this.itemMenu.Size = new System.Drawing.Size(99, 26);
             // 
             // 삭제ToolStripMenuItem
             // 
             this.삭제ToolStripMenuItem.Name = "삭제ToolStripMenuItem";
-            this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(136, 38);
+            this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.삭제ToolStripMenuItem.Text = "삭제";
             this.삭제ToolStripMenuItem.Click += new System.EventHandler(this.삭제ToolStripMenuItem_Click);
             // 
@@ -190,10 +188,9 @@
             this.slot2.BackColor = System.Drawing.Color.Transparent;
             this.slot2.ContextMenuStrip = this.itemMenu;
             this.slot2.ForeColor = System.Drawing.Color.White;
-            this.slot2.Location = new System.Drawing.Point(74, 398);
-            this.slot2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.slot2.Location = new System.Drawing.Point(40, 186);
             this.slot2.Name = "slot2";
-            this.slot2.Size = new System.Drawing.Size(253, 104);
+            this.slot2.Size = new System.Drawing.Size(136, 52);
             this.slot2.TabIndex = 12;
             this.slot2.Text = "슬롯2";
             this.slot2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -204,10 +201,9 @@
             this.slot3.BackColor = System.Drawing.Color.Transparent;
             this.slot3.ContextMenuStrip = this.itemMenu;
             this.slot3.ForeColor = System.Drawing.Color.White;
-            this.slot3.Location = new System.Drawing.Point(74, 544);
-            this.slot3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.slot3.Location = new System.Drawing.Point(40, 258);
             this.slot3.Name = "slot3";
-            this.slot3.Size = new System.Drawing.Size(253, 104);
+            this.slot3.Size = new System.Drawing.Size(136, 52);
             this.slot3.TabIndex = 13;
             this.slot3.Text = "슬롯3";
             this.slot3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -218,10 +214,9 @@
             this.slot4.BackColor = System.Drawing.Color.Transparent;
             this.slot4.ContextMenuStrip = this.itemMenu;
             this.slot4.ForeColor = System.Drawing.Color.White;
-            this.slot4.Location = new System.Drawing.Point(74, 690);
-            this.slot4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.slot4.Location = new System.Drawing.Point(40, 331);
             this.slot4.Name = "slot4";
-            this.slot4.Size = new System.Drawing.Size(253, 104);
+            this.slot4.Size = new System.Drawing.Size(136, 52);
             this.slot4.TabIndex = 14;
             this.slot4.Text = "슬롯4";
             this.slot4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -232,10 +227,9 @@
             this.slot5.BackColor = System.Drawing.Color.Transparent;
             this.slot5.ContextMenuStrip = this.itemMenu;
             this.slot5.ForeColor = System.Drawing.Color.White;
-            this.slot5.Location = new System.Drawing.Point(74, 838);
-            this.slot5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.slot5.Location = new System.Drawing.Point(40, 403);
             this.slot5.Name = "slot5";
-            this.slot5.Size = new System.Drawing.Size(253, 106);
+            this.slot5.Size = new System.Drawing.Size(136, 53);
             this.slot5.TabIndex = 15;
             this.slot5.Text = "슬롯5";
             this.slot5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -244,10 +238,9 @@
             // draw1
             // 
             this.draw1.BackColor = System.Drawing.Color.Transparent;
-            this.draw1.Location = new System.Drawing.Point(490, 570);
-            this.draw1.Margin = new System.Windows.Forms.Padding(6);
+            this.draw1.Location = new System.Drawing.Point(259, 288);
             this.draw1.Name = "draw1";
-            this.draw1.Size = new System.Drawing.Size(191, 300);
+            this.draw1.Size = new System.Drawing.Size(120, 170);
             this.draw1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.draw1.TabIndex = 17;
             this.draw1.TabStop = false;
@@ -256,10 +249,9 @@
             // draw2
             // 
             this.draw2.BackColor = System.Drawing.Color.Transparent;
-            this.draw2.Location = new System.Drawing.Point(888, 570);
-            this.draw2.Margin = new System.Windows.Forms.Padding(6);
+            this.draw2.Location = new System.Drawing.Point(465, 288);
             this.draw2.Name = "draw2";
-            this.draw2.Size = new System.Drawing.Size(186, 300);
+            this.draw2.Size = new System.Drawing.Size(120, 170);
             this.draw2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.draw2.TabIndex = 18;
             this.draw2.TabStop = false;
@@ -268,10 +260,9 @@
             // draw3
             // 
             this.draw3.BackColor = System.Drawing.Color.Transparent;
-            this.draw3.Location = new System.Drawing.Point(1287, 570);
-            this.draw3.Margin = new System.Windows.Forms.Padding(6);
+            this.draw3.Location = new System.Drawing.Point(676, 288);
             this.draw3.Name = "draw3";
-            this.draw3.Size = new System.Drawing.Size(186, 300);
+            this.draw3.Size = new System.Drawing.Size(120, 170);
             this.draw3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.draw3.TabIndex = 19;
             this.draw3.TabStop = false;
@@ -279,11 +270,11 @@
             // 
             // store
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.상점_이미지11;
+            this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.ChatGPT_Image_2026년_5월_29일_오후_04_48_051;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1666, 1054);
+            this.ClientSize = new System.Drawing.Size(897, 527);
             this.Controls.Add(this.draw3);
             this.Controls.Add(this.draw2);
             this.Controls.Add(this.draw1);
@@ -302,7 +293,7 @@
             this.Controls.Add(this.buy1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "store";
             this.Text = "store";
             this.Load += new System.EventHandler(this.store_Load);

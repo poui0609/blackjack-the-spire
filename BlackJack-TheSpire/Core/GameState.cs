@@ -16,11 +16,13 @@ namespace BlackJack_TheSpire
         private int coin;
         private int cycleScore;
         private int targetScore;
+        private int lastEarnedCoin;
         private Boss currentBoss;
         private Deck deck;
         private Inventory inventory;
         private List<Mission> currentMissions;
         private List<int> usedShopItem = new List<int>();
+        private List<int> roundScores = new List<int>();
  
         public GameState() //초기값
         {
@@ -31,10 +33,12 @@ namespace BlackJack_TheSpire
             coin = 0;
             cycleScore = 0;
             targetScore = 0;
+            lastEarnedCoin = 0;
             deck = new Deck();
             inventory = new Inventory();
             currentMissions = new List<Mission>();
             usedShopItem = new List<int>();
+            roundScores = new List<int>();
         }
 
         public int GetSeed() { return seed; }
@@ -153,6 +157,14 @@ namespace BlackJack_TheSpire
         public List<int> GetUsedShopItem()
         {
             return usedShopItem;
+        }
+        public List<int> GetRoundScores()
+        {
+            return roundScores;
+        }
+        public void AddRoundScore(int score)
+        {
+            roundScores.Add(score);
         }
     }
 }
