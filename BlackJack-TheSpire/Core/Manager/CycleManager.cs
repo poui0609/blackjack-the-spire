@@ -107,7 +107,7 @@ namespace BlackJack_TheSpire
                 isGameOver = true;
                 return;
             }
-
+            gameState.GetRoundScores().Clear();
             StartCycle();
         }
     }

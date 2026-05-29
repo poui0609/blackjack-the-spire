@@ -70,9 +70,9 @@ namespace BlackJack_TheSpire
                 randomItems.Add(randomItem);
             }
 
-            buy1.Text = randomItems[0].Name + "\n" + randomItems[0].Description + "\n" + randomItems[0].Price;
-            buy2.Text = randomItems[1].Name + "\n" + randomItems[1].Description + "\n" + randomItems[1].Price;
-            buy3.Text = randomItems[2].Name + "\n" + randomItems[2].Description + "\n" + randomItems[2].Price;
+            buy1.Text = randomItems[0].Name + "\n\n" + randomItems[0].Description + "\n\n" + "가격: " + randomItems[0].Price + " 코인";
+            buy2.Text = randomItems[1].Name + "\n\n" + randomItems[1].Description + "\n\n" + "가격: " + randomItems[1].Price + " 코인";
+            buy3.Text = randomItems[2].Name + "\n\n" + randomItems[2].Description + "\n\n" + "가격: " + randomItems[2].Price + " 코인";
 
             cardBoxes[0].Image = CardImageLoader.GetCardImage(randomCards[0]);
             cardBoxes[1].Image = CardImageLoader.GetCardImage(randomCards[1]);

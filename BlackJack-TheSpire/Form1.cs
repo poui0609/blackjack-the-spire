@@ -96,17 +96,36 @@ namespace BlackJack_TheSpire
             }
         }
 
-        private void UpdateButtonState()
+        private void UpdateButtonState() //버튼 활성화 비활성화
         {
             int cardCount = roundManager.GetPlayerHand().GetCardCount();
 
-            draw.Enabled = !roundManager.IsRoundOver();
+            draw.Enabled = !roundManager.IsRoundOver(); //점수 오버되서 못뽑을 때 비활성화
+            if (draw.Enabled)
+            {
+                drawwarring(); //드로우 버튼 테두리 강조
+            }
 
             foldbutten.Enabled = roundManager.CanFold() && cardCount > 0; ;//점수가 1점이하라 폴드 못할 때 비활성화, 카드를 안뽑았으면 비활성화
 
-            stand.Enabled = cardCount >= 2;
+            stand.Enabled = cardCount >= 2; //2장 이상 뽑은 후부터 스탠드 가능하게 활성화
         }
+        private void drawwarring() // 16이상이면 드로우 버튼 테두리 강조
+        {
+            int value = roundManager.GetPlayerHand().CalculateValue();
 
+            if (value >= 16)
+            {
+                draw.FlatStyle = FlatStyle.Flat;
+                draw.FlatAppearance.BorderSize = 4;
+                draw.FlatAppearance.BorderColor = Color.Red;
+            }
+            else
+            {
+                draw.FlatAppearance.BorderSize = 1;
+                draw.FlatAppearance.BorderColor = Color.Black;
+            }
+        }
 
         void showcoin() //코인 보여주는 메소드
         {
@@ -222,8 +241,10 @@ namespace BlackJack_TheSpire
 
         private void stand_Click(object sender, EventArgs e)
         {
+            int beforeCoin = gameState.GetCoin();
             roundManager.Stand();
             cycleManager.OnRoundEnd();
+            int earnedCoin = gameState.GetCoin() - beforeCoin;    //사이클에서 얻은 코인 수
 
             if (cycleManager.IsGameOver())
             {
@@ -242,8 +263,12 @@ namespace BlackJack_TheSpire
 
             UpdateButtonState();
 
+
             if (cycleManager.IsCycleSuccess()) // 사이클이 끝나면
             {
+                RoundClear roundClear = new RoundClear(gameState, gameState.GetCurrentCycle(), gameState.GetCycleScore(), gameState.GetTargetScore(), earnedCoin);
+                roundClear.ShowDialog();                                            // 사이클 종료 후 클리어 화면 띄우기
+
                 showcoin();
 
                 store store = new store(gameState);
