@@ -16,6 +16,8 @@ namespace BlackJack_TheSpire
         RoundManager roundManager;
         FormScaler scaler;
 
+        GameState SelectedGameState; //시작할 때 불러오기 할 데이터
+
         PictureBox movingCard; //카드 움직이는 효과 때 사용
         Card drawCard; //마지막으로 뽑은 카드
         int targetX; //카드 움직일 때 어디까지 움직일지 저장하는 변수
@@ -46,29 +48,28 @@ namespace BlackJack_TheSpire
         }
         private void Form1_Shown(object sender, EventArgs e)
         {
-            gamestarting();
+            draw.Enabled = false;       //시작버튼 누르기 전에는 비활성화
+            foldbutten.Enabled = false;
+            stand.Enabled = false;
+            deck.Enabled = false;
 
         }
         public void gamestarting()
         {
+            gameState = SelectedGameState; //저장정보 반영
 
-
-            start gamestart = new start();
-            if (gamestart.ShowDialog() != DialogResult.OK) 
-            {
-                Application.Exit();
-                return;
-            }
-            gameState = gamestart.SelectedGameState; //저장정보 반영
+            newbtn.Visible = false;         //시작화면 버튼들 지우기
+            continuebtn.Visible = false;
 
             roundManager = new RoundManager(gameState);
             cycleManager = new CycleManager(gameState, roundManager);
-            gameState.GetDeck().Shuffle();
             itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
 
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission(); ShowBoss(); //게임 시작 후 메인 폼 UI 갱신
 
+
+            deck.Enabled = true;//버튼들 활성화
             UpdateButtonState();
         }
 
@@ -312,14 +313,14 @@ namespace BlackJack_TheSpire
             string path = @"..\..\Resources\card.png";
             movingCard.Image = Image.FromFile(path); //뒷면이 쭉 이동
 
-            int index = playerhandpanel.Controls.Count;
+            int index = playerhandpanel.Controls.OfType<PictureBox>().Count();
 
             // 최종 도착 위치 (카드 간격에 비율 적용)
             targetX = (int)(index * CARD_GAP * scaler.ScaleX);
 
             // 시작 위치 (오른쪽 밖, Y 여백에 비율 적용)
             movingCard.Location = new Point(
-                playerhandpanel.Width,
+                playerhandpanel.ClientSize.Width,
                 (int)(CARD_MARGIN_Y * scaler.ScaleY));
 
             playerhandpanel.Controls.Add(movingCard); //패널에 카드 추가
@@ -522,6 +523,34 @@ namespace BlackJack_TheSpire
         {
             HaveDeck haveDeck = new HaveDeck(gameState);
             haveDeck.ShowDialog();
+        }
+
+        private void newbtn_Click(object sender, EventArgs e)
+        {
+            GameRandom.SetRandomSeed();
+
+            SelectedGameState = new GameState(); //새로운 저장정보
+
+            SelectedGameState.GetDeck().Shuffle();
+            RoundManager roundManager = new RoundManager(SelectedGameState);
+            CycleManager cycleManager = new CycleManager(SelectedGameState, roundManager);
+            SaveManager.Save(SelectedGameState); //새로운 정보로 저장
+
+            gamestarting(); //게임 시작
+
+        }
+
+        private void continuebtn_Click(object sender, EventArgs e)
+        {
+            if (!SaveManager.HasSaveFile())
+            {
+                MessageBox.Show("저장 파일이 없습니다.");
+                return;
+            }
+
+            SelectedGameState = SaveManager.Load(); //기존정보 불러오기
+
+            gamestarting(); //게임 시작
         }
     }
 }
