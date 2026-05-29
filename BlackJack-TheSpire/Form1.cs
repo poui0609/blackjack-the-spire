@@ -94,17 +94,36 @@ namespace BlackJack_TheSpire
             }
         }
 
-        private void UpdateButtonState()
+        private void UpdateButtonState() //버튼 활성화 비활성화
         {
             int cardCount = roundManager.GetPlayerHand().GetCardCount();
 
-            draw.Enabled = !roundManager.IsRoundOver();
+            draw.Enabled = !roundManager.IsRoundOver(); //점수 오버되서 못뽑을 때 비활성화
+            if (draw.Enabled)
+            {
+                drawwarring(); //드로우 버튼 테두리 강조
+            }
 
-            foldbutten.Enabled = roundManager.CanFold();
+            foldbutten.Enabled = roundManager.CanFold();//점수가 1점이하라 폴드 못할 때 비활성화
 
-            stand.Enabled = cardCount >= 2;
+            stand.Enabled = cardCount >= 2; //2장 이상 뽑은 후부터 스탠드 가능하게 활성화
         }
+        private void drawwarring() // 16이상이면 드로우 버튼 테두리 강조
+        {
+            int value = roundManager.GetPlayerHand().CalculateValue();
 
+            if (value >= 16)
+            {
+                draw.FlatStyle = FlatStyle.Flat;
+                draw.FlatAppearance.BorderSize = 4;
+                draw.FlatAppearance.BorderColor = Color.Red;
+            }
+            else
+            {
+                draw.FlatAppearance.BorderSize = 1;
+                draw.FlatAppearance.BorderColor = Color.Black;
+            }
+        }
 
         void showcoin() //코인 보여주는 메소드
         {
