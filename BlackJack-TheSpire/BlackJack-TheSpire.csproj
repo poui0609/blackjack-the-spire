@@ -95,12 +95,6 @@
     </Compile>
     <Compile Include="Scaler\CardImageLoader.cs" />
     <Compile Include="Scaler\FormScaler.cs" />
-    <Compile Include="start.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="start.Designer.cs">
-      <DependentUpon>start.cs</DependentUpon>
-    </Compile>
     <Compile Include="store.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,9 +118,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RoundClear.resx">
       <DependentUpon>RoundClear.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="start.resx">
-      <DependentUpon>start.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="store.resx">
       <DependentUpon>store.cs</DependentUpon>
