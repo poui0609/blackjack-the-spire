@@ -69,6 +69,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +92,7 @@
             this.num.BackColor = System.Drawing.Color.Transparent;
             this.num.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.num.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.num.Location = new System.Drawing.Point(86, 306);
+            this.num.Location = new System.Drawing.Point(86, 320);
             this.num.Name = "num";
             this.num.Size = new System.Drawing.Size(90, 57);
             this.num.TabIndex = 2;
@@ -119,7 +122,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1578, 35);
+            this.menuStrip1.Size = new System.Drawing.Size(1578, 36);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -131,7 +134,7 @@
             this.게임종료ToolStripMenuItem});
             this.설정ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.설정ToolStripMenuItem.Name = "설정ToolStripMenuItem";
-            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(64, 30);
             this.설정ToolStripMenuItem.Text = "설정";
             // 
             // 나가기ToolStripMenuItem
@@ -156,7 +159,7 @@
             this.아이템ToolStripMenuItem});
             this.추가ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.추가ToolStripMenuItem.Name = "추가ToolStripMenuItem";
-            this.추가ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+            this.추가ToolStripMenuItem.Size = new System.Drawing.Size(64, 30);
             this.추가ToolStripMenuItem.Text = "추가";
             // 
             // 카드ToolStripMenuItem
@@ -483,6 +486,39 @@
             this.label4.TabIndex = 35;
             this.label4.Text = "폴드횟수";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label5.Location = new System.Drawing.Point(96, 477);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 18);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "라운드";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label6.Location = new System.Drawing.Point(105, 302);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 18);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "숫자";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label7.Location = new System.Drawing.Point(242, 288);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 18);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "배율";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -490,6 +526,9 @@
             this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.배경그림2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1578, 844);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -571,5 +610,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
