@@ -66,6 +66,7 @@ namespace BlackJack_TheSpire
 
         public bool Fold() //폴드
         {
+            if (playerHand.GetCardCount() == 0) return false;
             if (gameState.GetCycleScore() <= 1) return false;
 
             int penalty = gameState.GetCycleScore() / 2;
@@ -94,7 +95,7 @@ namespace BlackJack_TheSpire
 
         public bool CanFold() //폴드 가능한지 여부
         {
-            return !isRoundOver && gameState.GetCycleScore() > 1;
+            return !isRoundOver && gameState.GetCycleScore() > 1 && gameState.GetCycleScore() > 1;
         }
     }
 }

@@ -31,6 +31,8 @@ namespace BlackJack_TheSpire
         private const int CARD_GAP = 100;       // 카드 사이 간격
         private const int CARD_MARGIN_Y = 10;   // 카드 위쪽 여백
 
+
+        private bool isCardMoving = false; //카드 움직일 때 못움직이게
         public Form1()
         {
             InitializeComponent();
@@ -50,6 +52,7 @@ namespace BlackJack_TheSpire
         public void gamestarting()
         {
 
+
             start gamestart = new start();
             if (gamestart.ShowDialog() != DialogResult.OK) 
             {
@@ -63,6 +66,7 @@ namespace BlackJack_TheSpire
             gameState.GetDeck().Shuffle();
             itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
+
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission(); ShowBoss(); //게임 시작 후 메인 폼 UI 갱신
 
             UpdateButtonState();
@@ -104,7 +108,7 @@ namespace BlackJack_TheSpire
                 drawwarring(); //드로우 버튼 테두리 강조
             }
 
-            foldbutten.Enabled = roundManager.CanFold();//점수가 1점이하라 폴드 못할 때 비활성화
+            foldbutten.Enabled = roundManager.CanFold() && cardCount > 0; ;//점수가 1점이하라 폴드 못할 때 비활성화, 카드를 안뽑았으면 비활성화
 
             stand.Enabled = cardCount >= 2; //2장 이상 뽑은 후부터 스탠드 가능하게 활성화
         }
@@ -225,6 +229,9 @@ namespace BlackJack_TheSpire
 
         private void draw_Click(object sender, EventArgs e)
         {
+            if (isCardMoving) //이동중이면 안눌리게
+                return;
+
             Card drawCard = roundManager.Draw(); //카드뽑기
             if (drawCard == null)
                 return;
@@ -326,6 +333,8 @@ namespace BlackJack_TheSpire
         {
             moveTimer.Stop();
 
+            isCardMoving = true;
+
             // 중복 연결 방지
             moveTimer.Tick -= MoveCard;
             moveTimer.Tick += MoveCard;
@@ -334,9 +343,9 @@ namespace BlackJack_TheSpire
             moveTimer.Start();
         }
 
-        private async void MoveCard(object sender, EventArgs e)
+        private void MoveCard(object sender, EventArgs e)
         {
-            int speed = 15;
+            int speed = 30;
 
             movingCard.Left -= speed;
 
@@ -345,9 +354,10 @@ namespace BlackJack_TheSpire
             {
                 movingCard.Left = targetX;
 
-                await Task.Delay(100); //0.1초 대기
-
                 movingCard.Image = CardImageLoader.GetCardImage(drawCard); //뒷면에서 카드로 이미지 변경
+
+                isCardMoving = false;
+
                 moveTimer.Stop();
             }
         }
