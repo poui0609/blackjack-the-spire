@@ -446,11 +446,6 @@ namespace BlackJack_TheSpire
         {
             gamestarting();
         }
-        private void deck_Click(object sender, EventArgs e)
-        {
-            HaveDeck haveDeck = new HaveDeck(gameState);
-            haveDeck.ShowDialog();
-        }
 
         void InitItemShow()
         {
@@ -521,7 +516,7 @@ namespace BlackJack_TheSpire
 
         private void deck_Click_1(object sender, EventArgs e)
         {
-            HaveDeck haveDeck = new HaveDeck(gameState);
+            HaveDeck haveDeck = new HaveDeck(gameState, 0);
             haveDeck.ShowDialog();
         }
 

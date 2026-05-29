@@ -20,7 +20,7 @@ namespace BlackJack_TheSpire
         GameState gamestate;
         private void deck_Click(object sender, EventArgs e)
         {
-            HaveDeck haveDeck = new HaveDeck(gamestate);
+            HaveDeck haveDeck = new HaveDeck(gamestate, 1);
             haveDeck.ShowDialog();
         }
 
