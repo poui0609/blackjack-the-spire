@@ -50,6 +50,7 @@ namespace BlackJack_TheSpire
         public void gamestarting()
         {
 
+
             start gamestart = new start();
             if (gamestart.ShowDialog() != DialogResult.OK) 
             {
@@ -63,6 +64,7 @@ namespace BlackJack_TheSpire
             gameState.GetDeck().Shuffle();
             itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
+
             RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission(); ShowBoss(); //게임 시작 후 메인 폼 UI 갱신
 
             UpdateButtonState();
@@ -100,7 +102,7 @@ namespace BlackJack_TheSpire
 
             draw.Enabled = !roundManager.IsRoundOver();
 
-            foldbutten.Enabled = roundManager.CanFold();
+            foldbutten.Enabled = roundManager.CanFold() && cardCount > 0; ;//점수가 1점이하라 폴드 못할 때 비활성화, 카드를 안뽑았으면 비활성화
 
             stand.Enabled = cardCount >= 2;
         }
@@ -311,7 +313,7 @@ namespace BlackJack_TheSpire
 
         private async void MoveCard(object sender, EventArgs e)
         {
-            int speed = 15;
+            int speed = 30;
 
             movingCard.Left -= speed;
 

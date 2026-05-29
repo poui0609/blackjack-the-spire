@@ -68,6 +68,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -335,9 +336,9 @@
             this.foldnum.BackColor = System.Drawing.Color.Transparent;
             this.foldnum.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.foldnum.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.foldnum.Location = new System.Drawing.Point(220, 480);
+            this.foldnum.Location = new System.Drawing.Point(220, 489);
             this.foldnum.Name = "foldnum";
-            this.foldnum.Size = new System.Drawing.Size(90, 63);
+            this.foldnum.Size = new System.Drawing.Size(90, 54);
             this.foldnum.TabIndex = 21;
             this.foldnum.Text = "폴드";
             this.foldnum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -471,6 +472,17 @@
             this.label3.TabIndex = 34;
             this.label3.Text = "미션";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Location = new System.Drawing.Point(222, 471);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 18);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "폴드횟수";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -478,6 +490,7 @@
             this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.배경그림2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1578, 844);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -557,5 +570,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
