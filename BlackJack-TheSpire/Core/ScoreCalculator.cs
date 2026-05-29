@@ -31,14 +31,6 @@ namespace BlackJack_TheSpire
 
             int value = hand.CalculateValue();
             double multiplier = GetHandMultiplier(hand);
-            
-            foreach (Mission mission in gameState.GetCurrentMissions())
-            {
-                if(mission.IsCompleted)
-                {
-                    multiplier *= mission.BonusMultiplier;
-                }
-            }
 
             foreach (Item item in gameState.GetInventory().GetItems())
             {

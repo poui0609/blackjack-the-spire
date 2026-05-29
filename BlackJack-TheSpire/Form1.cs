@@ -24,6 +24,7 @@ namespace BlackJack_TheSpire
 
         private Label[] itemSlots; //아이템 슬롯 변수
         private Label selectedSlot; //아이템 슬롯 저장 변수
+        private List<Mission> currentRoundCompletedMissions = new List<Mission>();
 
         // 카드 기준 수치 (디자인 시 기준값) - 양쪽 메서드에서 공유
         private const int CARD_BASE_WIDTH = 145;
@@ -156,13 +157,10 @@ namespace BlackJack_TheSpire
             double totalMultiplier = baseOdd;
             string oddsText = baseOdd.ToString("0.0");
 
-            foreach (Mission mission in gameState.GetCurrentMissions())
+            foreach (Mission mission in roundManager.GetCurrentRoundCompletedMissions())
             {
-                if (mission.IsCompleted)
-                {
-                    totalMultiplier *= mission.BonusMultiplier;
-                    oddsText += " x " + mission.BonusMultiplier.ToString("0.0");
-                }
+                 totalMultiplier *= mission.BonusMultiplier;
+                 oddsText += " x " + mission.BonusMultiplier.ToString("0.0");
             }
 
             foreach (Item item in gameState.GetInventory().GetItems())
@@ -397,7 +395,10 @@ namespace BlackJack_TheSpire
             foreach (Mission mission in missions)
             {
                 if (!mission.IsCompleted && mission.Check(hand))
+                {
                     mission.IsCompleted = true;
+                    currentRoundCompletedMissions.Add(mission);
+                }
             }
 
             if (missions.Count > 0 && missions[0].IsCompleted)
