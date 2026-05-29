@@ -362,7 +362,7 @@ namespace BlackJack_TheSpire
             List<Item> items = gameState.GetInventory().GetItems();
             for (int i = 0; i < items.Count && i < itemSlots.Length; i++)
             {
-                itemSlots[i].Text = items[i].Name + "\n" + items[i].Description;
+                itemSlots[i].Text = items[i].Name + "\n\n" + items[i].Description;
             }
         }
 
