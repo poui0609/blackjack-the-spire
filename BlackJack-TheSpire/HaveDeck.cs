@@ -12,20 +12,22 @@ namespace BlackJack_TheSpire
         internal GameState gameState;
         private FormScaler scaler;
 
+        int type; //0: 덱카운트 포함. 1:엔딩
+
         // 실행 중 생성되는 카드 PictureBox 기준값
         private const int CARD_BASE_WIDTH = 73;
         private const int CARD_BASE_HEIGHT = 101;
         private const int CARD_GAP = 30;
         private const int CARD_MARGIN_Y = 10;
 
-        internal HaveDeck(GameState gameState)
+        internal HaveDeck(GameState gameState, int type)
         {
             InitializeComponent();
 
             scaler = new FormScaler(this);
 
             this.gameState = gameState;
-
+            this.type = type;
             ShowDeck();
         }
 
@@ -75,9 +77,12 @@ namespace BlackJack_TheSpire
 
                 Image img = CardImageLoader.GetCardImage(card);
 
-                if (usedCards.Contains(card))
+                if (type == 0)  //덱카운트 포함이면 쓴 카드는 색 반전.
                 {
-                    img = InvertImage(img);
+                    if (usedCards.Contains(card))
+                    {
+                        img = InvertImage(img);
+                    }
                 }
 
                 pb.Image = img;
