@@ -27,9 +27,14 @@ namespace BlackJack_TheSpire
             string detail = "";
             List<int> scores = gameState.GetRoundScores();
 
-            for(int i = 0; i < scores.Count; i++)
+            for(int i = 0; i < 4; i++)
             {
-                detail += $"{i + 1}판: {scores[i]}점\n";
+                int roundScore = 0;
+                if (i < scores.Count)
+                {
+                    roundScore = scores[i];
+                }
+                detail += $"{i + 1}판: {roundScore}점\n";
             }
             lblRoundDetail.Text = detail;
         }

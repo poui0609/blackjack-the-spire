@@ -32,14 +32,13 @@
             this.lblCoin = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.lblRoundDetail = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblRound
             // 
             this.lblRound.BackColor = System.Drawing.Color.Transparent;
-            this.lblRound.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRound.Font = new System.Drawing.Font("휴먼옛체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblRound.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblRound.Location = new System.Drawing.Point(334, 137);
             this.lblRound.Name = "lblRound";
@@ -50,9 +49,10 @@
             // lblCoin
             // 
             this.lblCoin.BackColor = System.Drawing.Color.Transparent;
-            this.lblCoin.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblCoin.Font = new System.Drawing.Font("휴먼옛체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblCoin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblCoin.Location = new System.Drawing.Point(455, 304);
+            this.lblCoin.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblCoin.Location = new System.Drawing.Point(446, 302);
             this.lblCoin.Name = "lblCoin";
             this.lblCoin.Size = new System.Drawing.Size(82, 41);
             this.lblCoin.TabIndex = 3;
@@ -72,31 +72,22 @@
             // lblRoundDetail
             // 
             this.lblRoundDetail.BackColor = System.Drawing.Color.Transparent;
-            this.lblRoundDetail.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblRoundDetail.Font = new System.Drawing.Font("휴먼옛체", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblRoundDetail.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblRoundDetail.Location = new System.Drawing.Point(407, 190);
+            this.lblRoundDetail.Location = new System.Drawing.Point(387, 189);
             this.lblRoundDetail.Name = "lblRoundDetail";
             this.lblRoundDetail.Size = new System.Drawing.Size(94, 75);
             this.lblRoundDetail.TabIndex = 6;
             this.lblRoundDetail.Text = "label2";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 12);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
-            // 
             // lblScore
             // 
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
-            this.lblScore.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblScore.Font = new System.Drawing.Font("휴먼옛체", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblScore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblScore.Location = new System.Drawing.Point(508, 208);
+            this.lblScore.Location = new System.Drawing.Point(476, 212);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(101, 46);
+            this.lblScore.Size = new System.Drawing.Size(128, 46);
             this.lblScore.TabIndex = 8;
             this.lblScore.Text = "label2";
             // 
@@ -108,7 +99,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblScore);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblRoundDetail);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.lblCoin);
@@ -117,7 +107,6 @@
             this.Name = "RoundClear";
             this.Text = "RoundClear";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -126,7 +115,6 @@
         private System.Windows.Forms.Label lblCoin;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblRoundDetail;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblScore;
     }
 }
