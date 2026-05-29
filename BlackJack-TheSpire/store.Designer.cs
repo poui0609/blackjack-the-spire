@@ -57,7 +57,7 @@
             // buy1
             // 
             this.buy1.BackColor = System.Drawing.Color.Transparent;
-            this.buy1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buy1.Font = new System.Drawing.Font("휴먼옛체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buy1.ForeColor = System.Drawing.Color.White;
             this.buy1.Location = new System.Drawing.Point(238, 82);
             this.buy1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -70,7 +70,7 @@
             // buy2
             // 
             this.buy2.BackColor = System.Drawing.Color.Transparent;
-            this.buy2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buy2.Font = new System.Drawing.Font("휴먼옛체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buy2.ForeColor = System.Drawing.Color.White;
             this.buy2.Location = new System.Drawing.Point(443, 81);
             this.buy2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -83,7 +83,7 @@
             // buy3
             // 
             this.buy3.BackColor = System.Drawing.Color.Transparent;
-            this.buy3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buy3.Font = new System.Drawing.Font("휴먼옛체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buy3.ForeColor = System.Drawing.Color.White;
             this.buy3.Location = new System.Drawing.Point(657, 81);
             this.buy3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -159,6 +159,7 @@
             // 
             this.slot1.BackColor = System.Drawing.Color.Transparent;
             this.slot1.ContextMenuStrip = this.itemMenu;
+            this.slot1.Font = new System.Drawing.Font("휴먼옛체", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.slot1.ForeColor = System.Drawing.Color.White;
             this.slot1.Location = new System.Drawing.Point(40, 111);
             this.slot1.Name = "slot1";
@@ -187,6 +188,7 @@
             // 
             this.slot2.BackColor = System.Drawing.Color.Transparent;
             this.slot2.ContextMenuStrip = this.itemMenu;
+            this.slot2.Font = new System.Drawing.Font("휴먼옛체", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.slot2.ForeColor = System.Drawing.Color.White;
             this.slot2.Location = new System.Drawing.Point(40, 186);
             this.slot2.Name = "slot2";
@@ -200,7 +202,8 @@
             // 
             this.slot3.BackColor = System.Drawing.Color.Transparent;
             this.slot3.ContextMenuStrip = this.itemMenu;
-            this.slot3.ForeColor = System.Drawing.Color.White;
+            this.slot3.Font = new System.Drawing.Font("휴먼옛체", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.slot3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.slot3.Location = new System.Drawing.Point(40, 258);
             this.slot3.Name = "slot3";
             this.slot3.Size = new System.Drawing.Size(136, 52);
@@ -213,6 +216,7 @@
             // 
             this.slot4.BackColor = System.Drawing.Color.Transparent;
             this.slot4.ContextMenuStrip = this.itemMenu;
+            this.slot4.Font = new System.Drawing.Font("휴먼옛체", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.slot4.ForeColor = System.Drawing.Color.White;
             this.slot4.Location = new System.Drawing.Point(40, 331);
             this.slot4.Name = "slot4";
@@ -226,6 +230,7 @@
             // 
             this.slot5.BackColor = System.Drawing.Color.Transparent;
             this.slot5.ContextMenuStrip = this.itemMenu;
+            this.slot5.Font = new System.Drawing.Font("휴먼옛체", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.slot5.ForeColor = System.Drawing.Color.White;
             this.slot5.Location = new System.Drawing.Point(40, 403);
             this.slot5.Name = "slot5";
