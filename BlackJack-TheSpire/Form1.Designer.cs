@@ -54,6 +54,9 @@
             this.draw = new System.Windows.Forms.Button();
             this.stand = new System.Windows.Forms.Button();
             this.playerhandpanel = new System.Windows.Forms.Panel();
+            this.tutorial = new System.Windows.Forms.Button();
+            this.continuebtn = new System.Windows.Forms.Button();
+            this.newbtn = new System.Windows.Forms.Button();
             this.foldnum = new System.Windows.Forms.Label();
             this.item1 = new System.Windows.Forms.Label();
             this.item2 = new System.Windows.Forms.Label();
@@ -72,8 +75,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.newbtn = new System.Windows.Forms.Button();
-            this.continuebtn = new System.Windows.Forms.Button();
+            this.nowround = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.playerhandpanel.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +89,7 @@
             this.coin.Name = "coin";
             this.coin.Size = new System.Drawing.Size(213, 63);
             this.coin.TabIndex = 0;
-            this.coin.Text = "금고 금액 띄울곳";
+            this.coin.Text = "코인：";
             this.coin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // num
@@ -100,7 +102,6 @@
             this.num.Name = "num";
             this.num.Size = new System.Drawing.Size(90, 57);
             this.num.TabIndex = 2;
-            this.num.Text = "숫자";
             this.num.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // odds
@@ -112,7 +113,6 @@
             this.odds.Name = "odds";
             this.odds.Size = new System.Drawing.Size(93, 57);
             this.odds.TabIndex = 3;
-            this.odds.Text = "배율";
             this.odds.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip1
@@ -120,9 +120,6 @@
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.설정ToolStripMenuItem,
-            this.추가ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 4, 0, 4);
@@ -260,7 +257,6 @@
             this.score.Name = "score";
             this.score.Size = new System.Drawing.Size(224, 75);
             this.score.TabIndex = 9;
-            this.score.Text = "라운드 패스 점수\r\n이번라운드에서 번 금액 / 목표 금액 이런식";
             this.score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // get
@@ -298,7 +294,6 @@
             this.round.Name = "round";
             this.round.Size = new System.Drawing.Size(87, 51);
             this.round.TabIndex = 16;
-            this.round.Text = "남은 턴";
             this.round.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // draw
@@ -333,12 +328,43 @@
             // playerhandpanel
             // 
             this.playerhandpanel.BackColor = System.Drawing.Color.Transparent;
+            this.playerhandpanel.Controls.Add(this.tutorial);
             this.playerhandpanel.Controls.Add(this.continuebtn);
             this.playerhandpanel.Controls.Add(this.newbtn);
             this.playerhandpanel.Location = new System.Drawing.Point(397, 399);
             this.playerhandpanel.Name = "playerhandpanel";
             this.playerhandpanel.Size = new System.Drawing.Size(924, 405);
             this.playerhandpanel.TabIndex = 20;
+            // 
+            // tutorial
+            // 
+            this.tutorial.Location = new System.Drawing.Point(557, 0);
+            this.tutorial.Name = "tutorial";
+            this.tutorial.Size = new System.Drawing.Size(156, 259);
+            this.tutorial.TabIndex = 41;
+            this.tutorial.Text = "튜토리얼";
+            this.tutorial.UseVisualStyleBackColor = true;
+            this.tutorial.Click += new System.EventHandler(this.tutorial_Click);
+            // 
+            // continuebtn
+            // 
+            this.continuebtn.Location = new System.Drawing.Point(331, 0);
+            this.continuebtn.Name = "continuebtn";
+            this.continuebtn.Size = new System.Drawing.Size(156, 259);
+            this.continuebtn.TabIndex = 40;
+            this.continuebtn.Text = "이어하기";
+            this.continuebtn.UseVisualStyleBackColor = true;
+            this.continuebtn.Click += new System.EventHandler(this.continuebtn_Click);
+            // 
+            // newbtn
+            // 
+            this.newbtn.Location = new System.Drawing.Point(115, -4);
+            this.newbtn.Name = "newbtn";
+            this.newbtn.Size = new System.Drawing.Size(156, 259);
+            this.newbtn.TabIndex = 39;
+            this.newbtn.Text = "새로하기";
+            this.newbtn.UseVisualStyleBackColor = true;
+            this.newbtn.Click += new System.EventHandler(this.newbtn_Click);
             // 
             // foldnum
             // 
@@ -350,7 +376,6 @@
             this.foldnum.Name = "foldnum";
             this.foldnum.Size = new System.Drawing.Size(129, 81);
             this.foldnum.TabIndex = 21;
-            this.foldnum.Text = "폴드";
             this.foldnum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // item1
@@ -497,11 +522,12 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("휴먼옛체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label4.Location = new System.Drawing.Point(221, 480);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 18);
+            this.label4.Size = new System.Drawing.Size(81, 19);
             this.label4.TabIndex = 35;
             this.label4.Text = "폴드횟수";
             // 
@@ -509,11 +535,12 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("휴먼옛체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label5.Location = new System.Drawing.Point(109, 476);
+            this.label5.Location = new System.Drawing.Point(98, 476);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 18);
+            this.label5.Size = new System.Drawing.Size(63, 19);
             this.label5.TabIndex = 36;
             this.label5.Text = "라운드";
             // 
@@ -521,11 +548,12 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("휴먼옛체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label6.Location = new System.Drawing.Point(109, 302);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 18);
+            this.label6.Size = new System.Drawing.Size(45, 19);
             this.label6.TabIndex = 37;
             this.label6.Text = "숫자";
             // 
@@ -533,33 +561,28 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("휴먼옛체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label7.Location = new System.Drawing.Point(243, 302);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 18);
+            this.label7.Size = new System.Drawing.Size(45, 19);
             this.label7.TabIndex = 38;
             this.label7.Text = "배율";
             // 
-            // newbtn
+            // nowround
             // 
-            this.newbtn.Location = new System.Drawing.Point(115, -4);
-            this.newbtn.Name = "newbtn";
-            this.newbtn.Size = new System.Drawing.Size(156, 259);
-            this.newbtn.TabIndex = 39;
-            this.newbtn.Text = "새로하기";
-            this.newbtn.UseVisualStyleBackColor = true;
-            this.newbtn.Click += new System.EventHandler(this.newbtn_Click);
-            // 
-            // continuebtn
-            // 
-            this.continuebtn.Location = new System.Drawing.Point(331, 0);
-            this.continuebtn.Name = "continuebtn";
-            this.continuebtn.Size = new System.Drawing.Size(156, 259);
-            this.continuebtn.TabIndex = 40;
-            this.continuebtn.Text = "이어하기";
-            this.continuebtn.UseVisualStyleBackColor = true;
-            this.continuebtn.Click += new System.EventHandler(this.continuebtn_Click);
+            this.nowround.BackColor = System.Drawing.Color.Transparent;
+            this.nowround.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.nowround.Font = new System.Drawing.Font("휴먼옛체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.nowround.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.nowround.Image = global::BlackJack_TheSpire.Properties.Resources.칸;
+            this.nowround.Location = new System.Drawing.Point(646, 0);
+            this.nowround.Name = "nowround";
+            this.nowround.Size = new System.Drawing.Size(216, 72);
+            this.nowround.TabIndex = 39;
+            this.nowround.Text = "현재 층";
+            this.nowround.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -568,6 +591,7 @@
             this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.배경그림2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1578, 844);
+            this.Controls.Add(this.nowround);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -658,5 +682,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button continuebtn;
         private System.Windows.Forms.Button newbtn;
+        private System.Windows.Forms.Button tutorial;
+        private System.Windows.Forms.Label nowround;
     }
 }

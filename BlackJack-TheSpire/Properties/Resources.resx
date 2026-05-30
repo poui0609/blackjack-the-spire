@@ -121,9 +121,6 @@
   <data name="ChatGPT Image 2026년 5월 29일 오후 05_04_26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChatGPT Image 2026년 5월 29일 오후 05_04_26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="카드 뒷면" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\카드 뒷면.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ChatGPT Image 2026년 5월 29일 오후 04_48_051" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChatGPT Image 2026년 5월 29일 오후 04_48_051.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,14 +145,26 @@
   <data name="상점 이미지11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\상점 이미지11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ChatGPT Image 2026년 5월 29일 오후 05_04_261" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ChatGPT Image 2026년 5월 29일 오후 05_04_261.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="배경그림" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\배경그림.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="배경그림1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\배경그림1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ChatGPT Image 2026년 5월 29일 오후 04_48_05" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChatGPT Image 2026년 5월 29일 오후 04_48_05.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="배경그림" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\배경그림.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="brown-wood-textured-background-with-design-space_53876-160425(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\brown-wood-textured-background-with-design-space_53876-160425(1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="카드 뒷면" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\카드 뒷면.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="칸" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\칸.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ChatGPT Image 2026년 5월 26일 오후 05_07_57" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChatGPT Image 2026년 5월 26일 오후 05_07_57.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,7 +172,7 @@
   <data name="버튼사진" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\버튼사진.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ChatGPT Image 2026년 5월 29일 오후 05_04_261" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ChatGPT Image 2026년 5월 29일 오후 05_04_261.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="튜토리얼" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\튜토리얼.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
