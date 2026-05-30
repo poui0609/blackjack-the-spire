@@ -561,8 +561,6 @@ namespace BlackJack_TheSpire
             SelectedGameState = SaveManager.Load(); //기존정보 불러오기
 
             gamestarting(); //게임 시작
-            ending end = new ending(gameState);
-            end.ShowDialog();
         }
         int tutorialClickCount = 0;
         private void tutorial_Click(object sender, EventArgs e)
