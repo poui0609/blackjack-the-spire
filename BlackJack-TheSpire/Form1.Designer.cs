@@ -34,8 +34,7 @@
             this.num = new System.Windows.Forms.Label();
             this.odds = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.설정ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.나가기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.게임종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.카드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,6 +75,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.nowround = new System.Windows.Forms.Label();
+            this.tutorialLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.playerhandpanel.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +120,9 @@
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.종료ToolStripMenuItem,
+            this.추가ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 4, 0, 4);
@@ -127,23 +130,15 @@
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 설정ToolStripMenuItem
+            // 종료ToolStripMenuItem
             // 
-            this.설정ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.설정ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.나가기ToolStripMenuItem,
+            this.종료ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.종료ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.게임종료ToolStripMenuItem});
-            this.설정ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.설정ToolStripMenuItem.Name = "설정ToolStripMenuItem";
-            this.설정ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
-            this.설정ToolStripMenuItem.Text = "설정";
-            // 
-            // 나가기ToolStripMenuItem
-            // 
-            this.나가기ToolStripMenuItem.Name = "나가기ToolStripMenuItem";
-            this.나가기ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
-            this.나가기ToolStripMenuItem.Text = "나가기";
-            this.나가기ToolStripMenuItem.Click += new System.EventHandler(this.나가기ToolStripMenuItem_Click);
+            this.종료ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
+            this.종료ToolStripMenuItem.Text = "종료";
             // 
             // 게임종료ToolStripMenuItem
             // 
@@ -584,6 +579,19 @@
             this.nowround.Text = "현재 층";
             this.nowround.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tutorialLabel
+            // 
+            this.tutorialLabel.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
+            this.tutorialLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.tutorialLabel.Location = new System.Drawing.Point(12, 54);
+            this.tutorialLabel.Name = "tutorialLabel";
+            this.tutorialLabel.Size = new System.Drawing.Size(100, 23);
+            this.tutorialLabel.TabIndex = 40;
+            this.tutorialLabel.Text = "label8";
+            this.tutorialLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tutorialLabel.Visible = false;
+            this.tutorialLabel.Click += new System.EventHandler(this.TutorialLabel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -591,6 +599,7 @@
             this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.배경그림2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1578, 844);
+            this.Controls.Add(this.tutorialLabel);
             this.Controls.Add(this.nowround);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -641,9 +650,7 @@
         private System.Windows.Forms.Label coin;
         private System.Windows.Forms.Label odds;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 설정ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 나가기ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 게임종료ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 종료ToolStripMenuItem;
         private System.Windows.Forms.Label num;
         private System.Windows.Forms.Label score;
         private System.Windows.Forms.Label get;
@@ -684,5 +691,7 @@
         private System.Windows.Forms.Button newbtn;
         private System.Windows.Forms.Button tutorial;
         private System.Windows.Forms.Label nowround;
+        private System.Windows.Forms.Label tutorialLabel;
+        private System.Windows.Forms.ToolStripMenuItem 게임종료ToolStripMenuItem;
     }
 }

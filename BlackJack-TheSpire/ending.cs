@@ -29,14 +29,25 @@ namespace BlackJack_TheSpire
             if (gamestate.IsGameClear())
             {
                 result.Text = "클리어!";
+                scorelbl.Visible = false;
             }
             else
             {
                 result.Text = "패배...";
+                scorelbl.Text = $"점수: {gamestate.GetCycleScore()}";
             }
-            scorelbl.Text = $"점수: {gamestate.GetCycleScore()}";
-            goalscorelbl.Text = $"목표점수: {gamestate.GetTargetScore()}";
-            seedlbl.Text = $"시드: {gamestate.GetSeed()}";
+            seedlbl.Text = $"시드\r\n{gamestate.GetSeed()}";
+            ShowItemList();
+        }
+
+        private void ShowItemList()
+        {
+            itemlbl.Text = "아이템 목록\r\n";
+
+            foreach (Item item in gamestate.GetInventory().GetItems())
+            {
+                itemlbl.Text += $"{item.Name} - {item.Description}\r\n";
+            }
         }
     }
 }
