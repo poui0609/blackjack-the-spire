@@ -190,5 +190,11 @@
   <ItemGroup>
     <None Include="Resources\튜토리얼.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\엔딩화면.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\최종점수.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

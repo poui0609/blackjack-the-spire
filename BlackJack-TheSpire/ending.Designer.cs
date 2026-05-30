@@ -33,31 +33,39 @@
             this.seedlbl = new System.Windows.Forms.Label();
             this.deck = new System.Windows.Forms.PictureBox();
             this.scorelbl = new System.Windows.Forms.Label();
-            this.goalscorelbl = new System.Windows.Forms.Label();
+            this.itemlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.deck)).BeginInit();
             this.SuspendLayout();
             // 
             // result
             // 
-            this.result.Location = new System.Drawing.Point(218, 55);
+            this.result.BackColor = System.Drawing.Color.Transparent;
+            this.result.Font = new System.Drawing.Font("휴먼옛체", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.result.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.result.Location = new System.Drawing.Point(357, 64);
             this.result.Name = "result";
             this.result.Size = new System.Drawing.Size(197, 57);
             this.result.TabIndex = 0;
             this.result.Text = "성공, 실패";
+            this.result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // seedlbl
             // 
-            this.seedlbl.Location = new System.Drawing.Point(197, 135);
+            this.seedlbl.BackColor = System.Drawing.Color.Transparent;
+            this.seedlbl.Font = new System.Drawing.Font("휴먼옛체", 16F);
+            this.seedlbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.seedlbl.Location = new System.Drawing.Point(96, 156);
             this.seedlbl.Name = "seedlbl";
-            this.seedlbl.Size = new System.Drawing.Size(394, 24);
+            this.seedlbl.Size = new System.Drawing.Size(341, 71);
             this.seedlbl.TabIndex = 1;
             this.seedlbl.Text = "시드라벨";
+            this.seedlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // deck
             // 
             this.deck.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.카드_뒷면;
             this.deck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.deck.Location = new System.Drawing.Point(656, 246);
+            this.deck.Location = new System.Drawing.Point(788, 342);
             this.deck.Name = "deck";
             this.deck.Size = new System.Drawing.Size(104, 132);
             this.deck.TabIndex = 2;
@@ -66,30 +74,40 @@
             // 
             // scorelbl
             // 
-            this.scorelbl.Location = new System.Drawing.Point(61, 202);
+            this.scorelbl.BackColor = System.Drawing.Color.Transparent;
+            this.scorelbl.Font = new System.Drawing.Font("휴먼옛체", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.scorelbl.ForeColor = System.Drawing.Color.White;
+            this.scorelbl.Location = new System.Drawing.Point(560, 156);
             this.scorelbl.Name = "scorelbl";
-            this.scorelbl.Size = new System.Drawing.Size(172, 56);
+            this.scorelbl.Size = new System.Drawing.Size(212, 71);
             this.scorelbl.TabIndex = 3;
             this.scorelbl.Text = "점수";
+            this.scorelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // goalscorelbl
+            // itemlbl
             // 
-            this.goalscorelbl.Location = new System.Drawing.Point(368, 202);
-            this.goalscorelbl.Name = "goalscorelbl";
-            this.goalscorelbl.Size = new System.Drawing.Size(223, 56);
-            this.goalscorelbl.TabIndex = 4;
-            this.goalscorelbl.Text = "목표점수";
+            this.itemlbl.BackColor = System.Drawing.Color.Transparent;
+            this.itemlbl.Font = new System.Drawing.Font("휴먼옛체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.itemlbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.itemlbl.Location = new System.Drawing.Point(180, 322);
+            this.itemlbl.Name = "itemlbl";
+            this.itemlbl.Size = new System.Drawing.Size(559, 186);
+            this.itemlbl.TabIndex = 5;
+            this.itemlbl.Text = "아이템 목록";
             // 
             // ending
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.goalscorelbl);
+            this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.엔딩화면;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(935, 586);
+            this.Controls.Add(this.itemlbl);
             this.Controls.Add(this.scorelbl);
             this.Controls.Add(this.deck);
             this.Controls.Add(this.seedlbl);
             this.Controls.Add(this.result);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ending";
             this.Text = "Form2";
@@ -105,6 +123,6 @@
         private System.Windows.Forms.Label seedlbl;
         private System.Windows.Forms.PictureBox deck;
         private System.Windows.Forms.Label scorelbl;
-        private System.Windows.Forms.Label goalscorelbl;
+        private System.Windows.Forms.Label itemlbl;
     }
 }

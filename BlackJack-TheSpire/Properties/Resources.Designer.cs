@@ -223,6 +223,26 @@ namespace BlackJack_TheSpire.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap 엔딩화면 {
+            get {
+                object obj = ResourceManager.GetObject("엔딩화면", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 최종점수 {
+            get {
+                object obj = ResourceManager.GetObject("최종점수", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap 카드_뒷면 {
             get {
                 object obj = ResourceManager.GetObject("카드 뒷면", resourceCulture);

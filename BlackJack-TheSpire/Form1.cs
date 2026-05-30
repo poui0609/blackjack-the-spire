@@ -213,7 +213,7 @@ namespace BlackJack_TheSpire
         }
         void shownowround()
         {
-            nowround.Text = $"층 : {gameState.GetCurrentCycle()} / 챕터 : {gameState.GetCurrentChapter()}";
+            nowround.Text = $"{gameState.GetCurrentChapter()}-{gameState.GetCurrentCycle()}";
         }
         private void foldbutten_Click(object sender, EventArgs e)
         {
@@ -453,10 +453,6 @@ namespace BlackJack_TheSpire
 
 
         }
-        private void 나가기ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            gamestarting();
-        }
 
         void InitItemShow()
         {
@@ -557,25 +553,25 @@ namespace BlackJack_TheSpire
             SelectedGameState = SaveManager.Load(); //기존정보 불러오기
 
             gamestarting(); //게임 시작
+            ending end = new ending(gameState);
+            end.ShowDialog();
         }
         int tutorialClickCount = 0;
-        private Label tutorialLabel;
         private void tutorial_Click(object sender, EventArgs e)
         {
             newbtn.Visible = false;         //시작화면 버튼들 지우기
             continuebtn.Visible = false;
             tutorial.Visible = false;
 
+            tutorialLabel.Visible = true; //튜토리얼 라벨 활성화
+
             tutorialClickCount = 0;
 
-            tutorialLabel = new Label();
 
             tutorialLabel.Location = new Point(300, 200);
             tutorialLabel.Size = new Size(550, 300);
 
             tutorialLabel.Text = "[게임의 흐름]\r\n총 5개의 챕터가 존재한다.\r\n\r\n각 챕터는 4번의 게임으로 구성된다.\r\n\r\n한 게임에서는최대 4번의 블랙잭 라운드를 진행한다.\r\n\r\n목표 점수를 달성하면다음 게임으로 진행할 수 있다.\r\n\r\n각 게임이 끝나면 상점에서 아이템을 구매하거나 카드를 추가할 수 있다.\r\n\r\n챕터의 4번째 게임에서는 강력한 디버프가 적용된다.\r\n(클릭하여 다음으로)";
-
-            tutorialLabel.Font = new Font("맑은 고딕", 12, FontStyle.Bold);
 
             string path = Path.Combine(Application.StartupPath,"..","..","Resources","튜토리얼.jpg");
 
@@ -584,13 +580,6 @@ namespace BlackJack_TheSpire
             tutorialLabel.BackgroundImage = Image.FromFile(path);
             tutorialLabel.BackgroundImageLayout = ImageLayout.Stretch;
 
-            tutorialLabel.ForeColor = Color.White;
-            tutorialLabel.AutoSize = false;
-            tutorialLabel.TextAlign = ContentAlignment.MiddleCenter;
-
-            this.Controls.Add(tutorialLabel);
-
-            tutorialLabel.Click += TutorialLabel_Click;
             tutorialLabel.BringToFront();
         }
         private void TutorialLabel_Click(object sender, EventArgs e)
@@ -607,12 +596,58 @@ namespace BlackJack_TheSpire
 
                 case 2:
                     tutorialLabel.Location = new Point(250, 30);
-                    tutorialLabel.Size = new Size(350, 500);
+                    tutorialLabel.Size = new Size(350, 190);
 
-                    tutorialLabel.Font = new Font("맑은 고딕", 14, FontStyle.Bold);
-                    tutorialLabel.Text = "코인: 보유하고 있는 돈\r\n\r\n\r\n[현재점수]/[목표점수]\r\n\r\n\r\n[카드 숫자 합] / [배율]\r\n\r\n숫자 합과 배율 계산 점수\r\n\r\n남은 라운드 수 / 폴드 횟수(최대 4회)\r\n\r\n드로우: 카드 뽑기\r\n\r\n폴드: 라운드 점수를 반으로 줄이고\r\n라운드 다시 시작\r\n\r\n스탠드: 라운드 종료";
+                    tutorialLabel.Text = "코인 : 보유하고 있는 돈\r\n\r\n한판 이후 나오는 상점에서\r\n아이템을 살 수 있습니다.\r\n\r\n매 라운드에서\r\n남아있는돈 5원당 1원\r\n클리어시4원\r\n남아있는 라운드당 2원\r\n";
                     break;
-                
+                case 3:
+                    tutorialLabel.Location = new Point(250, 120);
+                    tutorialLabel.Size = new Size(350, 190);
+
+                    tutorialLabel.Text = "점수\r\n\r\n챕터별로 기본 80점\r\n+\r\n플레이 판마다 +20점 누적\r\n\r\n목표점수를 채우면\r\n다음 판으로 넘어갈 수 있다\r\n\r\n점수를 채워 클리어하면 상점이 나온다";
+                    break;
+                case 4:
+                    tutorialLabel.Location = new Point(250, 205);
+                    tutorialLabel.Size = new Size(350, 120);
+
+                    tutorialLabel.Text = "숫자 : 카드 숫자의 총 합\r\n배율 : [카드조합에 해당하는 배율]\r\n*\r\n[추가배율(아이템 및 미션)]\r\n\r\n받는점수 : 숫자 * 배율로 나온 점수";
+                    break;
+                case 5:
+                    tutorialLabel.Location = new Point(250, 300);
+                    tutorialLabel.Size = new Size(350, 170);
+
+                    tutorialLabel.Text = "라운드\r\n판마다 4개의 라운드\r\n4라운드 안에 목표 점수를 채우면 클리어\r\n\r\n폴드\r\n패가 마음에 들지 않을 때\r\n패를 버리는 대신 현재 점수의 절반을 버림으로\r\n라운드 재시작  매 판 최대 4번";
+                    break;
+                case 6:
+                    tutorialLabel.Location = new Point(250, 350);
+                    tutorialLabel.Size = new Size(350, 320);
+
+                    tutorialLabel.Text = "드로우\r\n카드 뽑기\r\n단, 숫자가 21이 넘어 버스트 시\r\n뽑을 수 없다\r\n\r\n폴드\r\n점수를 절반 잃는 대신 라운드 재시작\r\n단, 점수가 없을 시 할 수 없다\r\n\r\n스탠드\r\n해당 점수로 라운드 마무리";
+                    break;
+                case 7:
+                    tutorialLabel.Location = new Point(380,120);
+                    tutorialLabel.Size = new Size(350, 100);
+
+                    tutorialLabel.Text = "아이템\r\n상점에서 구매 가능하다\r\n최대 5개, 상점에서 제거 후 다른 아이템으로\r\n바꿀 수 있다";
+                    break;
+                case 8:
+                    tutorialLabel.Location = new Point(750, 120);
+                    tutorialLabel.Size = new Size(200, 80);
+
+                    tutorialLabel.Text = "디버프\r\n매 챕터 4번째 판은\r\n특별한 디버프가 적용된다";
+                    break;
+                case 9:
+                    tutorialLabel.Location = new Point(900, 120);
+                    tutorialLabel.Size = new Size(200, 80);
+
+                    tutorialLabel.Text = "미션\r\n매 판 미션이 두개 있다\r\n미션은 클리어 시\r\n해당 라운드 배율에\r\n반영된다";
+                    break;
+                case 10:
+                    tutorialLabel.Location = new Point(850, 350);
+                    tutorialLabel.Size = new Size(250, 100);
+
+                    tutorialLabel.Text = "덱\r\n자신이 추가해온 덱을 볼 수 있다\r\n현재 진행중인 판에서 사용한 카드는\r\n반전으료 표시된다\r\n*주의* 덱을 전부 사용 시 패배";
+                    break;
                 default:
                     tutorialLabel.Visible = false;
 
