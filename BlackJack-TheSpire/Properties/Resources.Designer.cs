@@ -63,6 +63,16 @@ namespace BlackJack_TheSpire.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap brown_wood_textured_background_with_design_space_53876_160425_1_ {
+            get {
+                object obj = ResourceManager.GetObject("brown-wood-textured-background-with-design-space_53876-160425(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap ChatGPT_Image_2026년_5월_26일_오후_05_07_57 {
             get {
                 object obj = ResourceManager.GetObject("ChatGPT Image 2026년 5월 26일 오후 05_07_57", resourceCulture);
@@ -216,6 +226,26 @@ namespace BlackJack_TheSpire.Properties {
         internal static System.Drawing.Bitmap 카드_뒷면 {
             get {
                 object obj = ResourceManager.GetObject("카드 뒷면", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 칸 {
+            get {
+                object obj = ResourceManager.GetObject("칸", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 튜토리얼 {
+            get {
+                object obj = ResourceManager.GetObject("튜토리얼", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

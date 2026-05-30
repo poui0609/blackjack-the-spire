@@ -181,5 +181,14 @@
   <ItemGroup>
     <None Include="Resources\ChatGPT Image 2026년 5월 29일 오후 05_04_261.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\칸.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brown-wood-textured-background-with-design-space_53876-160425%281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\튜토리얼.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

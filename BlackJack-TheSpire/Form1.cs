@@ -61,13 +61,14 @@ namespace BlackJack_TheSpire
 
             newbtn.Visible = false;         //시작화면 버튼들 지우기
             continuebtn.Visible = false;
+            tutorial.Visible = false;
 
             roundManager = new RoundManager(gameState);
             cycleManager = new CycleManager(gameState, roundManager);
             itemSlots = new Label[] { item1, item2, item3, item4, item5 };
             cycleManager.StartCycle();
 
-            RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission(); ShowBoss(); //게임 시작 후 메인 폼 UI 갱신
+            RefreshInventory(); showscore(); showround(); showcoin(); shownumodds(); showfoldnum(); ShowMission(); ShowBoss(); shownowround();//게임 시작 후 메인 폼 UI 갱신
 
 
             deck.Enabled = true;//버튼들 활성화
@@ -210,6 +211,10 @@ namespace BlackJack_TheSpire
 
             bosslbl.Text = boss.Name + "\n" + boss.Description;
         }
+        void shownowround()
+        {
+            nowround.Text = $"층 : {gameState.GetCurrentCycle()} / 챕터 : {gameState.GetCurrentChapter()}";
+        }
         private void foldbutten_Click(object sender, EventArgs e)
         {
             if (!roundManager.Fold()) //폴드 수행. 폴드 불가능시 메시지 후 종료
@@ -232,9 +237,13 @@ namespace BlackJack_TheSpire
                 return;
 
             Card drawCard = roundManager.Draw(); //카드뽑기
-            if (drawCard == null)
+            if (drawCard == null) // 뽑을 카드 없으면 끝
+            {
+                MessageBox.Show("모든 카드를 뽑았습니다.");
+                ending end = new ending(gameState);
+                end.ShowDialog();
                 return;
-
+            }
             this.drawCard = drawCard; //마지막으로 뽑은 카드 저장
             ShowPlayerHand(); //손패 이미지 추가
             CheckMission(); //미션 성공했는지 확인하는 코드
@@ -287,6 +296,7 @@ namespace BlackJack_TheSpire
                 showround();
                 showscore();
                 ShowBoss();
+                shownowround();
 
                 UpdateButtonState();
 
@@ -547,6 +557,72 @@ namespace BlackJack_TheSpire
             SelectedGameState = SaveManager.Load(); //기존정보 불러오기
 
             gamestarting(); //게임 시작
+        }
+        int tutorialClickCount = 0;
+        private Label tutorialLabel;
+        private void tutorial_Click(object sender, EventArgs e)
+        {
+            newbtn.Visible = false;         //시작화면 버튼들 지우기
+            continuebtn.Visible = false;
+            tutorial.Visible = false;
+
+            tutorialClickCount = 0;
+
+            tutorialLabel = new Label();
+
+            tutorialLabel.Location = new Point(300, 200);
+            tutorialLabel.Size = new Size(550, 300);
+
+            tutorialLabel.Text = "[게임의 흐름]\r\n총 5개의 챕터가 존재한다.\r\n\r\n각 챕터는 4번의 게임으로 구성된다.\r\n\r\n한 게임에서는최대 4번의 블랙잭 라운드를 진행한다.\r\n\r\n목표 점수를 달성하면다음 게임으로 진행할 수 있다.\r\n\r\n각 게임이 끝나면 상점에서 아이템을 구매하거나 카드를 추가할 수 있다.\r\n\r\n챕터의 4번째 게임에서는 강력한 디버프가 적용된다.\r\n(클릭하여 다음으로)";
+
+            tutorialLabel.Font = new Font("맑은 고딕", 12, FontStyle.Bold);
+
+            string path = Path.Combine(Application.StartupPath,"..","..","Resources","튜토리얼.jpg");
+
+            path = Path.GetFullPath(path);
+
+            tutorialLabel.BackgroundImage = Image.FromFile(path);
+            tutorialLabel.BackgroundImageLayout = ImageLayout.Stretch;
+
+            tutorialLabel.ForeColor = Color.White;
+            tutorialLabel.AutoSize = false;
+            tutorialLabel.TextAlign = ContentAlignment.MiddleCenter;
+
+            this.Controls.Add(tutorialLabel);
+
+            tutorialLabel.Click += TutorialLabel_Click;
+            tutorialLabel.BringToFront();
+        }
+        private void TutorialLabel_Click(object sender, EventArgs e)
+        {
+            tutorialClickCount++;
+            switch (tutorialClickCount)
+            {
+                case 1:
+                    tutorialLabel.Font = new Font("맑은 고딕", 10, FontStyle.Bold);
+                    tutorialLabel.Location = new Point(300, 140);
+                    tutorialLabel.Size = new Size(550, 380);
+                    tutorialLabel.Text = "[플레이 방식과 점수]\r\n카드를 뽑아 점수를 만든다.\r\n\r\nA = 1 또는 11\r\n2~10 = 숫자 그대로\r\nJ, Q, K = 10점\r\n\r\n21을 초과하면 Bust! 해당 라운드는 실패한다.\r\n\r\nSTAND를 선택하면 현재 손패의 점수를 확정한다.\r\n\r\n획득 점수는 [손패 점수] × [배율]로 계산된다.\r\n\r\n배율은\r\n카드 조합 X 아이템 효과 X미션 효과\r\n에 의해 증가한다.\r\n\r\n높은 점수와 높은 배율을 동시에 노리는 것이 핵심이다.\r\n(클릭하여 다음으로)";
+                    break;
+
+                case 2:
+                    tutorialLabel.Location = new Point(250, 30);
+                    tutorialLabel.Size = new Size(350, 500);
+
+                    tutorialLabel.Font = new Font("맑은 고딕", 14, FontStyle.Bold);
+                    tutorialLabel.Text = "코인: 보유하고 있는 돈\r\n\r\n\r\n[현재점수]/[목표점수]\r\n\r\n\r\n[카드 숫자 합] / [배율]\r\n\r\n숫자 합과 배율 계산 점수\r\n\r\n남은 라운드 수 / 폴드 횟수(최대 4회)\r\n\r\n드로우: 카드 뽑기\r\n\r\n폴드: 라운드 점수를 반으로 줄이고\r\n라운드 다시 시작\r\n\r\n스탠드: 라운드 종료";
+                    break;
+                
+                default:
+                    tutorialLabel.Visible = false;
+
+                    newbtn.Visible = true;
+                    continuebtn.Visible = true;
+                    tutorial.Visible = true;
+                    break;
+            }
+
+            tutorialLabel.BringToFront();
         }
     }
 }
