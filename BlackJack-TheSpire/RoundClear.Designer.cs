@@ -40,11 +40,12 @@
             this.lblRound.BackColor = System.Drawing.Color.Transparent;
             this.lblRound.Font = new System.Drawing.Font("휴먼옛체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lblRound.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblRound.Location = new System.Drawing.Point(334, 137);
+            this.lblRound.Location = new System.Drawing.Point(279, 137);
             this.lblRound.Name = "lblRound";
             this.lblRound.Size = new System.Drawing.Size(72, 40);
             this.lblRound.TabIndex = 1;
             this.lblRound.Text = "몇 라운드 ";
+            this.lblRound.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblCoin
             // 
