@@ -35,6 +35,7 @@
             this.odds = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.게임종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.추가ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.카드ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbtype = new System.Windows.Forms.ToolStripComboBox();
@@ -75,7 +76,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.nowround = new System.Windows.Forms.Label();
             this.tutorialLabel = new System.Windows.Forms.Label();
-            this.게임종료ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.playerhandpanel.SuspendLayout();
             this.SuspendLayout();
@@ -140,6 +140,13 @@
             this.종료ToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
             this.종료ToolStripMenuItem.Text = "종료";
             // 
+            // 게임종료ToolStripMenuItem
+            // 
+            this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
+            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(186, 34);
+            this.게임종료ToolStripMenuItem.Text = "게임종료";
+            this.게임종료ToolStripMenuItem.Click += new System.EventHandler(this.게임종료ToolStripMenuItem_Click_1);
+            // 
             // 추가ToolStripMenuItem
             // 
             this.추가ToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -159,7 +166,7 @@
             this.카드추가ToolStripMenuItem1,
             this.카드삭제ToolStripMenuItem});
             this.카드ToolStripMenuItem.Name = "카드ToolStripMenuItem";
-            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.카드ToolStripMenuItem.Size = new System.Drawing.Size(168, 34);
             this.카드ToolStripMenuItem.Text = "카드";
             // 
             // cbtype
@@ -212,7 +219,7 @@
             this.addItem,
             this.delItem});
             this.아이템ToolStripMenuItem.Name = "아이템ToolStripMenuItem";
-            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.아이템ToolStripMenuItem.Size = new System.Drawing.Size(168, 34);
             this.아이템ToolStripMenuItem.Text = "아이템";
             // 
             // ItemCombo
@@ -574,7 +581,7 @@
             // 
             // tutorialLabel
             // 
-            this.tutorialLabel.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tutorialLabel.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold);
             this.tutorialLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.tutorialLabel.Location = new System.Drawing.Point(12, 54);
             this.tutorialLabel.Name = "tutorialLabel";
@@ -584,13 +591,6 @@
             this.tutorialLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.tutorialLabel.Visible = false;
             this.tutorialLabel.Click += new System.EventHandler(this.TutorialLabel_Click);
-            // 
-            // 게임종료ToolStripMenuItem
-            // 
-            this.게임종료ToolStripMenuItem.Name = "게임종료ToolStripMenuItem";
-            this.게임종료ToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.게임종료ToolStripMenuItem.Text = "게임종료";
-            this.게임종료ToolStripMenuItem.Click += new System.EventHandler(this.게임종료ToolStripMenuItem_Click_1);
             // 
             // Form1
             // 

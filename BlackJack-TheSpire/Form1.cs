@@ -78,6 +78,14 @@ namespace BlackJack_TheSpire
         private void Form1_CardResize(object sender, EventArgs e)
         {
             ResizePlayerCards();
+            if (tutorialLabel.Visible)
+            {
+                float scale = Math.Min(scaler.ScaleX, scaler.ScaleY);   //글씨 크기조절
+
+                tutorialLabel.Font = new Font("맑은 고딕",10f * scale,FontStyle.Bold);
+
+                ApplyCurrentTutorialLayout();
+            }
         }
 
         private void ResizePlayerCards()
@@ -567,9 +575,7 @@ namespace BlackJack_TheSpire
 
             tutorialClickCount = 0;
 
-
-            tutorialLabel.Location = new Point(300, 200);
-            tutorialLabel.Size = new Size(550, 300);
+            SetTutorialLabelLayout(300, 200, 550, 300);
 
             tutorialLabel.Text = "[게임의 흐름]\r\n총 5개의 챕터가 존재한다.\r\n\r\n각 챕터는 4번의 게임으로 구성된다.\r\n\r\n한 게임에서는최대 4번의 블랙잭 라운드를 진행한다.\r\n\r\n목표 점수를 달성하면다음 게임으로 진행할 수 있다.\r\n\r\n각 게임이 끝나면 상점에서 아이템을 구매하거나 카드를 추가할 수 있다.\r\n\r\n챕터의 4번째 게임에서는 강력한 디버프가 적용된다.\r\n(클릭하여 다음으로)";
 
@@ -588,63 +594,52 @@ namespace BlackJack_TheSpire
             switch (tutorialClickCount)
             {
                 case 1:
-                    tutorialLabel.Font = new Font("맑은 고딕", 10, FontStyle.Bold);
-                    tutorialLabel.Location = new Point(300, 140);
-                    tutorialLabel.Size = new Size(550, 380);
+                    SetTutorialLabelLayout(300, 140, 550, 380);
                     tutorialLabel.Text = "[플레이 방식과 점수]\r\n카드를 뽑아 점수를 만든다.\r\n\r\nA = 1 또는 11\r\n2~10 = 숫자 그대로\r\nJ, Q, K = 10점\r\n\r\n21을 초과하면 Bust! 해당 라운드는 실패한다.\r\n\r\nSTAND를 선택하면 현재 손패의 점수를 확정한다.\r\n\r\n획득 점수는 [손패 점수] × [배율]로 계산된다.\r\n\r\n배율은\r\n카드 조합 X 아이템 효과 X미션 효과\r\n에 의해 증가한다.\r\n\r\n높은 점수와 높은 배율을 동시에 노리는 것이 핵심이다.\r\n(클릭하여 다음으로)";
                     break;
 
                 case 2:
-                    tutorialLabel.Location = new Point(250, 30);
-                    tutorialLabel.Size = new Size(350, 190);
+                    SetTutorialLabelLayout(250, 30, 350, 190);
 
                     tutorialLabel.Text = "코인 : 보유하고 있는 돈\r\n\r\n한판 이후 나오는 상점에서\r\n아이템을 살 수 있습니다.\r\n\r\n매 라운드에서\r\n남아있는돈 5원당 1원\r\n클리어시4원\r\n남아있는 라운드당 2원\r\n";
                     break;
                 case 3:
-                    tutorialLabel.Location = new Point(250, 120);
-                    tutorialLabel.Size = new Size(350, 190);
+                    SetTutorialLabelLayout(250, 120, 350, 190);
 
                     tutorialLabel.Text = "점수\r\n\r\n챕터별로 기본 80점\r\n+\r\n플레이 판마다 +20점 누적\r\n\r\n목표점수를 채우면\r\n다음 판으로 넘어갈 수 있다\r\n\r\n점수를 채워 클리어하면 상점이 나온다";
                     break;
                 case 4:
-                    tutorialLabel.Location = new Point(250, 205);
-                    tutorialLabel.Size = new Size(350, 120);
+                    SetTutorialLabelLayout(250, 205, 350, 120);
 
                     tutorialLabel.Text = "숫자 : 카드 숫자의 총 합\r\n배율 : [카드조합에 해당하는 배율]\r\n*\r\n[추가배율(아이템 및 미션)]\r\n\r\n받는점수 : 숫자 * 배율로 나온 점수";
                     break;
                 case 5:
-                    tutorialLabel.Location = new Point(250, 300);
-                    tutorialLabel.Size = new Size(350, 170);
+                    SetTutorialLabelLayout(250, 300, 350, 170);
 
                     tutorialLabel.Text = "라운드\r\n판마다 4개의 라운드\r\n4라운드 안에 목표 점수를 채우면 클리어\r\n\r\n폴드\r\n패가 마음에 들지 않을 때\r\n패를 버리는 대신 현재 점수의 절반을 버림으로\r\n라운드 재시작  매 판 최대 4번";
                     break;
                 case 6:
-                    tutorialLabel.Location = new Point(250, 350);
-                    tutorialLabel.Size = new Size(350, 320);
+                    SetTutorialLabelLayout(250, 350, 350, 320);
 
                     tutorialLabel.Text = "드로우\r\n카드 뽑기\r\n단, 숫자가 21이 넘어 버스트 시\r\n뽑을 수 없다\r\n\r\n폴드\r\n점수를 절반 잃는 대신 라운드 재시작\r\n단, 점수가 없을 시 할 수 없다\r\n\r\n스탠드\r\n해당 점수로 라운드 마무리";
                     break;
                 case 7:
-                    tutorialLabel.Location = new Point(380,120);
-                    tutorialLabel.Size = new Size(350, 100);
+                    SetTutorialLabelLayout(380, 120, 350, 100);
 
                     tutorialLabel.Text = "아이템\r\n상점에서 구매 가능하다\r\n최대 5개, 상점에서 제거 후 다른 아이템으로\r\n바꿀 수 있다";
                     break;
                 case 8:
-                    tutorialLabel.Location = new Point(750, 120);
-                    tutorialLabel.Size = new Size(200, 80);
+                    SetTutorialLabelLayout(750, 120, 200, 80);
 
                     tutorialLabel.Text = "디버프\r\n매 챕터 4번째 판은\r\n특별한 디버프가 적용된다";
                     break;
                 case 9:
-                    tutorialLabel.Location = new Point(900, 120);
-                    tutorialLabel.Size = new Size(200, 80);
+                    SetTutorialLabelLayout(900, 120, 200, 100);
 
                     tutorialLabel.Text = "미션\r\n매 판 미션이 두개 있다\r\n미션은 클리어 시\r\n해당 라운드 배율에\r\n반영된다";
                     break;
                 case 10:
-                    tutorialLabel.Location = new Point(850, 350);
-                    tutorialLabel.Size = new Size(250, 100);
+                    SetTutorialLabelLayout(850, 350, 250, 100);
 
                     tutorialLabel.Text = "덱\r\n자신이 추가해온 덱을 볼 수 있다\r\n현재 진행중인 판에서 사용한 카드는\r\n반전으료 표시된다\r\n*주의* 덱을 전부 사용 시 패배";
                     break;
@@ -658,6 +653,60 @@ namespace BlackJack_TheSpire
             }
 
             tutorialLabel.BringToFront();
+        }
+
+        private void SetTutorialLabelLayout(int x, int y, int width, int height) //튜토리얼 라벨 위치랑 사이즈 조정
+        {
+            tutorialLabel.Location = new Point(
+                (int)(x * scaler.ScaleX),
+                (int)(y * scaler.ScaleY)
+            );
+
+            tutorialLabel.Size = new Size(
+                (int)(width * scaler.ScaleX),
+                (int)(height * scaler.ScaleY)
+            );
+
+            tutorialLabel.BringToFront();
+        }
+        private void ApplyCurrentTutorialLayout() //튜토리얼 단계별 사이즈 비율 조정해주는 메소드
+        {
+            switch (tutorialClickCount)
+            {
+                case 0:
+                    SetTutorialLabelLayout(300, 200, 550, 300);
+                    break;
+                case 1:
+                    SetTutorialLabelLayout(300, 140, 550, 380);
+                    break;
+                case 2:
+                    SetTutorialLabelLayout(250, 30, 350, 190);
+                    break;
+                case 3:
+                    SetTutorialLabelLayout(250, 120, 350, 190);
+                    break;
+                case 4:
+                    SetTutorialLabelLayout(250, 205, 350, 120);
+                    break;
+                case 5:
+                    SetTutorialLabelLayout(250, 300, 350, 170);
+                    break;
+                case 6:
+                    SetTutorialLabelLayout(250, 350, 350, 320);
+                    break;
+                case 7:
+                    SetTutorialLabelLayout(380, 120, 350, 100);
+                    break;
+                case 8:
+                    SetTutorialLabelLayout(750, 120, 200, 80);
+                    break;
+                case 9:
+                    SetTutorialLabelLayout(900, 120, 200, 100);
+                    break;
+                case 10:
+                    SetTutorialLabelLayout(850, 350, 250, 100);
+                    break;
+            }
         }
     }
 }
