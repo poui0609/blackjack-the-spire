@@ -20,7 +20,7 @@ namespace BlackJack_TheSpire
 
             scaler = new FormScaler(this);
 
-            lblRound.Text = $"{cycle}";
+            lblRound.Text = $"{gameState.GetCurrentChapter()}-{gameState.GetCurrentCycle()}";
             lblScore.Text = score + "점 / " + targetScore + "점";
             lblCoin.Text = "+" + earnedCoin;
 

@@ -29,7 +29,7 @@ namespace BlackJack_TheSpire
             return allItems[index];
         }
 
-        public static Item GetRandomUniqueItem(GameState gameState)
+        public static Item GetRandomUniqueItem(GameState gameState)        //아이템 중복 검사하는 메소드
         {
             List<int> usedIds = gameState.GetUsedShopItem();
 
