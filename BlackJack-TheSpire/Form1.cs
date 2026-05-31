@@ -46,6 +46,7 @@ namespace BlackJack_TheSpire
             this.Resize += Form1_CardResize;
 
             InitItemShow();
+            InitTutorialImage();
         }
         private void Form1_Shown(object sender, EventArgs e)
         {
@@ -565,6 +566,7 @@ namespace BlackJack_TheSpire
             gamestarting(); //게임 시작
         }
         int tutorialClickCount = 0;
+        private PictureBox tutorialImage;
         private void tutorial_Click(object sender, EventArgs e)
         {
             newbtn.Visible = false;         //시작화면 버튼들 지우기
@@ -643,8 +645,15 @@ namespace BlackJack_TheSpire
 
                     tutorialLabel.Text = "덱\r\n자신이 추가해온 덱을 볼 수 있다\r\n현재 진행중인 판에서 사용한 카드는\r\n반전으료 표시된다\r\n*주의* 덱을 전부 사용 시 패배";
                     break;
+                case 11:
+                    ShowTutorialImage("튜토리얼 상점1.png");
+                    break;
+                case 12:
+                    ShowTutorialImage("튜토리얼 상점2.png");
+                    break;
                 default:
                     tutorialLabel.Visible = false;
+                    tutorialImage.Visible = false;
 
                     newbtn.Visible = true;
                     continuebtn.Visible = true;
@@ -669,6 +678,42 @@ namespace BlackJack_TheSpire
 
             tutorialLabel.BringToFront();
         }
+        private void InitTutorialImage()
+        {
+            tutorialImage = new PictureBox();
+
+            tutorialImage.SizeMode = PictureBoxSizeMode.Zoom;
+            tutorialImage.BackColor = Color.Transparent;
+
+            tutorialImage.Visible = false;
+
+            tutorialImage.Click += TutorialLabel_Click;
+
+            this.Controls.Add(tutorialImage);
+        }
+
+        private void ShowTutorialImage(string imageName)
+        {
+            tutorialLabel.Visible = false;
+
+            tutorialImage.Visible = true;
+
+            tutorialImage.Location = new Point(0, 0);
+
+            tutorialImage.Size = this.ClientSize;
+
+            string path = Path.Combine(
+                Application.StartupPath,
+                "..",
+                "..",
+                "Resources",
+                imageName);
+
+            tutorialImage.Image = Image.FromFile(Path.GetFullPath(path));
+
+            tutorialImage.BringToFront();
+        }
+
         private void ApplyCurrentTutorialLayout() //튜토리얼 단계별 사이즈 비율 조정해주는 메소드
         {
             switch (tutorialClickCount)
