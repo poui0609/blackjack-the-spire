@@ -269,7 +269,7 @@ namespace BlackJack_TheSpire
             cycleManager.OnRoundEnd();
             int earnedCoin = gameState.GetCoin() - beforeCoin;    //사이클에서 얻은 코인 수
 
-            if (cycleManager.IsGameOver())
+            if (cycleManager.IsGameOver()||gameState.IsGameClear())
             {
                 ending end = new ending(gameState);
                 end.ShowDialog();
@@ -577,7 +577,7 @@ namespace BlackJack_TheSpire
 
             SetTutorialLabelLayout(300, 200, 550, 300);
 
-            tutorialLabel.Text = "[게임의 흐름]\r\n총 5개의 챕터가 존재한다.\r\n\r\n각 챕터는 4번의 게임으로 구성된다.\r\n\r\n한 게임에서는최대 4번의 블랙잭 라운드를 진행한다.\r\n\r\n목표 점수를 달성하면다음 게임으로 진행할 수 있다.\r\n\r\n각 게임이 끝나면 상점에서 아이템을 구매하거나 카드를 추가할 수 있다.\r\n\r\n챕터의 4번째 게임에서는 강력한 디버프가 적용된다.\r\n(클릭하여 다음으로)";
+            tutorialLabel.Text = "[게임의 흐름]\r\n총 6개의 챕터가 존재한다.\r\n\r\n각 챕터는 4번의 게임으로 구성된다.\r\n\r\n한 게임에서는최대 4번의 블랙잭 라운드를 진행한다.\r\n\r\n목표 점수를 달성하면다음 게임으로 진행할 수 있다.\r\n\r\n각 게임이 끝나면 상점에서 아이템을 구매하거나 카드를 추가할 수 있다.\r\n\r\n챕터의 4번째 게임에서는 강력한 디버프가 적용된다.\r\n(클릭하여 다음으로)";
 
             string path = Path.Combine(Application.StartupPath,"..","..","Resources","튜토리얼.jpg");
 
