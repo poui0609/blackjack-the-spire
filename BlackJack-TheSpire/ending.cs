@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlackJack_TheSpire.Scaler;
 
 namespace BlackJack_TheSpire
 {
@@ -16,8 +17,13 @@ namespace BlackJack_TheSpire
         {
             InitializeComponent();
             this.gamestate = gamestate;
+
+            scaler = new FormScaler(this);
         }
+
         GameState gamestate;
+        private FormScaler scaler;
+
         private void deck_Click(object sender, EventArgs e)
         {
             HaveDeck haveDeck = new HaveDeck(gamestate, 1);
@@ -26,17 +32,18 @@ namespace BlackJack_TheSpire
 
         private void ending_Shown(object sender, EventArgs e)
         {
+            scaler.ApplyScale();
+
             if (gamestate.IsGameClear())
             {
                 result.Text = "클리어!";
-                scorelbl.Visible = false;
+                roundlbl.Visible = false;
             }
             else
             {
                 result.Text = "패배...";
-                scorelbl.Text = $"점수: {gamestate.GetCycleScore()}";
+                roundlbl.Text = $"{gamestate.GetCurrentChapter()}-{gamestate.GetCurrentCycle()}";
             }
-            seedlbl.Text = $"시드\r\n{gamestate.GetSeed()}";
             ShowItemList();
         }
 

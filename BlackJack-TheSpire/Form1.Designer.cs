@@ -271,7 +271,7 @@
             this.foldbutten.BackColor = System.Drawing.Color.Transparent;
             this.foldbutten.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.foldbutten.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.foldbutten.Image = global::BlackJack_TheSpire.Properties.Resources.버튼사진;
+            this.foldbutten.Image = ((System.Drawing.Image)(resources.GetObject("foldbutten.Image")));
             this.foldbutten.Location = new System.Drawing.Point(60, 663);
             this.foldbutten.Name = "foldbutten";
             this.foldbutten.Size = new System.Drawing.Size(130, 69);
@@ -297,7 +297,7 @@
             this.draw.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.draw.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.draw.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.draw.Image = global::BlackJack_TheSpire.Properties.Resources.버튼사진;
+            this.draw.Image = ((System.Drawing.Image)(resources.GetObject("draw.Image")));
             this.draw.Location = new System.Drawing.Point(60, 570);
             this.draw.Name = "draw";
             this.draw.Size = new System.Drawing.Size(266, 66);
@@ -311,7 +311,7 @@
             this.stand.BackColor = System.Drawing.Color.Transparent;
             this.stand.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.stand.Font = new System.Drawing.Font("굴림", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.stand.Image = global::BlackJack_TheSpire.Properties.Resources.버튼사진;
+            this.stand.Image = ((System.Drawing.Image)(resources.GetObject("stand.Image")));
             this.stand.Location = new System.Drawing.Point(196, 663);
             this.stand.Name = "stand";
             this.stand.Size = new System.Drawing.Size(130, 69);
@@ -333,32 +333,41 @@
             // 
             // tutorial
             // 
+            this.tutorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.tutorial.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.tutorial.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.tutorial.Location = new System.Drawing.Point(557, 0);
             this.tutorial.Name = "tutorial";
             this.tutorial.Size = new System.Drawing.Size(156, 259);
             this.tutorial.TabIndex = 41;
             this.tutorial.Text = "튜토리얼";
-            this.tutorial.UseVisualStyleBackColor = true;
+            this.tutorial.UseVisualStyleBackColor = false;
             this.tutorial.Click += new System.EventHandler(this.tutorial_Click);
             // 
             // continuebtn
             // 
+            this.continuebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.continuebtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.continuebtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.continuebtn.Location = new System.Drawing.Point(331, 0);
             this.continuebtn.Name = "continuebtn";
             this.continuebtn.Size = new System.Drawing.Size(156, 259);
             this.continuebtn.TabIndex = 40;
             this.continuebtn.Text = "이어하기";
-            this.continuebtn.UseVisualStyleBackColor = true;
+            this.continuebtn.UseVisualStyleBackColor = false;
             this.continuebtn.Click += new System.EventHandler(this.continuebtn_Click);
             // 
             // newbtn
             // 
+            this.newbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.newbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.newbtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.newbtn.Location = new System.Drawing.Point(115, -4);
             this.newbtn.Name = "newbtn";
             this.newbtn.Size = new System.Drawing.Size(156, 259);
             this.newbtn.TabIndex = 39;
             this.newbtn.Text = "새로하기";
-            this.newbtn.UseVisualStyleBackColor = true;
+            this.newbtn.UseVisualStyleBackColor = false;
             this.newbtn.Click += new System.EventHandler(this.newbtn_Click);
             // 
             // foldnum
@@ -571,7 +580,7 @@
             this.nowround.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.nowround.Font = new System.Drawing.Font("휴먼옛체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.nowround.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.nowround.Image = global::BlackJack_TheSpire.Properties.Resources.칸;
+            this.nowround.Image = ((System.Drawing.Image)(resources.GetObject("nowround.Image")));
             this.nowround.Location = new System.Drawing.Point(646, 0);
             this.nowround.Name = "nowround";
             this.nowround.Size = new System.Drawing.Size(216, 72);
@@ -596,7 +605,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.배경그림2;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1578, 844);
             this.Controls.Add(this.tutorialLabel);

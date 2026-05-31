@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ending));
             this.result = new System.Windows.Forms.Label();
-            this.seedlbl = new System.Windows.Forms.Label();
             this.deck = new System.Windows.Forms.PictureBox();
-            this.scorelbl = new System.Windows.Forms.Label();
+            this.roundlbl = new System.Windows.Forms.Label();
             this.itemlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.deck)).BeginInit();
             this.SuspendLayout();
@@ -49,18 +48,6 @@
             this.result.Text = "성공, 실패";
             this.result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // seedlbl
-            // 
-            this.seedlbl.BackColor = System.Drawing.Color.Transparent;
-            this.seedlbl.Font = new System.Drawing.Font("휴먼옛체", 16F);
-            this.seedlbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.seedlbl.Location = new System.Drawing.Point(96, 156);
-            this.seedlbl.Name = "seedlbl";
-            this.seedlbl.Size = new System.Drawing.Size(341, 71);
-            this.seedlbl.TabIndex = 1;
-            this.seedlbl.Text = "시드라벨";
-            this.seedlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // deck
             // 
             this.deck.BackgroundImage = global::BlackJack_TheSpire.Properties.Resources.카드_뒷면;
@@ -72,17 +59,17 @@
             this.deck.TabStop = false;
             this.deck.Click += new System.EventHandler(this.deck_Click);
             // 
-            // scorelbl
+            // roundlbl
             // 
-            this.scorelbl.BackColor = System.Drawing.Color.Transparent;
-            this.scorelbl.Font = new System.Drawing.Font("휴먼옛체", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.scorelbl.ForeColor = System.Drawing.Color.White;
-            this.scorelbl.Location = new System.Drawing.Point(560, 156);
-            this.scorelbl.Name = "scorelbl";
-            this.scorelbl.Size = new System.Drawing.Size(212, 71);
-            this.scorelbl.TabIndex = 3;
-            this.scorelbl.Text = "점수";
-            this.scorelbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.roundlbl.BackColor = System.Drawing.Color.Transparent;
+            this.roundlbl.Font = new System.Drawing.Font("휴먼옛체", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.roundlbl.ForeColor = System.Drawing.Color.White;
+            this.roundlbl.Location = new System.Drawing.Point(356, 170);
+            this.roundlbl.Name = "roundlbl";
+            this.roundlbl.Size = new System.Drawing.Size(212, 71);
+            this.roundlbl.TabIndex = 3;
+            this.roundlbl.Text = "라운드";
+            this.roundlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // itemlbl
             // 
@@ -103,9 +90,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(935, 586);
             this.Controls.Add(this.itemlbl);
-            this.Controls.Add(this.scorelbl);
+            this.Controls.Add(this.roundlbl);
             this.Controls.Add(this.deck);
-            this.Controls.Add(this.seedlbl);
             this.Controls.Add(this.result);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -120,9 +106,8 @@
         #endregion
 
         private System.Windows.Forms.Label result;
-        private System.Windows.Forms.Label seedlbl;
         private System.Windows.Forms.PictureBox deck;
-        private System.Windows.Forms.Label scorelbl;
+        private System.Windows.Forms.Label roundlbl;
         private System.Windows.Forms.Label itemlbl;
     }
 }
