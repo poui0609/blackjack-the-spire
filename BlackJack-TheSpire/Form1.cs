@@ -250,6 +250,8 @@ namespace BlackJack_TheSpire
                 MessageBox.Show("모든 카드를 뽑았습니다.");
                 ending end = new ending(gameState);
                 end.ShowDialog();
+
+                this.Close();
                 return;
             }
             this.drawCard = drawCard; //마지막으로 뽑은 카드 저장
