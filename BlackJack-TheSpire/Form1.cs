@@ -164,13 +164,14 @@ namespace BlackJack_TheSpire
 
             int value = hand.CalculateValue();
             double baseOdd = ScoreCalculator.GetHandMultiplier(hand);
+            double extraMultiplier = 1.0;
             double totalMultiplier = baseOdd;
             string oddsText = baseOdd.ToString("0.0");
 
             foreach (Mission mission in roundManager.GetCurrentRoundCompletedMissions())
             {
-                 totalMultiplier *= mission.BonusMultiplier;
-                 oddsText += " x " + mission.BonusMultiplier.ToString("0.0");
+                extraMultiplier *= mission.BonusMultiplier;
+                totalMultiplier *= mission.BonusMultiplier;
             }
 
             foreach (Item item in gameState.GetInventory().GetItems())
@@ -181,7 +182,7 @@ namespace BlackJack_TheSpire
                 if (beforeMultiplier != totalMultiplier)
                 {
                     double itemMultiplier = totalMultiplier / beforeMultiplier;
-                    oddsText += " x " + itemMultiplier.ToString("0.0");
+                    extraMultiplier *= itemMultiplier;
                 }
             }
             Boss boss = gameState.GetCurrentBoss();
@@ -194,12 +195,12 @@ namespace BlackJack_TheSpire
                 if (beforeMultiplier != totalMultiplier)
                 {
                     double bossMultiplier = totalMultiplier / beforeMultiplier;
-                    oddsText += " x " + bossMultiplier.ToString("0.0");
+                    extraMultiplier *= bossMultiplier;
                 }
             }
             int finalScore = (int)(value * totalMultiplier);
             num.Text = value.ToString();
-            odds.Text = oddsText + " = " + totalMultiplier.ToString("0.0");
+            odds.Text = baseOdd.ToString("0.0") + " x " + extraMultiplier.ToString("0.0") + " = " + totalMultiplier.ToString("0.0");
             get.Text = $"받는 점수: {finalScore}";
         }
 
