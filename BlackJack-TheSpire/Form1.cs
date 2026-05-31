@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Media;
 namespace BlackJack_TheSpire
 {
     public partial class Form1 : Form
@@ -23,6 +23,8 @@ namespace BlackJack_TheSpire
         int targetX; //카드 움직일 때 어디까지 움직일지 저장하는 변수
 
         private int fold_num = 0; //폴드 횟수
+
+        private SoundPlayer bgmPlayer; //BGM 재생을 위한 SoundPlayer
 
         private Label[] itemSlots; //아이템 슬롯 변수
         private Label selectedSlot; //아이템 슬롯 저장 변수
@@ -47,6 +49,11 @@ namespace BlackJack_TheSpire
 
             InitItemShow();
             InitTutorialImage();
+            //bgm 재생
+            string path = Path.Combine(Application.StartupPath, "..", "..", "Resources", "bgm.wav");
+
+            bgmPlayer = new SoundPlayer(path);
+            bgmPlayer.PlayLooping(); // 반복 재생
         }
         private void Form1_Shown(object sender, EventArgs e)
         {
