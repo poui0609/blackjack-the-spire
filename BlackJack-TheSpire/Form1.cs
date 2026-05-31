@@ -580,7 +580,7 @@ namespace BlackJack_TheSpire
 
             SetTutorialLabelLayout(300, 200, 550, 300);
 
-            tutorialLabel.Text = "[게임의 흐름]\r\n총 6개의 챕터가 존재한다.\r\n\r\n각 챕터는 4번의 게임으로 구성된다.\r\n\r\n한 게임에서는최대 4번의 블랙잭 라운드를 진행한다.\r\n\r\n목표 점수를 달성하면다음 게임으로 진행할 수 있다.\r\n\r\n각 게임이 끝나면 상점에서 아이템을 구매하거나 카드를 추가할 수 있다.\r\n\r\n챕터의 4번째 게임에서는 강력한 디버프가 적용된다.\r\n(클릭하여 다음으로)";
+            tutorialLabel.Text = "[게임의 흐름]\r\n총 6개의 챕터가 존재한다.\r\n\r\n각 챕터는 4번의 사이클로 구성된다.\r\n\r\n한 사이클에서는최대 4번의 블랙잭 라운드를 진행한다.\r\n\r\n목표 점수를 달성하면다음 사이클로 넘어갈 수 있다.\r\n\r\n각 게임이 끝나면 상점에서 아이템을 구매하거나 카드를 추가할 수 있다.\r\n\r\n챕터의 4번째 사이클에서는 강력한 디버프가 적용된다.\r\n(클릭하여 다음으로)";
 
             string path = Path.Combine(Application.StartupPath,"..","..","Resources","튜토리얼.jpg");
 
@@ -609,7 +609,7 @@ namespace BlackJack_TheSpire
                 case 3:
                     SetTutorialLabelLayout(250, 120, 350, 190);
 
-                    tutorialLabel.Text = "점수\r\n\r\n챕터별로 기본 80점\r\n+\r\n플레이 판마다 +20점 누적\r\n\r\n목표점수를 채우면\r\n다음 판으로 넘어갈 수 있다\r\n\r\n점수를 채워 클리어하면 상점이 나온다";
+                    tutorialLabel.Text = "점수\r\n\r\n챕터별로 기본 80점\r\n+\r\n플레이 사이클마다 +20점 누적\r\n\r\n목표점수를 채우면\r\n다음 사이클로 넘어갈 수 있다\r\n\r\n점수를 채워 클리어하면 상점이 나온다";
                     break;
                 case 4:
                     SetTutorialLabelLayout(250, 190, 350, 120);
