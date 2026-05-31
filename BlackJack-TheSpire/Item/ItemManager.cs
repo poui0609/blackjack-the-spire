@@ -10,8 +10,8 @@ namespace BlackJack_TheSpire
     {
         public static List<Item> allItems = new List<Item>()
         {  // 아이템 번호, 아이템 이름, 설명, 가격, 배율 건드리기, 효과 적용
-            new Item(1, "황금 주사위", "점수 배율 추가 x1.2", 5, (gameState, hand, multiplier)=> {return multiplier * 1.2; }),
-            new Item(2, "VIP 카드", "점수 배율 추가 x1.5", 10, (gameState, hand, multiplier) => {return multiplier * 1.5; }),
+            new Item(1, "황금 주사위", "점수 배율 추가 x1.2", 8, (gameState, hand, multiplier)=> {return multiplier * 1.2; }),
+            new Item(2, "VIP 카드", "점수 배율 추가 x1.5", 15, (gameState, hand, multiplier) => {return multiplier * 1.5; }),
             new Item(3, "블랙잭 마스터", "블랙잭시 추가 x2", 8, (gameState, hand, multiplier)=> {bool completed = gameState.GetCurrentMissions().Any(m => m.IsCompleted); if (completed) return multiplier * 1.3; return multiplier; }),
             new Item(4, "Ace 팬던트", "Ace 카드 포함시 x1.5", 8, (gameState, hand, multiplier) => {bool hasAce = hand.GetCards().Any(card => card.GetCardValue() == CardValue.Ace); if (hasAce) return multiplier * 1.5; return multiplier; }),
             new Item(5, "하이리스크 토큰", "카드 합 20 이상시 x2", 10, (gameState, hand, multiplier) => {if (hand.CalculateValue() >= 20) return multiplier * 2.0; return multiplier;}),
